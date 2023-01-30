@@ -1,5 +1,5 @@
 //
-//  Posts.swift
+//  MessageVieew.swift
 //  ArtBridge
 //
 //  Created by 김창규 on 2023/01/30.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct PostsView: View {
+struct MessageView: View {
     var body: some View {
-        Text("Post View")
+        Text("Message View")
     }
 }
 
-struct Posts_Previews: PreviewProvider {
+struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        PostsView()
+        MessageView()
     }
 }

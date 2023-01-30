@@ -1,5 +1,5 @@
 //
-//  Posts.swift
+//  PeopleView.swift
 //  ArtBridge
 //
 //  Created by 김창규 on 2023/01/30.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct PostsView: View {
+struct PeopleView: View {
     var body: some View {
-        Text("Post View")
+        Text("People View")
     }
 }
 
-struct Posts_Previews: PreviewProvider {
+struct PeopleView_Previews: PreviewProvider {
     static var previews: some View {
-        PostsView()
+        PeopleView()
     }
 }
