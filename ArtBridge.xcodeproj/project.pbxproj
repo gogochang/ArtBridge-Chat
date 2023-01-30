@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		957E46782985E3F200B61B12 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46772985E3F200B61B12 /* LoginView.swift */; };
+		957E467B2986C49F00B61B12 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467A2986C49F00B61B12 /* Logo.swift */; };
+		957E467D2986C4B800B61B12 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467C2986C4B800B61B12 /* SearchView.swift */; };
+		957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467E2986DC9B00B61B12 /* ImageView.swift */; };
+		957E46842986E3FF00B61B12 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46832986E3FF00B61B12 /* Genre.swift */; };
+		957E46862987A15000B61B12 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46852987A15000B61B12 /* PostsView.swift */; };
+		957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46872987A18900B61B12 /* PrevPostsView.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
 		95E8717829850D4E00096049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E8717729850D4E00096049 /* Assets.xcassets */; };
@@ -34,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		957E46772985E3F200B61B12 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		957E467A2986C49F00B61B12 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
+		957E467C2986C4B800B61B12 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		957E467E2986DC9B00B61B12 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		957E46832986E3FF00B61B12 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		957E46852987A15000B61B12 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		957E46872987A18900B61B12 /* PrevPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevPostsView.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
 		95E8717529850D4D00096049 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +85,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		957E46792985EEB900B61B12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				957E468C2987A20100B61B12 /* Account */,
+				957E468A2987A1DC00B61B12 /* TopGroup */,
+				957E468B2987A1F900B61B12 /* Genre */,
+				957E46892987A1CF00B61B12 /* Post */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		957E46802986E3A500B61B12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				957E46832986E3FF00B61B12 /* Genre.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		957E46892987A1CF00B61B12 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				957E46852987A15000B61B12 /* PostsView.swift */,
+				957E46872987A18900B61B12 /* PrevPostsView.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		957E468A2987A1DC00B61B12 /* TopGroup */ = {
+			isa = PBXGroup;
+			children = (
+				957E467A2986C49F00B61B12 /* Logo.swift */,
+				957E467C2986C4B800B61B12 /* SearchView.swift */,
+			);
+			path = TopGroup;
+			sourceTree = "<group>";
+		};
+		957E468B2987A1F900B61B12 /* Genre */ = {
+			isa = PBXGroup;
+			children = (
+				957E467E2986DC9B00B61B12 /* ImageView.swift */,
+			);
+			path = Genre;
+			sourceTree = "<group>";
+		};
+		957E468C2987A20100B61B12 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				957E46772985E3F200B61B12 /* LoginView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		95E8716729850D4D00096049 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +161,10 @@
 		95E8717229850D4D00096049 /* ArtBridge */ = {
 			isa = PBXGroup;
 			children = (
-				95E8717329850D4D00096049 /* ArtBridgeApp.swift */,
 				95E8717529850D4D00096049 /* ContentView.swift */,
+				957E46792985EEB900B61B12 /* Views */,
+				957E46802986E3A500B61B12 /* Model */,
+				95E8717329850D4D00096049 /* ArtBridgeApp.swift */,
 				95E8717729850D4E00096049 /* Assets.xcassets */,
 				95E8717929850D4E00096049 /* Preview Content */,
 			);
@@ -257,8 +326,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */,
+				957E46782985E3F200B61B12 /* LoginView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
+				957E467D2986C4B800B61B12 /* SearchView.swift in Sources */,
+				957E467B2986C49F00B61B12 /* Logo.swift in Sources */,
 				95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */,
+				957E46842986E3FF00B61B12 /* Genre.swift in Sources */,
+				957E46862987A15000B61B12 /* PostsView.swift in Sources */,
+				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
