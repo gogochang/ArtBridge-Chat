@@ -12,17 +12,14 @@ struct SearchView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "lock")
+            Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
             TextField("Search", text: $text)
-//                .frame(width: UIScreen.main.bounds.width - 150, height: 3)
-//                .padding()
-//                .background(Color(.systemGray6))
-//                .cornerRadius(5)
         }
         .padding()
         .frame(height: 30)
-        .background(Capsule().fill(.gray))
+        .background(Color(red: 240 / 255, green: 240 / 255, blue: 240 / 255))
+        .cornerRadius(10)
     }
 }
 

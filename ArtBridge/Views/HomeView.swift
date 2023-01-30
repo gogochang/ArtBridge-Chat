@@ -10,23 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @State private var isClickedGenre = true
     @State private var isClickedRegion = false
-    private var genreList: [String] = [ "Piano","Cello","Violin","Drum"]
+    private var genreList: [String] = [ "Piano","Cello","Violin","Drum","Flute","Guitar","Bass"]
     
     var body: some View {
         VStack() {
-            // 상단메뉴바
-            HStack(alignment: .center, spacing: 10) {
-                Text("ART BRIDGE")
-                    .fontWeight(.heavy)
-                    .font(.system(size: 10))
-//                    .foregroundColor(.brown)
-                SearchView()
-                Image(systemName: "bell")
-                Image(systemName: "person")
-                
-            } //상단 메뉴
-            .padding()
-
             ScrollView() {
                 VStack() {
                     HStack(spacing:0) {
@@ -37,11 +24,11 @@ struct HomeView: View {
                             self.isClickedRegion.toggle()
                         }) {
                             if isClickedGenre {
-                                Text("장르")
+                                Text("악기")
                                     .foregroundColor(Color.black)
                                     .fontWeight(.heavy)
                             } else {
-                                Text("장르")
+                                Text("악기")
                                     .foregroundColor(Color.gray)
                                     .fontWeight(.medium)
                             }
@@ -103,7 +90,6 @@ struct HomeView: View {
                 
                 }
         }
-
     }
 }
 
