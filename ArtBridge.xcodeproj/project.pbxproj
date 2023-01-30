@@ -45,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		950850B82987E9B800D18091 /* Posts.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Posts.geojson; sourceTree = "<group>"; };
 		957BF9D82987B7FC007D9367 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		957BF9DA2987BC39007D9367 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 		957BF9DC2987BC58007D9367 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 				95E8717329850D4D00096049 /* ArtBridgeApp.swift */,
 				95E8717729850D4E00096049 /* Assets.xcassets */,
 				95E8717929850D4E00096049 /* Preview Content */,
+				950850B82987E9B800D18091 /* Posts.geojson */,
 			);
 			path = ArtBridge;
 			sourceTree = "<group>";

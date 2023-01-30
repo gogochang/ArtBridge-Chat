@@ -24,15 +24,14 @@ struct MyPageView: View {
                             .frame(width: 50, height: 50)
                         Text("로그인이 필요합니다.")
                         Spacer()
-                    }
+                    }.foregroundColor(Color.black)
                 }//Button
                 .sheet(isPresented: self.$showModal) {
                     LoginView()
-                }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0 ))
+                }.padding()
                 Divider()
                 
-                // 계정설정 버튼
+                // 계정설정 Button
                 Button(action: {
                     print("계정설정 버튼 클릭되었습니다.")
                 }) {
@@ -41,11 +40,10 @@ struct MyPageView: View {
                             .foregroundColor(Color.black)
                         Spacer()
                     }
-                }//Button
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0 ))
-                
-                
+                }.padding()// 계정설정 Button
                 Divider()
+                
+                
             }
         }
     }

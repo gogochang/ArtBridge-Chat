@@ -13,63 +13,141 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            
-            Text("Art Bridge")
-                .font(.title)
+            Text("ART BRIDGE")
+                .font(.system(size: 30))
                 .fontWeight(.heavy)
-                .padding(.bottom, 200)
-            
-            Text("Sign In")
-                .font(.title2)
-                .fontWeight(.medium)
                 .padding()
-                .foregroundColor(.black)
-            
-            // 아이디 입력 Text Field
-            HStack {
-                Image(systemName: "person.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 30, height: 30)
-                    .padding(.bottom)
-                
+                .foregroundColor(.orange)
+
+            Spacer()
+            Group {
+                // 아이디 입력 Text Field
+                HStack{
+                    Text("이메일")
+                        .bold()
+                    Spacer()
+                }
                 TextField("아이디를 입력하세요.", text: $id)
                     .frame(width:300, height: 10)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5)
                     .padding(.bottom, 20)
-            }
-            
-            // 비밀번호 입력 Text Field
-            HStack {
-                Image(systemName: "lock.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:30, height: 30)
-                    .padding(.bottom)
                 
+                HStack{
+                    Text("비밀번호")
+                        .bold()
+                    Spacer()
+                }
+                // 비밀번호 입력 Text Field
                 TextField("비밀번호를 입력하세요.", text: $password)
                     .frame(width: 300, height: 10)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5)
                     .padding(.bottom, 20)
-
-            }
+            }//Group
             
-            // 로그인 버튼
             Button(action: {
                 print("Hellow Button")
             }, label: {
-                Text("로그인")
-                    .frame(width: 80, height: 10)
+                HStack() {
+                    Spacer()
+                    Text("로그인")
+                    Spacer()
+                }
+                .frame(height: 10)
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color(.systemGray5))
+                .cornerRadius(10)
+            })
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+
+            HStack() {
+                Spacer()
+                Text("아이디 찾기")
+                    .frame(width: 100)
+                Text("|")
+                Text("비밀번호 찾기")
+                    .frame(width: 100)
+                Spacer()
+            }.foregroundColor(Color.gray)
+            
+            Group {
+                // 카카오 로그인 버튼
+                Button(action: {
+                    print("Hellow Button")
+                }, label: {
+                    HStack() {
+                        Spacer()
+                        Text("카카오로 시작")
+                        Spacer()
+                    }
+                    .frame(height: 10)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color(.systemYellow))
+                    .cornerRadius(10)
+                })
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                
+                Button(action: {
+                    print("Hellow Button")
+                }, label: {
+                    HStack() {
+                        Spacer()
+                        Text("네이버로 시작")
+                        Spacer()
+                    }
+                    .frame(height: 10)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color(.systemGreen))
+                    .cornerRadius(10)
+                })
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                
+                Button(action: {
+                    print("Hellow Button")
+                }, label: {
+                    HStack() {
+                        Spacer()
+                        Text("페이스북으로 시작")
+                        Spacer()
+                    }
+                    .frame(height: 10)
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
                     .background(Color(.systemBlue))
                     .cornerRadius(10)
-            })
+                })
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                
+                Button(action: {
+                    print("Hellow Button")
+                }, label: {
+                    HStack() {
+                        Spacer()
+                        Text("Apple로 시작")
+                        Spacer()
+                    }
+                    .frame(height: 10)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.black)
+                    .cornerRadius(10)
+                })
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+            }//Group
+            Spacer()
+            Text("회원가입")
+            Spacer()
         }
     }
 }
