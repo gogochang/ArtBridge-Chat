@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9D82987B7FC007D9367 /* HomeView.swift */; };
 		957BF9DB2987BC39007D9367 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DA2987BC39007D9367 /* PeopleView.swift */; };
 		957BF9DD2987BC58007D9367 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DC2987BC58007D9367 /* MessageView.swift */; };
@@ -25,6 +26,8 @@
 		95E8718529850D4E00096049 /* ArtBridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8718429850D4E00096049 /* ArtBridgeTests.swift */; };
 		95E8718F29850D4E00096049 /* ArtBridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */; };
 		95E8719129850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */; };
+		DF9A38B8B5C97FD97E28CF4C /* Pods_ArtBridge_ArtBridgeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BFB2D5F2B5FD3FEFE7E89E /* Pods_ArtBridge_ArtBridgeUITests.framework */; };
+		F1A4D8CB3D56C0ED17F4B88D /* Pods_ArtBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0228AF444884A0EFABB25354 /* Pods-ArtBridge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.debug.xcconfig"; sourceTree = "<group>"; };
+		09BFB2D5F2B5FD3FEFE7E89E /* Pods_ArtBridge_ArtBridgeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridge_ArtBridgeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2080B2ABDBF18C7C3EA7B3BD /* Pods-ArtBridgeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridgeTests.release.xcconfig"; path = "Target Support Files/Pods-ArtBridgeTests/Pods-ArtBridgeTests.release.xcconfig"; sourceTree = "<group>"; };
+		28A71B578528D16EECD35022 /* Pods-ArtBridge-ArtBridgeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge-ArtBridgeUITests.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3CCEA3EF7A29498311CD1F40 /* Pods-ArtBridgeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridgeTests.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridgeTests/Pods-ArtBridgeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7E515B0D990FB714CAEAF079 /* Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
 		950850B82987E9B800D18091 /* Posts.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Posts.geojson; sourceTree = "<group>"; };
 		957BF9D82987B7FC007D9367 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		957BF9DA2987BC39007D9367 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
@@ -67,6 +77,8 @@
 		95E8718A29850D4E00096049 /* ArtBridgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArtBridgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITests.swift; sourceTree = "<group>"; };
 		95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridgeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A4D8CB3D56C0ED17F4B88D /* Pods_ArtBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,12 +102,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF9A38B8B5C97FD97E28CF4C /* Pods_ArtBridge_ArtBridgeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FE403F84280FB04AD4A2352 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */,
+				09BFB2D5F2B5FD3FEFE7E89E /* Pods_ArtBridge_ArtBridgeUITests.framework */,
+				F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		77574ED4CF3C2AAED23738C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0228AF444884A0EFABB25354 /* Pods-ArtBridge.debug.xcconfig */,
+				7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */,
+				7E515B0D990FB714CAEAF079 /* Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig */,
+				28A71B578528D16EECD35022 /* Pods-ArtBridge-ArtBridgeUITests.release.xcconfig */,
+				3CCEA3EF7A29498311CD1F40 /* Pods-ArtBridgeTests.debug.xcconfig */,
+				2080B2ABDBF18C7C3EA7B3BD /* Pods-ArtBridgeTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		957BF9E02987DD46007D9367 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +205,8 @@
 				95E8718329850D4E00096049 /* ArtBridgeTests */,
 				95E8718D29850D4E00096049 /* ArtBridgeUITests */,
 				95E8717129850D4D00096049 /* Products */,
+				77574ED4CF3C2AAED23738C3 /* Pods */,
+				4FE403F84280FB04AD4A2352 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -225,9 +266,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95E8719429850D4E00096049 /* Build configuration list for PBXNativeTarget "ArtBridge" */;
 			buildPhases = (
+				FFCEDB8B07EAF15B555645F5 /* [CP] Check Pods Manifest.lock */,
 				95E8716C29850D4D00096049 /* Sources */,
 				95E8716D29850D4D00096049 /* Frameworks */,
 				95E8716E29850D4D00096049 /* Resources */,
+				C7A591D0C22CC0C5E3A24BE7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -242,6 +285,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95E8719729850D4E00096049 /* Build configuration list for PBXNativeTarget "ArtBridgeTests" */;
 			buildPhases = (
+				89BB65EAECB13D9DA4C50EE7 /* [CP] Check Pods Manifest.lock */,
 				95E8717C29850D4E00096049 /* Sources */,
 				95E8717D29850D4E00096049 /* Frameworks */,
 				95E8717E29850D4E00096049 /* Resources */,
@@ -260,9 +304,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95E8719A29850D4E00096049 /* Build configuration list for PBXNativeTarget "ArtBridgeUITests" */;
 			buildPhases = (
+				5EED12ABD85809114308D53D /* [CP] Check Pods Manifest.lock */,
 				95E8718629850D4E00096049 /* Sources */,
 				95E8718729850D4E00096049 /* Frameworks */,
 				95E8718829850D4E00096049 /* Resources */,
+				C74D4DB929DC97CC0B6D9053 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -342,6 +388,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EED12ABD85809114308D53D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArtBridge-ArtBridgeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89BB65EAECB13D9DA4C50EE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArtBridgeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C74D4DB929DC97CC0B6D9053 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7A591D0C22CC0C5E3A24BE7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtBridge/Pods-ArtBridge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArtBridge/Pods-ArtBridge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArtBridge/Pods-ArtBridge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFCEDB8B07EAF15B555645F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArtBridge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		95E8716C29850D4D00096049 /* Sources */ = {
@@ -513,6 +662,7 @@
 		};
 		95E8719529850D4E00096049 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0228AF444884A0EFABB25354 /* Pods-ArtBridge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -543,6 +693,7 @@
 		};
 		95E8719629850D4E00096049 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -573,6 +724,7 @@
 		};
 		95E8719829850D4E00096049 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CCEA3EF7A29498311CD1F40 /* Pods-ArtBridgeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -593,6 +745,7 @@
 		};
 		95E8719929850D4E00096049 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2080B2ABDBF18C7C3EA7B3BD /* Pods-ArtBridgeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -613,6 +766,7 @@
 		};
 		95E8719B29850D4E00096049 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E515B0D990FB714CAEAF079 /* Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -631,6 +785,7 @@
 		};
 		95E8719C29850D4E00096049 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28A71B578528D16EECD35022 /* Pods-ArtBridge-ArtBridgeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

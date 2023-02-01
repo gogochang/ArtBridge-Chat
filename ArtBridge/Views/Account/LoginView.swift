@@ -13,6 +13,7 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Text("ART BRIDGE")
                 .font(.system(size: 30))
                 .fontWeight(.heavy)
@@ -51,34 +52,50 @@ struct LoginView: View {
             Button(action: {
                 print("Hellow Button")
             }, label: {
-                HStack() {
-                    Spacer()
-                    Text("로그인")
-                    Spacer()
+                if (self.id != "") && (self.password != "") {
+                    HStack() {
+                        Spacer()
+                        Text("로그인")
+                        Spacer()
+                    }
+                    .frame(height: 10)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color(.systemOrange))
+                    .cornerRadius(10)
+                } else {
+                    HStack() {
+                        Spacer()
+                        Text("로그인")
+                        Spacer()
+                    }
+                    .frame(height: 10)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color(.systemGray5))
+                    .cornerRadius(10)
                 }
-                .frame(height: 10)
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .background(Color(.systemGray5))
-                .cornerRadius(10)
             })
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
 
             HStack() {
                 Spacer()
-                Text("아이디 찾기")
-                    .frame(width: 100)
+                Button(action:{}) {
+                    Text("아이디 찾기")
+                }
                 Text("|")
-                Text("비밀번호 찾기")
-                    .frame(width: 100)
+                Button(action:{}) {
+                    Text("비밀번호 찾기")
+                }
                 Spacer()
             }.foregroundColor(Color.gray)
-            
+            Spacer()
             Group {
                 // 카카오 로그인 버튼
                 Button(action: {
-                    print("Hellow Button")
+                    print("LoginView - Clicked kakao Button")
                 }, label: {
                     HStack() {
                         Spacer()
@@ -95,7 +112,7 @@ struct LoginView: View {
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 
                 Button(action: {
-                    print("Hellow Button")
+                    print("LoginView - Clicked Naver Button")
                 }, label: {
                     HStack() {
                         Spacer()
@@ -112,7 +129,7 @@ struct LoginView: View {
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 
                 Button(action: {
-                    print("Hellow Button")
+                    print("LoginView - Clicked FaceBook Button")
                 }, label: {
                     HStack() {
                         Spacer()
@@ -129,7 +146,7 @@ struct LoginView: View {
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 
                 Button(action: {
-                    print("Hellow Button")
+                    print("LoginView - Clicked Apple Button")
                 }, label: {
                     HStack() {
                         Spacer()
@@ -146,8 +163,9 @@ struct LoginView: View {
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }//Group
             Spacer()
-            Text("회원가입")
-            Spacer()
+            Button(action:{}) {
+                Text("회원가입")
+            }
         }
     }
 }
