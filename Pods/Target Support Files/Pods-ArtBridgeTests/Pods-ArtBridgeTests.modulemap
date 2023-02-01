@@ -1,0 +1,6 @@
+framework module Pods_ArtBridgeTests {
+  umbrella header "Pods-ArtBridgeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
