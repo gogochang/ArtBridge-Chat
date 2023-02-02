@@ -16,9 +16,15 @@
 		957E467B2986C49F00B61B12 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467A2986C49F00B61B12 /* Logo.swift */; };
 		957E467D2986C4B800B61B12 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467C2986C4B800B61B12 /* SearchView.swift */; };
 		957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467E2986DC9B00B61B12 /* ImageView.swift */; };
-		957E46842986E3FF00B61B12 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46832986E3FF00B61B12 /* Genre.swift */; };
-		957E46862987A15000B61B12 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46852987A15000B61B12 /* PostsView.swift */; };
 		957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46872987A18900B61B12 /* PrevPostsView.swift */; };
+		95B39937298A590800E7BD3D /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39936298A590800E7BD3D /* PostData.swift */; };
+		95B39939298A5B0A00E7BD3D /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39938298A5B0A00E7BD3D /* PostView.swift */; };
+		95B3993B298A5C3000E7BD3D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993A298A5C3000E7BD3D /* ApiClient.swift */; };
+		95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993D298A5E1800E7BD3D /* ApiLogger.swift */; };
+		95B39940298A5E9600E7BD3D /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */; };
+		95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39942298A5F0600E7BD3D /* PostVM.swift */; };
+		95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39944298A615E00E7BD3D /* PostApiService.swift */; };
+		95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39948298A621F00E7BD3D /* PostRouter.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
 		95E8717829850D4E00096049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E8717729850D4E00096049 /* Assets.xcassets */; };
@@ -64,9 +70,15 @@
 		957E467A2986C49F00B61B12 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
 		957E467C2986C4B800B61B12 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		957E467E2986DC9B00B61B12 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		957E46832986E3FF00B61B12 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		957E46852987A15000B61B12 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		957E46872987A18900B61B12 /* PrevPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevPostsView.swift; sourceTree = "<group>"; };
+		95B39936298A590800E7BD3D /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		95B39938298A5B0A00E7BD3D /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		95B3993A298A5C3000E7BD3D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		95B3993D298A5E1800E7BD3D /* ApiLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLogger.swift; sourceTree = "<group>"; };
+		95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
+		95B39942298A5F0600E7BD3D /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
+		95B39944298A615E00E7BD3D /* PostApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApiService.swift; sourceTree = "<group>"; };
+		95B39948298A621F00E7BD3D /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
 		95E8717529850D4D00096049 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,7 +141,6 @@
 				3CCEA3EF7A29498311CD1F40 /* Pods-ArtBridgeTests.debug.xcconfig */,
 				2080B2ABDBF18C7C3EA7B3BD /* Pods-ArtBridgeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -159,7 +170,7 @@
 		957E46802986E3A500B61B12 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				957E46832986E3FF00B61B12 /* Genre.swift */,
+				95B39936298A590800E7BD3D /* PostData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,8 +178,8 @@
 		957E46892987A1CF00B61B12 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				957E46852987A15000B61B12 /* PostsView.swift */,
 				957E46872987A18900B61B12 /* PrevPostsView.swift */,
+				95B39938298A5B0A00E7BD3D /* PostView.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -198,6 +209,34 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		95B3993C298A5C4600E7BD3D /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				95B39946298A61FB00E7BD3D /* Router */,
+				95B3993A298A5C3000E7BD3D /* ApiClient.swift */,
+				95B3993D298A5E1800E7BD3D /* ApiLogger.swift */,
+				95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */,
+				95B39944298A615E00E7BD3D /* PostApiService.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		95B39941298A5EF300E7BD3D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				95B39942298A5F0600E7BD3D /* PostVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		95B39946298A61FB00E7BD3D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				95B39948298A621F00E7BD3D /* PostRouter.swift */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
 		95E8716729850D4D00096049 = {
 			isa = PBXGroup;
 			children = (
@@ -223,10 +262,12 @@
 		95E8717229850D4D00096049 /* ArtBridge */ = {
 			isa = PBXGroup;
 			children = (
+				95E8717329850D4D00096049 /* ArtBridgeApp.swift */,
 				95E8717529850D4D00096049 /* ContentView.swift */,
+				95B3993C298A5C4600E7BD3D /* Api */,
 				957E46792985EEB900B61B12 /* Views */,
 				957E46802986E3A500B61B12 /* Model */,
-				95E8717329850D4D00096049 /* ArtBridgeApp.swift */,
+				95B39941298A5EF300E7BD3D /* ViewModel */,
 				95E8717729850D4E00096049 /* Assets.xcassets */,
 				95E8717929850D4E00096049 /* Preview Content */,
 				950850B82987E9B800D18091 /* Posts.geojson */,
@@ -497,19 +538,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */,
 				957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */,
+				95B39940298A5E9600E7BD3D /* BaseInterceptor.swift in Sources */,
 				957E46782985E3F200B61B12 /* LoginView.swift in Sources */,
 				957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
+				95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */,
+				95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */,
 				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
+				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
 				957E467D2986C4B800B61B12 /* SearchView.swift in Sources */,
 				957E467B2986C49F00B61B12 /* Logo.swift in Sources */,
 				957BF9DD2987BC58007D9367 /* MessageView.swift in Sources */,
+				95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */,
 				95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */,
 				957BF9DB2987BC39007D9367 /* PeopleView.swift in Sources */,
-				957E46842986E3FF00B61B12 /* Genre.swift in Sources */,
-				957E46862987A15000B61B12 /* PostsView.swift in Sources */,
+				95B39939298A5B0A00E7BD3D /* PostView.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
+				95B3993B298A5C3000E7BD3D /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

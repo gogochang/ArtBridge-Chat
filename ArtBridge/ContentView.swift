@@ -30,7 +30,7 @@ struct ContentView: View {
                         Text("홈")
                     }
                 
-                PostsView()
+                PostView()
                     .tabItem {
                         Image(systemName: "list.bullet")
                         Text("게시판")
