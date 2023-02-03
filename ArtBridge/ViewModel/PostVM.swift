@@ -14,7 +14,9 @@ class PostVM: ObservableObject {
     var subscription = Set<AnyCancellable>()
 
     @Published var postData: PostData? = nil
-    @Published var posts : [PostData] = []
+    @Published var posts : [Datum] = []
+    
+    var getSuccess = PassthroughSubject<(), Never>()
     
     // 게시판 목록 가져오기 함수
     func fetchPostData() {
@@ -25,6 +27,7 @@ class PostVM: ObservableObject {
             } receiveValue: { (receivedData: PostData) in
                 print("test -> \(receivedData)")
                 self.postData = receivedData
+                self.posts = receivedData.data
             }.store(in: &subscription)
     }
 }

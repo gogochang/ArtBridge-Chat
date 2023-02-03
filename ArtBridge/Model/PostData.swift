@@ -8,21 +8,23 @@
 import Foundation
 
 // MARK: - PostData
-struct PostData: Codable {
+struct PostData: Codable{
     let data: [Datum]
     let meta: Meta
 }
 
 // MARK: - Datum
-struct Datum: Codable {
+struct Datum: Codable, Identifiable {
+//    let uuid = UUID()
     let id: Int
     let attributes: Attributes
 }
 
 // MARK: - Attributes
 struct Attributes: Codable {
-    let title, contents, date: String
-    let like: Int
+    let title, contents: String
+    let date: String?
+    let like: Int?
     let createdAt, updatedAt, publishedAt: String
 }
 
@@ -35,3 +37,5 @@ struct Meta: Codable {
 struct Pagination: Codable {
     let page, pageSize, pageCount, total: Int
 }
+
+

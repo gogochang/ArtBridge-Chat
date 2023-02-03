@@ -30,7 +30,7 @@ struct ContentView: View {
                         Text("홈")
                     }
                 
-                PostView()
+                PostListView()
                     .tabItem {
                         Image(systemName: "list.bullet")
                         Text("게시판")
@@ -53,8 +53,7 @@ struct ContentView: View {
                         Image(systemName: "person.crop.circle")
                         Text("마이페이지")
                     }
-                
-            }
+            }//Tㅁ
         }
     }
 }

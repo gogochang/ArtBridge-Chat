@@ -26,10 +26,9 @@ struct PostView: View {
                 Text("테스트")
             })
             HStack() {
-                Text(author)
+                Text(author) 
                 Text(createData)
                     .foregroundColor(.gray)
-                
                 Spacer()
                 
                 Image(systemName: "heart")
