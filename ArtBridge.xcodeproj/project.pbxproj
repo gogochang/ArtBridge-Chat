@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
-		9561FC62298D25D900DFFB8A /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* PostListView.swift */; };
+		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
+		9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579BE35298F9B6B00785E2E /* BoardResponse.swift */; };
+		9579BE38298FB55300785E2E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579BE37298FB55300785E2E /* Router.swift */; };
 		957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9D82987B7FC007D9367 /* HomeView.swift */; };
 		957BF9DB2987BC39007D9367 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DA2987BC39007D9367 /* PeopleView.swift */; };
 		957BF9DD2987BC58007D9367 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DC2987BC58007D9367 /* MessageView.swift */; };
@@ -19,13 +21,14 @@
 		957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467E2986DC9B00B61B12 /* ImageView.swift */; };
 		957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46872987A18900B61B12 /* PrevPostsView.swift */; };
 		95B39937298A590800E7BD3D /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39936298A590800E7BD3D /* PostData.swift */; };
-		95B39939298A5B0A00E7BD3D /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39938298A5B0A00E7BD3D /* PostView.swift */; };
+		95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39938298A5B0A00E7BD3D /* BoardView.swift */; };
 		95B3993B298A5C3000E7BD3D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993A298A5C3000E7BD3D /* ApiClient.swift */; };
 		95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993D298A5E1800E7BD3D /* ApiLogger.swift */; };
 		95B39940298A5E9600E7BD3D /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */; };
 		95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39942298A5F0600E7BD3D /* PostVM.swift */; };
 		95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39944298A615E00E7BD3D /* PostApiService.swift */; };
 		95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39948298A621F00E7BD3D /* PostRouter.swift */; };
+		95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C84D76298F858B0023C412 /* BoardCreateView.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
 		95E8717829850D4E00096049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E8717729850D4E00096049 /* Assets.xcassets */; };
@@ -63,7 +66,9 @@
 		7E515B0D990FB714CAEAF079 /* Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
 		950850B82987E9B800D18091 /* Posts.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Posts.geojson; sourceTree = "<group>"; };
-		9561FC61298D25D900DFFB8A /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
+		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
+		9579BE35298F9B6B00785E2E /* BoardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardResponse.swift; sourceTree = "<group>"; };
+		9579BE37298FB55300785E2E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		957BF9D82987B7FC007D9367 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		957BF9DA2987BC39007D9367 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 		957BF9DC2987BC58007D9367 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -74,13 +79,14 @@
 		957E467E2986DC9B00B61B12 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		957E46872987A18900B61B12 /* PrevPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevPostsView.swift; sourceTree = "<group>"; };
 		95B39936298A590800E7BD3D /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
-		95B39938298A5B0A00E7BD3D /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		95B39938298A5B0A00E7BD3D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		95B3993A298A5C3000E7BD3D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		95B3993D298A5E1800E7BD3D /* ApiLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLogger.swift; sourceTree = "<group>"; };
 		95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		95B39942298A5F0600E7BD3D /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
 		95B39944298A615E00E7BD3D /* PostApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApiService.swift; sourceTree = "<group>"; };
 		95B39948298A621F00E7BD3D /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
+		95C84D76298F858B0023C412 /* BoardCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCreateView.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
 		95E8717529850D4D00096049 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,12 +163,12 @@
 		957E46792985EEB900B61B12 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				957BF9D82987B7FC007D9367 /* HomeView.swift */,
 				957BF9E02987DD46007D9367 /* MyPage */,
 				957E468C2987A20100B61B12 /* Account */,
 				957E468A2987A1DC00B61B12 /* TopGroup */,
 				957E468B2987A1F900B61B12 /* Genre */,
 				957E46892987A1CF00B61B12 /* Post */,
-				957BF9D82987B7FC007D9367 /* HomeView.swift */,
 				957BF9DA2987BC39007D9367 /* PeopleView.swift */,
 				957BF9DC2987BC58007D9367 /* MessageView.swift */,
 			);
@@ -173,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				95B39936298A590800E7BD3D /* PostData.swift */,
+				9579BE35298F9B6B00785E2E /* BoardResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,8 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				957E46872987A18900B61B12 /* PrevPostsView.swift */,
-				95B39938298A5B0A00E7BD3D /* PostView.swift */,
-				9561FC61298D25D900DFFB8A /* PostListView.swift */,
+				9561FC61298D25D900DFFB8A /* BoardListView.swift */,
+				95B39938298A5B0A00E7BD3D /* BoardView.swift */,
+				95C84D76298F858B0023C412 /* BoardCreateView.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				95B39948298A621F00E7BD3D /* PostRouter.swift */,
+				9579BE37298FB55300785E2E /* Router.swift */,
 			);
 			name = Router;
 			sourceTree = "<group>";
@@ -549,16 +558,19 @@
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
 				95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */,
 				95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */,
+				95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */,
 				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
 				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
+				9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */,
 				957E467D2986C4B800B61B12 /* SearchView.swift in Sources */,
 				957E467B2986C49F00B61B12 /* Logo.swift in Sources */,
 				957BF9DD2987BC58007D9367 /* MessageView.swift in Sources */,
 				95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */,
-				9561FC62298D25D900DFFB8A /* PostListView.swift in Sources */,
+				9579BE38298FB55300785E2E /* Router.swift in Sources */,
+				9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */,
 				95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */,
 				957BF9DB2987BC39007D9367 /* PeopleView.swift in Sources */,
-				95B39939298A5B0A00E7BD3D /* PostView.swift in Sources */,
+				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
 				95B3993B298A5C3000E7BD3D /* ApiClient.swift in Sources */,
 			);

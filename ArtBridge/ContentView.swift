@@ -10,51 +10,55 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        VStack() {
-            HStack(alignment: .center, spacing: 10) {
-                Text("ART BRIDGE")
-                    .fontWeight(.heavy)
-                    .font(.system(size: 10))
-                    .foregroundColor(Color.orange)
-                SearchView()
-                Image(systemName: "bell")
-                Image(systemName: "person")
+        NavigationView {
+            VStack() {
+                HStack(alignment: .center, spacing: 10) {
+                    Text("ART BRIDGE")
+                        .fontWeight(.heavy)
+                        .font(.system(size: 10))
+                        .foregroundColor(Color.orange)
+                    SearchView()
+                    Image(systemName: "bell")
+                    Image(systemName: "person")
+                    
+                } //상단 메뉴
+                .padding()
                 
-            } //상단 메뉴
-            .padding()
-            
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("홈")
-                    }
-                
-                PostListView()
-                    .tabItem {
-                        Image(systemName: "list.bullet")
-                        Text("게시판")
-                    }
-                
-                PeopleView()
-                    .tabItem {
-                        Image(systemName: "person.2")
-                        Text("사람")
-                    }
-                
-                MessageView()
-                    .tabItem {
-                        Image(systemName: "message")
-                        Text("채팅")
-                    }
-                
-                MyPageView()
-                    .tabItem {
-                        Image(systemName: "person.crop.circle")
-                        Text("마이페이지")
-                    }
-            }//Tㅁ
-        }
+                TabView {
+                    HomeView()
+                        .tabItem {
+                            Image(systemName: "house")
+                            Text("홈")
+                        }
+                    
+                    BoardListView()
+                        .tabItem {
+                            Image(systemName: "list.bullet")
+                            Text("게시판")
+                        }
+                    
+                    //                PeopleView()
+                    Text("PeopleView")
+                        .tabItem {
+                            Image(systemName: "person.2")
+                            Text("사람")
+                        }
+                    
+                    //                MessageView()
+                    Text("MessageView")
+                        .tabItem {
+                            Image(systemName: "message")
+                            Text("채팅")
+                        }
+                    
+                    MyPageView()
+                        .tabItem {
+                            Image(systemName: "person.crop.circle")
+                            Text("마이페이지")
+                        }
+                }//TabView
+            }//VStack
+        }//NavigationView
     }
 }
 

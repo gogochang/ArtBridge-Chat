@@ -17,14 +17,12 @@ struct PostData: Codable{
 struct Datum: Codable, Identifiable {
 //    let uuid = UUID()
     let id: Int
-    let attributes: Attributes
+    var attributes: Attributes
 }
 
 // MARK: - Attributes
 struct Attributes: Codable {
-    let title, contents: String
-    let date: String?
-    let like: Int?
+    var title, contents, author: String
     let createdAt, updatedAt, publishedAt: String
 }
 

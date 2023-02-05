@@ -11,7 +11,9 @@ import Alamofire
 enum PostRouter: URLRequestConvertible {
     
     case loadPostData
-    case createPostData
+    case createPostData(title: String, contents: String, author: String)
+    case removePostData(id: Int)
+    case editPostData(title: String, contents: String, author: String, id: Int)
     
     var baseURL: URL {
         return URL(string: ApiClient.URL)!
@@ -22,7 +24,11 @@ enum PostRouter: URLRequestConvertible {
         case .loadPostData:
             return "art-bridge-posts"
         case .createPostData:
-            return ""
+            return "art-bridge-posts"
+        case .removePostData(let id):
+            return "art-bridge-posts/\(id)"
+        case .editPostData(_, _, _, let id):
+            return "art-bridge-posts/\(id)"
         default:
             return ""
         }
@@ -34,6 +40,10 @@ enum PostRouter: URLRequestConvertible {
             return .get
         case .createPostData:
             return .post
+        case .removePostData:
+            return .delete
+        case .editPostData:
+            return .put
         default:
             return .get
         }
@@ -41,6 +51,21 @@ enum PostRouter: URLRequestConvertible {
     
     var parameters: Parameters {
         switch self {
+        case .createPostData(let title, let contents, let author):
+            return ["data": [ "title": title,
+                              "contents": contents,
+                              "author": author]]
+//            var params = Parameters()
+//            params["title"] = title
+//            params["contents"] = contents
+//            params["date"] = date
+//            params["like"] = like
+//            params["author"] = author
+//            return params
+        case .editPostData(let title, let contents, let author, _):
+            return ["data": ["title": title,
+                             "contents": contents,
+                             "author": author]]
         default: return Parameters()
         }
     }
@@ -49,6 +74,16 @@ enum PostRouter: URLRequestConvertible {
         let url = baseURL.appendingPathComponent(endPoint)
         var request = URLRequest(url: url)
         request.method = method
+
+        switch self {
+        case .createPostData:
+            request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+        case .editPostData:
+            request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+        default:
+            break
+        }
+        
         return request
     }
 }

@@ -72,21 +72,19 @@ struct HomeView: View {
                     Spacer()
                 }
                 .frame(height: 100)
-//                .background(.brown)
-                
+                .background(Color.orange)
+
                 VStack() {
                     HStack() {
-                        Text("인기글")
+                        Text("게시글")
                             .fontWeight(.heavy)
                             .font(.system(size:20))
                             .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                         Spacer()
                     }
-                    PrevPostsView()
-                    PrevPostsView()
-                    PrevPostsView()
-                    PrevPostsView()
-                }
+                    BoardListView()
+                        .frame(width: UIScreen.main.bounds.width, height: 500)
+                }//VStack()
                 
                 }
         }
