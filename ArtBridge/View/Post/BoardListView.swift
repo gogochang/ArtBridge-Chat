@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BoardListView: View {
     @State var posts : [Datum] = []
+    
     @State var firstNavigationLinkActive: Bool = false
     
     @EnvironmentObject var postVM : PostVM

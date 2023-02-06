@@ -10,7 +10,7 @@
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
 		9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579BE35298F9B6B00785E2E /* BoardResponse.swift */; };
-		9579BE38298FB55300785E2E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579BE37298FB55300785E2E /* Router.swift */; };
+		9579BE3A299105B100785E2E /* BoardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579BE39299105B100785E2E /* BoardEditView.swift */; };
 		957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9D82987B7FC007D9367 /* HomeView.swift */; };
 		957BF9DB2987BC39007D9367 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DA2987BC39007D9367 /* PeopleView.swift */; };
 		957BF9DD2987BC58007D9367 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DC2987BC58007D9367 /* MessageView.swift */; };
@@ -68,7 +68,7 @@
 		950850B82987E9B800D18091 /* Posts.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Posts.geojson; sourceTree = "<group>"; };
 		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
 		9579BE35298F9B6B00785E2E /* BoardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardResponse.swift; sourceTree = "<group>"; };
-		9579BE37298FB55300785E2E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		9579BE39299105B100785E2E /* BoardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardEditView.swift; sourceTree = "<group>"; };
 		957BF9D82987B7FC007D9367 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		957BF9DA2987BC39007D9367 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 		957BF9DC2987BC58007D9367 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -191,6 +191,7 @@
 				9561FC61298D25D900DFFB8A /* BoardListView.swift */,
 				95B39938298A5B0A00E7BD3D /* BoardView.swift */,
 				95C84D76298F858B0023C412 /* BoardCreateView.swift */,
+				9579BE39299105B100785E2E /* BoardEditView.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -244,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				95B39948298A621F00E7BD3D /* PostRouter.swift */,
-				9579BE37298FB55300785E2E /* Router.swift */,
 			);
 			name = Router;
 			sourceTree = "<group>";
@@ -557,6 +557,7 @@
 				957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
 				95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */,
+				9579BE3A299105B100785E2E /* BoardEditView.swift in Sources */,
 				95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */,
 				95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */,
 				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
@@ -566,7 +567,6 @@
 				957E467B2986C49F00B61B12 /* Logo.swift in Sources */,
 				957BF9DD2987BC58007D9367 /* MessageView.swift in Sources */,
 				95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */,
-				9579BE38298FB55300785E2E /* Router.swift in Sources */,
 				9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */,
 				95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */,
 				957BF9DB2987BC39007D9367 /* PeopleView.swift in Sources */,

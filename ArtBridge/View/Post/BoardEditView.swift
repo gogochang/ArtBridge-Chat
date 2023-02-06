@@ -1,28 +1,28 @@
 //
-//  PostCreateView.swift
+//  BoardEditView.swift
 //  ArtBridge
 //
-//  Created by 김창규 on 2023/02/05.
+//  Created by 김창규 on 2023/02/06.
 //
 
 import SwiftUI
 
-struct BoardCreateView: View {
+struct BoardEditView: View {
     
     @EnvironmentObject var postVM: PostVM
     @Environment(\.presentationMode) var presentationMode
     
-//    var postData: Datum
+    @Binding var postData: Datum
     
     @State var title: String = ""
     @State var content: String = ""
     
     var body: some View {
         VStack() {
-            TextField("제목을 입력하세요.", text: $title)
+            TextField("제목을 입력하세요.", text: $postData.attributes.title)
                 .padding()
             Divider()
-            TextField("내용을 입력하세요.", text: $content)
+            TextField("내용을 입력하세요.", text: $postData.attributes.contents)
                 .padding()
             Spacer()
         }
@@ -31,9 +31,10 @@ struct BoardCreateView: View {
                 Spacer()
                 Button(action: {
                     print("BoardCreateView - Button Clicked")
-                    postVM.createPostData(title: title,
-                                          contents: content,
-                                          author: "changgyu")
+                    postVM.editPostData(title: postData.attributes.title,
+                                        contents: postData.attributes.contents,
+                                        author: postData.attributes.author,
+                                        id: postData.id)
                     presentationMode.wrappedValue.dismiss()
 
                 }, label: {
@@ -48,21 +49,10 @@ struct BoardCreateView: View {
             ,alignment: .bottom
         )//overlay
     }
-//    init() {
-//        print("BoardCreateView - init(title,content) called")
-//        self.postData = nil
-//    }
-//
-//    init(postData: Datum) {
-//        print("BoardCreateView - init(posetData) called")
-//        self.postData = postData
-//        self._title = State<String>(initialValue: postData.attributes.title)
-//        self._content = State<String>(initialValue: postData.attributes.contents)
-//    }
 }
 
-//struct BoardCreateView_Previews: PreviewProvider {
+//struct BoardEditView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        BoardCreateView()
+//        BoardEditView()
 //    }
 //}

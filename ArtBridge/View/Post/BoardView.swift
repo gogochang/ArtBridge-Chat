@@ -12,9 +12,7 @@ struct BoardView: View {
     @EnvironmentObject var postVM: PostVM
     @Environment(\.presentationMode) var presentationMode
     
-    var postData: Datum
-    
-//    @State var title: String = ""
+    @State var postData: Datum
     
     var body: some View {
         HStack() {
@@ -31,7 +29,7 @@ struct BoardView: View {
                     Text(postData.attributes.createdAt.components(separatedBy: "T")[0]).foregroundColor(.gray)
                     Spacer()
                     
-                    NavigationLink(destination: BoardCreateView(postData: postData), label: {
+                    NavigationLink(destination: BoardEditView(postData: $postData), label: {
                         Text("수정")}
                     )
                     
@@ -39,6 +37,7 @@ struct BoardView: View {
                         print(" 삭제하기 버튼 클릭 ")
                         postVM.removePostData(id: postData.id)
                         presentationMode.wrappedValue.dismiss()
+
                     }, label: {
                         Text("삭제")
                     })
