@@ -40,6 +40,7 @@ struct BoardListView: View {
                     }//VStack
                 }) //Navigation
             }//List
+            .listStyle(PlainListStyle())
             .onAppear(perform : {postVM.fetchPostData()})
             .onReceive(postVM.$posts, perform: {self.posts = $0})
         }//VStack
