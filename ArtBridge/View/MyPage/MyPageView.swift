@@ -29,6 +29,7 @@ struct MyPageView: View {
                 .sheet(isPresented: self.$showModal) {
                     LoginView()
                 }.padding()
+                
                 Divider()
                 
                 // 계정설정 Button

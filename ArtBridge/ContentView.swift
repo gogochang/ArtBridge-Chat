@@ -37,14 +37,12 @@ struct ContentView: View {
                             Text("게시판")
                         }
                     
-                    //                PeopleView()
                     Text("PeopleView")
                         .tabItem {
                             Image(systemName: "person.2")
                             Text("사람")
                         }
                     
-                    //                MessageView()
                     Text("MessageView")
                         .tabItem {
                             Image(systemName: "message")
