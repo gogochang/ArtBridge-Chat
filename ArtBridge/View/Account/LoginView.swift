@@ -84,6 +84,7 @@ struct LoginView: View {
                         .cornerRadius(10)
                     }
                 })//로그인 Button
+    
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 
                 HStack() {

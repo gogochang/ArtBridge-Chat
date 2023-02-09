@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RegisterView: View {
     @State var name: String = ""
     @State var email: String = ""
     @State var password: String = ""
     @State var checkPassword: String = ""
+    @State var isHidden: Bool = true
     
+    @ObservedObject var registerVM = RegisterVM()
+
     var body: some View {
         VStack(alignment: .leading) {
+            
             Spacer()
             Section(header: Text("닉네임").bold()) {
                 TextField("닉네임을 입력하세요.", text: $name)
@@ -29,13 +34,25 @@ struct RegisterView: View {
                     .cornerRadius(15)
             }
             Section(header: Text("비밀번호").bold()) {
-                TextField("비밀번호를 입력하세요.", text: $password)
+                TextField("비밀번호를 입력하세요.", text: $registerVM.passwordInput)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(15)
+                
+                if registerVM.isHidden {
+                    Text("비밀번호가 일치하지 않습니다.")
+                        .foregroundColor(Color.red)
+                        .font(.system(size:13))
+                        .hidden()
+                } else {
+                    Text("비밀번호가 일치하지 않습니다.")
+                        .foregroundColor(Color.red)
+                        .font(.system(size:13))
+                }
+                    
             }
             Section(header: Text("비밀번호 재확인").bold()) {
-                TextField("비밀번호를 재 입력하세요.", text: $checkPassword)
+                TextField("비밀번호를 재 입력하세요.", text: $registerVM.passwordConfirmInput)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(15)
