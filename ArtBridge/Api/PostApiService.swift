@@ -31,7 +31,6 @@ enum PostApiService {
             .publishDecodable(type:PostData.self)
             .value()
             .map{ receivedValue in
-                print("changgyu ->\(receivedValue)")
                 return receivedValue
             }.eraseToAnyPublisher()
     }
@@ -44,7 +43,6 @@ enum PostApiService {
             .publishDecodable(type: BoardResponse.self)
             .value()
             .map{ receivedValue in
-                print("changgyu")
                 return receivedValue
             }.eraseToAnyPublisher()
     }
@@ -57,7 +55,6 @@ enum PostApiService {
             .publishDecodable(type: PostData.self)
             .value()
             .map{ receivedValue in
-                print("changgyu")
                 return receivedValue
             }.eraseToAnyPublisher()
     }
