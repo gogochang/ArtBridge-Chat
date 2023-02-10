@@ -9,11 +9,6 @@ import SwiftUI
 import Combine
 
 struct RegisterView: View {
-    @State var name: String = ""
-    @State var email: String = ""
-    @State var password: String = ""
-    @State var checkPassword: String = ""
-    @State var isHidden: Bool = true
     
     @ObservedObject var registerVM = RegisterVM()
 
@@ -21,59 +16,65 @@ struct RegisterView: View {
         VStack(alignment: .leading) {
             
             Spacer()
-            Section(header: Text("닉네임").bold()) {
-                TextField("닉네임을 입력하세요.", text: $name)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(15)
-            }
-            Section(header: Text("이메일").bold()) {
-                TextField("이메일을 입력하세요.", text: $email)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(15)
-            }
-            Section(header: Text("비밀번호").bold()) {
-                TextField("비밀번호를 입력하세요.", text: $registerVM.passwordInput)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(15)
-                
-                if registerVM.isHidden {
-                    Text("비밀번호가 일치하지 않습니다.")
-                        .foregroundColor(Color.red)
-                        .font(.system(size:13))
-                        .hidden()
-                } else {
-                    Text("비밀번호가 일치하지 않습니다.")
-                        .foregroundColor(Color.red)
-                        .font(.system(size:13))
-                }
-                    
-            }
-            Section(header: Text("비밀번호 재확인").bold()) {
-                TextField("비밀번호를 재 입력하세요.", text: $registerVM.passwordConfirmInput)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(15)
-            }
-            Spacer()
-            HStack() {
-                Spacer()
-                Button(action: {
-                    print("회원가입 버튼 클릭")
-                }, label: {
-                    Text("회원가입")
+            
+            //Name TextField
+            Section(
+                header: Text("닉네임").bold(),
+                footer: Text(registerVM.userNameMessage).foregroundColor(.red).font(.system(size: 13))) {
+                    TextField("닉네임을 입력하세요.", text: $registerVM.userNameInput)
                         .padding()
-                        .foregroundColor(Color.white)
-                        .background(Color(.systemOrange))
+                        .background(Color(.systemGray6))
                         .cornerRadius(15)
-                })
-                Spacer()
+                }
+            
+            //Email TextField
+            Section(
+                header: Text("이메일").bold(),
+                footer: Text(registerVM.emailMessage).foregroundColor(.red).font(.system(size: 13))) {
+                    TextField("이메일을 입력하세요.", text: $registerVM.emailInput)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(15)
+                }
+            
+            //Password TextField
+            Section(
+                header: Text("비밀번호").bold(),
+                footer: Text(registerVM.passwordMessage).foregroundColor(.red).font(.system(size: 13))) {
+                    SecureField("비밀번호를 입력하세요.", text: $registerVM.passwordInput)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(15)
+                    SecureField("비밀번호를 재 입력하세요.", text: $registerVM.passwordConfirmInput)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(15)
+                }
+            
+            Spacer()
+            
+            //SignUp Button
+            Section {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        self.signUp()
+                        
+                    }) {
+                        Text("Sign up")
+                    }.disabled(!registerVM.isValid)
+                    Spacer()
+                }
             }
+            
             Spacer()
         }
         .padding()
+    }
+    
+    //TODO: Login API 호출
+    func signUp() {
+        print("RegisterView - signUp() called")
     }
 }
 
