@@ -23,6 +23,7 @@ class UserVM: ObservableObject {
             .sink { (completion: Subscribers.Completion<AFError>) in
                 print("LoginVM Completion : \(completion)")
             } receiveValue: { (receivedUser: UserResponse) in
+                print("LoginVM receiveValue")
                 self.loggedInUser = receivedUser
                 self.registrationSuccess.send()
             }.store(in: &subscription)

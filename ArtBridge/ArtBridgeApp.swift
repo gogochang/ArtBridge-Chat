@@ -11,7 +11,10 @@ import SwiftUI
 struct ArtBridgeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(PostVM())
+            ContentView()
+                .environmentObject(UserVM())
+                .environmentObject(PostVM())
+                
         }
     }
 }

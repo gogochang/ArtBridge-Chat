@@ -11,9 +11,13 @@ import Alamofire
 
 struct LoginView: View {
     
+    @EnvironmentObject var userVM : UserVM
+    
     var subscription = Set<AnyCancellable>()
     @Binding var showModal: Bool
-    
+    @Binding var userName: String
+    @Binding var email: String
+    @Binding var isLogged: Bool
     @State private var id: String = ""
     @State private var password: String = ""
     @State var tag:Int? = nil
@@ -21,8 +25,6 @@ struct LoginView: View {
     @State fileprivate var shouldShowAlert : Bool = false
     
     var disabledButton: Bool = true
-    
-    var userVM = UserVM()
     
     var body: some View {
         NavigationView {
@@ -99,10 +101,13 @@ struct LoginView: View {
                 })//로그인 Button
     
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                .onReceive(userVM.registrationSuccess, perform: {
-                    print("LoginView - loginSuccess() called")
-                    self.shouldShowAlert = true
-                    self.showModal.toggle()
+                .onReceive(userVM.$loggedInUser, perform: { loggedInUser in
+                    print("LoginView onReceive() called")
+                    guard let user = loggedInUser else { return }
+                    self.userName = "\(user.user.username)"
+                    self.email = "\(user.user.email)"
+                    self.showModal = false
+                    self.isLogged = true
                 })
                 
                 HStack() {

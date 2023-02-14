@@ -9,24 +9,32 @@ import SwiftUI
 
 struct MyPageView: View {
     @State private var showModal = false
+    @State var userName: String = "로그인이 필요합니다."
+    @State var email: String = ""
+    @State var isLogged: Bool = false
+    
+    @EnvironmentObject var userVM : UserVM
     
     var body: some View {
         ScrollView() {
             VStack() {
                 Button(action: {
-                    print("로그인 버튼이 클릭되었습니다.")
                     self.showModal = true
                 }) {
                     HStack() {
                         Image(systemName: "person.circle")
                             .resizable()
                             .frame(width: 50, height: 50)
-                        Text("로그인이 필요합니다.")
+                        VStack(alignment: .leading) {
+                            Text(userName)
+                            Text(email)
+                        }
                         Spacer()
                     }.foregroundColor(Color.black)
                 }//Button
+                .disabled(isLogged)
                 .sheet(isPresented: self.$showModal) {
-                    LoginView(showModal: $showModal)
+                    LoginView(showModal: $showModal, userName: $userName, email: $email, isLogged: $isLogged)
                 }.padding()
                 
                 Divider()
