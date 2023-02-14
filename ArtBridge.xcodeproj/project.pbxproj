@@ -11,6 +11,7 @@
 		953BCD332996682C0001B787 /* AccountApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD322996682C0001B787 /* AccountApiService.swift */; };
 		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
 		954ADC3C299B7B0800C715F8 /* AccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3B299B7B0800C715F8 /* AccountRouter.swift */; };
+		954ADC40299B86C000C715F8 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3F299B86C000C715F8 /* LoginVM.swift */; };
 		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
 		9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B468299221BF00732B70 /* KakaoLoginView.swift */; };
 		9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B46A2992226E00732B70 /* NaverLoginView.swift */; };
@@ -76,6 +77,7 @@
 		953BCD322996682C0001B787 /* AccountApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiService.swift; sourceTree = "<group>"; };
 		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		954ADC3B299B7B0800C715F8 /* AccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRouter.swift; sourceTree = "<group>"; };
+		954ADC3F299B86C000C715F8 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
 		9573B468299221BF00732B70 /* KakaoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginView.swift; sourceTree = "<group>"; };
 		9573B46A2992226E00732B70 /* NaverLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				95B39942298A5F0600E7BD3D /* PostVM.swift */,
 				95B3903F2994F6120048B80A /* RegisterVM.swift */,
+				954ADC3F299B86C000C715F8 /* LoginVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				957E467D2986C4B800B61B12 /* SearchView.swift in Sources */,
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
 				957E467B2986C49F00B61B12 /* Logo.swift in Sources */,
+				954ADC40299B86C000C715F8 /* LoginVM.swift in Sources */,
 				95B390402994F6120048B80A /* RegisterVM.swift in Sources */,
 				9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */,
 				9573B46D2992228C00732B70 /* FaceBookLoginView.swift in Sources */,

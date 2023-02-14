@@ -10,6 +10,7 @@ import Alamofire
 import Combine
 
 enum AccountApiServie {
+    
     static func registerUser(userName: String, password: String, email: String) -> AnyPublisher<AccountData, AFError> {
         print("AccountApiService - registerUser() called , name: \(userName), password: \(password), email: \(email)")
         
@@ -21,5 +22,21 @@ enum AccountApiServie {
                 return receivedValue
             }.eraseToAnyPublisher()
 
+    }
+    
+    static func login(userName: String, password: String) -> AnyPublisher<LoginData, AFError>{
+        print("AccountApiService - login() called, name : \(userName), password: \(password)")
+        
+        return ApiClient.shared.session
+            .request(AccountRouter.loginData(userName: userName, password: password))
+            .responseData{ dataResponse in
+                print("chang22 -> \(dataResponse)")
+            }
+            .publishDecodable(type: LoginData.self)
+            .value()
+            .map{ receivedValue in
+                print("chang -> \(receivedValue)")
+                return receivedValue
+            }.eraseToAnyPublisher()
     }
 }

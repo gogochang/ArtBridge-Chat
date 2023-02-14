@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import Combine
+import Alamofire
 
 struct LoginView: View {
+    
+    var subscription = Set<AnyCancellable>()
+    
     @State private var id: String = ""
     @State private var password: String = ""
     @State var tag:Int? = nil
+    
     var disabledButton: Bool = true
+    var loginVM = LoginVM()
+    
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,7 +38,7 @@ struct LoginView: View {
                 Group {
                     // 아이디 입력 Text Field
                     HStack{
-                        Text("이메일")
+                        Text("이름")
                             .bold()
                         Spacer()
                     }
@@ -56,6 +65,7 @@ struct LoginView: View {
                 
                 Button(action: {
                     print("Hellow Button id: \(id), password: \(password)")
+                    loginVM.login(userName: id, password: password)
                     
                 }, label: {
                     if (self.id != "") && (self.password != "") {

@@ -11,6 +11,7 @@ import Alamofire
 enum AccountRouter: URLRequestConvertible {
     
     case registerData(userName: String, password: String, email: String)
+    case loginData(userName: String, password: String)
     
     var baseURL: URL {
         return URL(string: ApiClient.URL)!
@@ -21,6 +22,8 @@ enum AccountRouter: URLRequestConvertible {
         switch self {
         case .registerData:
             return "auth/local/register"
+        case .loginData:
+            return "auth/local"
         default:
             return ""
         }
@@ -30,6 +33,8 @@ enum AccountRouter: URLRequestConvertible {
     var method: HTTPMethod {
         switch self {
         case .registerData:
+            return .post
+        case .loginData:
             return .post
         default:
             return .get
@@ -42,6 +47,9 @@ enum AccountRouter: URLRequestConvertible {
         case .registerData(let userName, let password, let email):
             return [ "username" : userName,
                      "email" : email,
+                     "password" : password]
+        case .loginData(let userName , let password):
+            return [ "identifier" : userName,
                      "password" : password]
         default :
             return Parameters()
@@ -57,6 +65,8 @@ enum AccountRouter: URLRequestConvertible {
         
         switch self {
         case .registerData:
+            request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+        case .loginData:
             request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
         default:
             break
