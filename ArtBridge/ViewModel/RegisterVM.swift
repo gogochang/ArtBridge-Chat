@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Alamofire
 import Combine
 
 class RegisterVM: ObservableObject {
 
+    var subscription = Set<AnyCancellable>()
+    
     // input
     @Published var passwordInput: String = ""
     @Published var passwordConfirmInput: String = ""
@@ -22,7 +25,22 @@ class RegisterVM: ObservableObject {
     @Published var passwordMessage = ""
     @Published var isValid = false
     
-    // Name Valid
+    //MARK: - Register User
+    func registerUser() {
+        print("RegisterVM - registerUser() called")
+        if isValid {
+            AccountApiServie.registerUser(userName: userNameInput, password: passwordInput, email: emailInput)
+                .sink { (completion: Subscribers.Completion<AFError>) in
+                    print("RegisterVM - registerUser() Completion : \(completion)")
+                } receiveValue: { (receivedData: AccountData) in
+                    print("chang")
+                }.store(in: &subscription)
+        } else {
+            print("is not Valid")
+        }
+    }
+    
+    //MARK: - Name Valid
     private var isUserNameValidPublisher: AnyPublisher<Bool, Never> {
         $userNameInput
             .debounce(for: 0.8, scheduler: RunLoop.main)
@@ -33,7 +51,7 @@ class RegisterVM: ObservableObject {
             .eraseToAnyPublisher()
     }
     
-    // Email Valid
+    //MARK: - Email Valid
     private var isEmailValidPublisher: AnyPublisher<Bool, Never> {
         $emailInput
             .debounce(for: 0.8, scheduler: RunLoop.main)
@@ -44,6 +62,7 @@ class RegisterVM: ObservableObject {
             .eraseToAnyPublisher()
     }
     
+    //MARK: - Password Valid
     // Password Empty
     private var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> {
         $passwordInput
@@ -100,6 +119,7 @@ class RegisterVM: ObservableObject {
             .eraseToAnyPublisher()
     }
     
+    //MARK: - All Check
     private var isAllValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest3(isUserNameValidPublisher, isEmailValidPublisher, isPasswordVaildPublisher)
             .map { userNameIsValid, emailIsValid, passwordIsValid in

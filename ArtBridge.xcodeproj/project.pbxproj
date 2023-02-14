@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
+		953BCD332996682C0001B787 /* AccountApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD322996682C0001B787 /* AccountApiService.swift */; };
+		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
+		954ADC3C299B7B0800C715F8 /* AccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3B299B7B0800C715F8 /* AccountRouter.swift */; };
 		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
 		9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B468299221BF00732B70 /* KakaoLoginView.swift */; };
 		9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B46A2992226E00732B70 /* NaverLoginView.swift */; };
@@ -70,6 +73,9 @@
 		7E515B0D990FB714CAEAF079 /* Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
 		950850B82987E9B800D18091 /* Posts.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Posts.geojson; sourceTree = "<group>"; };
+		953BCD322996682C0001B787 /* AccountApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiService.swift; sourceTree = "<group>"; };
+		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
+		954ADC3B299B7B0800C715F8 /* AccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRouter.swift; sourceTree = "<group>"; };
 		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
 		9573B468299221BF00732B70 /* KakaoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginView.swift; sourceTree = "<group>"; };
 		9573B46A2992226E00732B70 /* NaverLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginView.swift; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 			children = (
 				95B39936298A590800E7BD3D /* PostData.swift */,
 				9579BE35298F9B6B00785E2E /* BoardResponse.swift */,
+				953BCD34299668B00001B787 /* AccountData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,6 +247,7 @@
 				95B3993D298A5E1800E7BD3D /* ApiLogger.swift */,
 				95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */,
 				95B39944298A615E00E7BD3D /* PostApiService.swift */,
+				953BCD322996682C0001B787 /* AccountApiService.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				95B39948298A621F00E7BD3D /* PostRouter.swift */,
+				954ADC3B299B7B0800C715F8 /* AccountRouter.swift */,
 			);
 			name = Router;
 			sourceTree = "<group>";
@@ -569,6 +578,7 @@
 				957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
 				9573B46F299222AA00732B70 /* AppleLoginView.swift in Sources */,
+				953BCD35299668B00001B787 /* AccountData.swift in Sources */,
 				95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */,
 				9579BE3A299105B100785E2E /* BoardEditView.swift in Sources */,
 				95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */,
@@ -585,9 +595,11 @@
 				95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */,
 				9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */,
 				95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */,
+				954ADC3C299B7B0800C715F8 /* AccountRouter.swift in Sources */,
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
 				9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */,
+				953BCD332996682C0001B787 /* AccountApiService.swift in Sources */,
 				95B3993B298A5C3000E7BD3D /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

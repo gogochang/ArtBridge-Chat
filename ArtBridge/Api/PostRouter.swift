@@ -55,13 +55,6 @@ enum PostRouter: URLRequestConvertible {
             return ["data": [ "title": title,
                               "contents": contents,
                               "author": author]]
-//            var params = Parameters()
-//            params["title"] = title
-//            params["contents"] = contents
-//            params["date"] = date
-//            params["like"] = like
-//            params["author"] = author
-//            return params
         case .editPostData(let title, let contents, let author, _):
             return ["data": ["title": title,
                              "contents": contents,

@@ -75,6 +75,7 @@ struct RegisterView: View {
     //TODO: Login API 호출
     func signUp() {
         print("RegisterView - signUp() called")
+        registerVM.registerUser()
     }
 }
 
