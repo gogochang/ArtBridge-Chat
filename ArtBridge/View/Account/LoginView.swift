@@ -60,7 +60,7 @@ struct LoginView: View {
                         Spacer()
                     }
                     // 비밀번호 입력 Text Field
-                    TextField("비밀번호를 입력하세요.", text: $password)
+                    SecureField("비밀번호를 입력하세요.", text: $password)
                         .frame(width: 300, height: 10)
                         .padding()
                         .background(Color(.systemGray6))
