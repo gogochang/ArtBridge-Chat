@@ -12,14 +12,17 @@ import Alamofire
 struct LoginView: View {
     
     var subscription = Set<AnyCancellable>()
+    @Binding var showModal: Bool
     
     @State private var id: String = ""
     @State private var password: String = ""
     @State var tag:Int? = nil
     
-    var disabledButton: Bool = true
-    var loginVM = LoginVM()
+    @State fileprivate var shouldShowAlert : Bool = false
     
+    var disabledButton: Bool = true
+    
+    var userVM = UserVM()
     
     var body: some View {
         NavigationView {
@@ -65,7 +68,7 @@ struct LoginView: View {
                 
                 Button(action: {
                     print("Hellow Button id: \(id), password: \(password)")
-                    loginVM.login(userName: id, password: password)
+                    userVM.login(userName: id, password: password)
                     
                 }, label: {
                     if (self.id != "") && (self.password != "") {
@@ -96,6 +99,11 @@ struct LoginView: View {
                 })//로그인 Button
     
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                .onReceive(userVM.registrationSuccess, perform: {
+                    print("LoginView - loginSuccess() called")
+                    self.shouldShowAlert = true
+                    self.showModal.toggle()
+                })
                 
                 HStack() {
                     Spacer()
@@ -125,8 +133,8 @@ struct LoginView: View {
     }
 }
 
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct Login_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}

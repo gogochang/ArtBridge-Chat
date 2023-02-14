@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import Combine
 
-enum AccountApiServie {
+enum UserApiServie {
     
     static func registerUser(userName: String, password: String, email: String) -> AnyPublisher<AccountData, AFError> {
         print("AccountApiService - registerUser() called , name: \(userName), password: \(password), email: \(email)")
@@ -24,7 +24,7 @@ enum AccountApiServie {
 
     }
     
-    static func login(userName: String, password: String) -> AnyPublisher<LoginData, AFError>{
+    static func login(userName: String, password: String) -> AnyPublisher<UserResponse, AFError>{
         print("AccountApiService - login() called, name : \(userName), password: \(password)")
         
         return ApiClient.shared.session
@@ -32,7 +32,7 @@ enum AccountApiServie {
             .responseData{ dataResponse in
                 print("chang22 -> \(dataResponse)")
             }
-            .publishDecodable(type: LoginData.self)
+            .publishDecodable(type: UserResponse.self)
             .value()
             .map{ receivedValue in
                 print("chang -> \(receivedValue)")

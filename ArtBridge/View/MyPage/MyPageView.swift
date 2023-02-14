@@ -16,7 +16,6 @@ struct MyPageView: View {
                 Button(action: {
                     print("로그인 버튼이 클릭되었습니다.")
                     self.showModal = true
-                    
                 }) {
                     HStack() {
                         Image(systemName: "person.circle")
@@ -27,7 +26,7 @@ struct MyPageView: View {
                     }.foregroundColor(Color.black)
                 }//Button
                 .sheet(isPresented: self.$showModal) {
-                    LoginView()
+                    LoginView(showModal: $showModal)
                 }.padding()
                 
                 Divider()

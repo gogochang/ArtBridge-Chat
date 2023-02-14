@@ -29,7 +29,7 @@ class RegisterVM: ObservableObject {
     func registerUser() {
         print("RegisterVM - registerUser() called")
         if isValid {
-            AccountApiServie.registerUser(userName: userNameInput, password: passwordInput, email: emailInput)
+            UserApiServie.registerUser(userName: userNameInput, password: passwordInput, email: emailInput)
                 .sink { (completion: Subscribers.Completion<AFError>) in
                     print("RegisterVM - registerUser() Completion : \(completion)")
                 } receiveValue: { (receivedData: AccountData) in
