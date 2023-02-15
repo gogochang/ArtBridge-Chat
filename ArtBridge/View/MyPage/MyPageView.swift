@@ -9,10 +9,10 @@ import SwiftUI
 
 struct MyPageView: View {
     @State private var showModal = false
-    @State var userName: String = "로그인이 필요합니다."
-    @State var email: String = ""
+    @State private var showingAlert = false
+
     @State var isLogged: Bool = false
-    
+        
     @EnvironmentObject var userVM : UserVM
     
     var body: some View {
@@ -26,15 +26,15 @@ struct MyPageView: View {
                             .resizable()
                             .frame(width: 50, height: 50)
                         VStack(alignment: .leading) {
-                            Text(userName)
-                            Text(email)
+                            Text(userVM.loggedInUser?.user.username ?? "로그인필요")
+                            Text(userVM.loggedInUser?.user.email ?? "")
                         }
                         Spacer()
                     }.foregroundColor(Color.black)
                 }//Button
                 .disabled(isLogged)
                 .sheet(isPresented: self.$showModal) {
-                    LoginView(showModal: $showModal, userName: $userName, email: $email, isLogged: $isLogged)
+                    LoginView(showModal: $showModal, isLogged: $isLogged)
                 }.padding()
                 
                 Divider()
@@ -45,11 +45,35 @@ struct MyPageView: View {
                 }) {
                     HStack() {
                         Text("계정설정")
-                            .foregroundColor(Color.black)
                         Spacer()
                     }
-                }.padding()// 계정설정 Button
+                }
+                .disabled(!isLogged)
+                .padding()// 계정설정 Button
                 Divider()
+                
+                //로그아웃 Button
+                Button(action: {
+                    print("로그아웃 버튼 클릭되었습니다.")
+                    showingAlert = true
+                }, label: {
+                    Text("로그아웃")
+                    Spacer()
+                })
+                .padding()
+                .alert(isPresented: $showingAlert) {
+                    Alert(
+                        title: Text("로그아웃"),
+                        message: Text("로그아웃을 하시겠습니까?"),
+                        primaryButton: .destructive(Text("No"), action: {}),
+                        secondaryButton: .default(Text("Yes"), action: {
+                            isLogged = false
+                            userVM.loggedInUser = nil
+                        })
+                    )
+                }
+                .disabled(!isLogged)
+                    
                 
                 
             }

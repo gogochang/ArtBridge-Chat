@@ -10,6 +10,8 @@ import SwiftUI
 struct BoardCreateView: View {
     
     @EnvironmentObject var postVM: PostVM
+    @EnvironmentObject var userVM: UserVM
+    
     @Environment(\.presentationMode) var presentationMode
     
 //    var postData: Datum
@@ -19,7 +21,7 @@ struct BoardCreateView: View {
     
     var body: some View {
         VStack() {
-            TextField("제목을 입력하세요.", text: $title)
+            TextField(userVM.loggedInUser?.user.username ?? "제목을 입력하세요.", text: $title)
                 .padding()
             Divider()
             TextField("내용을 입력하세요.", text: $content)
@@ -33,7 +35,7 @@ struct BoardCreateView: View {
                     print("BoardCreateView - Button Clicked")
                     postVM.createPostData(title: title,
                                           contents: content,
-                                          author: "changgyu")
+                                          author: userVM.loggedInUser?.user.username ?? "익명")
                     presentationMode.wrappedValue.dismiss()
 
                 }, label: {
@@ -48,17 +50,6 @@ struct BoardCreateView: View {
             ,alignment: .bottom
         )//overlay
     }
-//    init() {
-//        print("BoardCreateView - init(title,content) called")
-//        self.postData = nil
-//    }
-//
-//    init(postData: Datum) {
-//        print("BoardCreateView - init(posetData) called")
-//        self.postData = postData
-//        self._title = State<String>(initialValue: postData.attributes.title)
-//        self._content = State<String>(initialValue: postData.attributes.contents)
-//    }
 }
 
 //struct BoardCreateView_Previews: PreviewProvider {

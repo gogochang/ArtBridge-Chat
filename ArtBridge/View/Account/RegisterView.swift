@@ -11,7 +11,8 @@ import Combine
 struct RegisterView: View {
     
     @ObservedObject var registerVM = RegisterVM()
-
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -66,6 +67,10 @@ struct RegisterView: View {
                     Spacer()
                 }
             }
+            .onReceive(registerVM.registrationSuccess, perform: {
+                print("registerVM - Registration Success")
+                presentationMode.wrappedValue.dismiss()
+            })
             
             Spacer()
         }

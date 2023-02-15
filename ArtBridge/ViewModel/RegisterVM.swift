@@ -13,6 +13,9 @@ class RegisterVM: ObservableObject {
 
     var subscription = Set<AnyCancellable>()
     
+    //회원가입 완료 이벤트
+    var registrationSuccess = PassthroughSubject<(), Never>()
+    
     // input
     @Published var passwordInput: String = ""
     @Published var passwordConfirmInput: String = ""
@@ -32,8 +35,8 @@ class RegisterVM: ObservableObject {
             UserApiServie.registerUser(userName: userNameInput, password: passwordInput, email: emailInput)
                 .sink { (completion: Subscribers.Completion<AFError>) in
                     print("RegisterVM - registerUser() Completion : \(completion)")
-                } receiveValue: { (receivedData: AccountData) in
-                    print("chang")
+                } receiveValue: { (receivedData: LoginResponse) in
+                    self.registrationSuccess.send()
                 }.store(in: &subscription)
         } else {
             print("is not Valid")

@@ -11,12 +11,12 @@ import Combine
 
 enum UserApiServie {
     
-    static func registerUser(userName: String, password: String, email: String) -> AnyPublisher<AccountData, AFError> {
+    static func registerUser(userName: String, password: String, email: String) -> AnyPublisher<LoginResponse, AFError> {
         print("AccountApiService - registerUser() called , name: \(userName), password: \(password), email: \(email)")
         
         return ApiClient.shared.session
             .request(AccountRouter.registerData(userName: userName, password: password, email: email))
-            .publishDecodable(type:AccountData.self)
+            .publishDecodable(type:LoginResponse.self)
             .value()
             .map{ receivedValue in
                 return receivedValue

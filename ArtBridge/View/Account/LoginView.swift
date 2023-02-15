@@ -15,14 +15,11 @@ struct LoginView: View {
     
     var subscription = Set<AnyCancellable>()
     @Binding var showModal: Bool
-    @Binding var userName: String
-    @Binding var email: String
     @Binding var isLogged: Bool
+    
     @State private var id: String = ""
     @State private var password: String = ""
     @State var tag:Int? = nil
-    
-    @State fileprivate var shouldShowAlert : Bool = false
     
     var disabledButton: Bool = true
     
@@ -104,8 +101,6 @@ struct LoginView: View {
                 .onReceive(userVM.$loggedInUser, perform: { loggedInUser in
                     print("LoginView onReceive() called")
                     guard let user = loggedInUser else { return }
-                    self.userName = "\(user.user.username)"
-                    self.email = "\(user.user.email)"
                     self.showModal = false
                     self.isLogged = true
                 })
