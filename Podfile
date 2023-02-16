@@ -20,6 +20,9 @@ target 'ArtBridge' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
 
+  pod 'Firebase'
+  pod 'Firebase/Database'
+
   target 'ArtBridgeTests' do
     inherit! :search_paths
     # Pods for testing
