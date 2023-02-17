@@ -38,15 +38,11 @@ enum FirebaseService {
     static func registerUser(email: String, password: String, completion: @escaping () -> Void) {
         print("FirebaseService - registerUser() called")
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("Error : \(error.localizedDescription)")
-                return
+            if error == nil {
+                let db = Firestore.firestore()
+                db.collection("users").document(email).setData(["email": email, "password": password])
+                completion()
             }
-            
-            guard let user = result?.user else { return }
-            
-            print("RegisterUser UID : \(user.uid)")
-            completion()
         }
     }
     

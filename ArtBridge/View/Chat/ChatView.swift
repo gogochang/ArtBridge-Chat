@@ -13,32 +13,36 @@ struct ChatView: View {
     
     var body: some View {
         VStack() {
+            if userVM.currentUser == nil {
+                Text("로그인이 필요합니다.")
+            } else {
+                //현재 유저
+                Button(action: {
+                    print("firebase currentUser -> \(userVM.currentUser?.email)")
+                }, label: {
+                    Text("CurrentUsers")
+                })
+                
+                // 로그아웃
+                Button(action: {
+                    print("LogOut Button is Clicked")
+                    userVM.logOut()
+                }, label: {
+                    Text("LogOut")
+                })
+                
+                // 채팅방 목록으로 이동
+                Button(action: {
+                    print("GoChatRooms Button is Clicked")
+                    userVM.getCurrentUser()
+                }, label: {
+                    Text("Go Chat Rooms")
+                })
+                
+            }
             
-            //현재 유저
-            Button(action: {
-                print("firebase currentUser -> \(userVM.currentUser?.email)")
-            }, label: {
-                Text("CurrentUsers")
-            })
-            
-            // 로그아웃
-            Button(action: {
-                print("LogOut Button is Clicked")
-                userVM.logOut()
-            }, label: {
-                Text("LogOut")
-            })
-            
-            // 채팅방 목록으로 이동
-            Button(action: {
-                print("GoChatRooms Button is Clicked")
-                userVM.getCurrentUser()
-            }, label: {
-                Text("Go Chat Rooms")
-            })
-            
-        }
-    }
+        }//Vstack()
+    }//body
 }
 
 struct ChatView_Previews: PreviewProvider {

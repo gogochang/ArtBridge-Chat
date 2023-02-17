@@ -25,17 +25,19 @@ class UserVM: ObservableObject {
     
     // 로그인 하기
     func logIn() {
-        print("UserVM - logIn() called email: \(emailInput), password: \(passwordInput)")
+        print("UserVM - logIn() called")
         FirebaseService.logIn(email: emailInput, password: passwordInput) {
             self.getCurrentUser()
             self.logInSuccess.send()
         }
     }
-    
+    // 로그아웃
     func logOut() {
         print("UserVM - logOut() called")
         FirebaseService.logOut() {
             self.currentUser = nil
+            self.emailInput = ""
+            self.passwordInput = ""
         }
     }
     // 현재 유저 가져오기
