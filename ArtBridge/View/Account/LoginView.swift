@@ -13,11 +13,15 @@ struct LoginView: View {
     
     @EnvironmentObject var userVM : UserVM
     
+//    @ObservedObject var userVM = UserVM()
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var subscription = Set<AnyCancellable>()
     @Binding var showModal: Bool
     @Binding var isLogged: Bool
     
-    @State private var id: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     @State var tag:Int? = nil
     
@@ -40,11 +44,11 @@ struct LoginView: View {
                 Group {
                     // 아이디 입력 Text Field
                     HStack{
-                        Text("이름")
+                        Text("이메일")
                             .bold()
                         Spacer()
                     }
-                    TextField("아이디를 입력하세요.", text: $id)
+                    TextField("이메일을 입력하세요.", text: $userVM.emailInput)
                         .frame(width:300, height: 10)
                         .padding()
                         .background(Color(.systemGray6))
@@ -57,7 +61,7 @@ struct LoginView: View {
                         Spacer()
                     }
                     // 비밀번호 입력 Text Field
-                    SecureField("비밀번호를 입력하세요.", text: $password)
+                    SecureField("비밀번호를 입력하세요.", text: $userVM.passwordInput)
                         .frame(width: 300, height: 10)
                         .padding()
                         .background(Color(.systemGray6))
@@ -66,11 +70,10 @@ struct LoginView: View {
                 }//Group
                 
                 Button(action: {
-                    print("Hellow Button id: \(id), password: \(password)")
-                    userVM.login(userName: id, password: password)
-                    
+                    print("Login Button is Clicked")
+                    userVM.logIn()
                 }, label: {
-                    if (self.id != "") && (self.password != "") {
+                    if (self.email != "") && (self.password != "") {
                         HStack() {
                             Spacer()
                             Text("로그인")
@@ -98,11 +101,11 @@ struct LoginView: View {
                 })//로그인 Button
     
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                .onReceive(userVM.$loggedInUser, perform: { loggedInUser in
-                    print("LoginView onReceive() called")
-                    guard let user = loggedInUser else { return }
-                    self.showModal = false
-                    self.isLogged = true
+                .onReceive(userVM.logInSuccess, perform: {
+                    print("userVM - Registration Success")
+                    presentationMode.wrappedValue.dismiss()
+                    print("isLogged true???? \(isLogged)")
+                    isLogged = true
                 })
                 
                 HStack() {
@@ -130,6 +133,12 @@ struct LoginView: View {
                 Spacer()
             }//VStack
         }//NavigationView
+    }
+    
+    //
+    func logIn() {
+        print("LoginView - logIn() called")
+        userVM.logIn()
     }
 }
 

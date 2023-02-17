@@ -11,6 +11,7 @@ import Combine
 struct RegisterView: View {
     
     @ObservedObject var registerVM = RegisterVM()
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -27,7 +28,7 @@ struct RegisterView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(15)
                 }
-            
+
             //Email TextField
             Section(
                 header: Text("이메일").bold(),
@@ -59,8 +60,7 @@ struct RegisterView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        self.signUp()
-                        
+                        registerVM.registerUser()
                     }) {
                         Text("Sign up")
                     }.disabled(!registerVM.isValid)
@@ -77,11 +77,10 @@ struct RegisterView: View {
         .padding()
     }
     
-    //TODO: Login API 호출
-    func signUp() {
-        print("RegisterView - signUp() called")
-        registerVM.registerUser()
-    }
+//    func registerUser() {
+//        print("RegisterView - signUp() called")
+//        registerVM.registerUser()
+//    }
 }
 
 struct RegisterView_Previews: PreviewProvider {

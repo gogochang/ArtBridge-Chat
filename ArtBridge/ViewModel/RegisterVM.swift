@@ -12,7 +12,7 @@ import Combine
 class RegisterVM: ObservableObject {
 
     var subscription = Set<AnyCancellable>()
-    
+
     //회원가입 완료 이벤트
     var registrationSuccess = PassthroughSubject<(), Never>()
     
@@ -32,15 +32,13 @@ class RegisterVM: ObservableObject {
     func registerUser() {
         print("RegisterVM - registerUser() called")
         if isValid {
-            UserApiServie.registerUser(userName: userNameInput, password: passwordInput, email: emailInput)
-                .sink { (completion: Subscribers.Completion<AFError>) in
-                    print("RegisterVM - registerUser() Completion : \(completion)")
-                } receiveValue: { (receivedData: LoginResponse) in
-                    self.registrationSuccess.send()
-                }.store(in: &subscription)
+            FirebaseService.registerUser(email: emailInput, password: passwordInput) {
+                self.registrationSuccess.send()
+            }
         } else {
-            print("is not Valid")
+            print("RegisterVM - registerUser() Invalid")
         }
+        print("RegisterVM - registerUser() Failed")
     }
     
     //MARK: - Name Valid

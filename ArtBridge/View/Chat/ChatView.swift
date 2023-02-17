@@ -9,40 +9,22 @@ import SwiftUI
 
 struct ChatView: View {
     
-    @State var testEmail: String = ""
-    @State var testPassword: String = ""
-    @ObservedObject var authVM = AuthVM()
+    @EnvironmentObject var userVM : UserVM
     
     var body: some View {
         VStack() {
-            TextField("test",text:$testEmail)
-            TextField("test",text:$testPassword)
             
+            //현재 유저
             Button(action: {
-                print("firebase currentUser -> \(authVM.currentUser?.uid)")
+                print("firebase currentUser -> \(userVM.currentUser?.email)")
             }, label: {
                 Text("CurrentUsers")
             })
             
-            //회원가입
-            Button(action: {
-                print("Register Button is Clicked")
-                authVM.registerUser(email: testEmail, password: testPassword)
-            }, label: {
-                Text("Register")
-            })
-            
-            //로그인
-            Button(action: {
-                print("Login Button is Clicked")
-                authVM.logIn(email: testEmail, password: testPassword)
-            }, label: {
-                Text("Login")
-            })
-            
+            // 로그아웃
             Button(action: {
                 print("LogOut Button is Clicked")
-                authVM.logOut()
+                userVM.logOut()
             }, label: {
                 Text("LogOut")
             })
@@ -50,6 +32,7 @@ struct ChatView: View {
             // 채팅방 목록으로 이동
             Button(action: {
                 print("GoChatRooms Button is Clicked")
+                userVM.getCurrentUser()
             }, label: {
                 Text("Go Chat Rooms")
             })

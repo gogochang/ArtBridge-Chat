@@ -6,28 +6,41 @@
 //
 
 import Foundation
-import Alamofire
 import Combine
+import Firebase
 
 class UserVM: ObservableObject {
     var subscription = Set<AnyCancellable>()
     
+    @Published var currentUser: Firebase.User?
+    
+    //Input
+    @Published var emailInput: String = ""
+    @Published var passwordInput: String = ""
+    
     @Published var loggedInUser: UserResponse? = nil
     
     // 로그인 완료 이벤트
-    var registrationSuccess = PassthroughSubject<(), Never>()
+    var logInSuccess = PassthroughSubject<(), Never>()
     
-    func login(userName: String, password: String) {
-        print("LoginVM - login() called")
-        UserApiServie.login(userName: userName, password: password)
-            .sink { (completion: Subscribers.Completion<AFError>) in
-                print("LoginVM Completion : \(completion)")
-            } receiveValue: { (receivedUser: UserResponse) in
-                print("LoginVM receiveValue")
-                self.loggedInUser = receivedUser
-                self.registrationSuccess.send()
-            }.store(in: &subscription)
+    // 로그인 하기
+    func logIn() {
+        print("UserVM - logIn() called email: \(emailInput), password: \(passwordInput)")
+        FirebaseService.logIn(email: emailInput, password: passwordInput) {
+            self.getCurrentUser()
+            self.logInSuccess.send()
+        }
+    }
+    
+    func logOut() {
+        print("UserVM - logOut() called")
+        FirebaseService.logOut() {
+            self.currentUser = nil
+        }
+    }
+    // 현재 유저 가져오기
+    func getCurrentUser() {
+        print("UserVM - currentUser() called")
+        currentUser = FirebaseService.getCurrentUser()
     }
 }
-
-

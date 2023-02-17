@@ -10,6 +10,7 @@
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		953BCD332996682C0001B787 /* UserApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD322996682C0001B787 /* UserApiService.swift */; };
 		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
+		95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95482920299F75CA0054CB9A /* FirebaseService.swift */; };
 		954ADC3C299B7B0800C715F8 /* AccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3B299B7B0800C715F8 /* AccountRouter.swift */; };
 		954ADC40299B86C000C715F8 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3F299B86C000C715F8 /* UserVM.swift */; };
 		954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC41299B95A500C715F8 /* UserResponse.swift */; };
@@ -81,6 +82,7 @@
 		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
 		953BCD322996682C0001B787 /* UserApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApiService.swift; sourceTree = "<group>"; };
 		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
+		95482920299F75CA0054CB9A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		954ADC3B299B7B0800C715F8 /* AccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRouter.swift; sourceTree = "<group>"; };
 		954ADC3F299B86C000C715F8 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		954ADC41299B95A500C715F8 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				95B39944298A615E00E7BD3D /* PostApiService.swift */,
 				953BCD322996682C0001B787 /* UserApiService.swift */,
+				95482920299F75CA0054CB9A /* FirebaseService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
 				954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,
+				95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
 				9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */,
 				959A8072299E6BB600D0EDAF /* ChatView.swift in Sources */,

@@ -4,12 +4,16 @@
 //
 //  Created by 김창규 on 2023/01/30.
 //
-
+import Foundation
 import SwiftUI
+import Combine
 
 struct MyPageView: View {
     @State private var showModal = false
     @State private var showingAlert = false
+    
+    @State private var email: String = "a"
+    @State private var username: String = ""
 
     @State var isLogged: Bool = false
         
@@ -26,8 +30,8 @@ struct MyPageView: View {
                             .resizable()
                             .frame(width: 50, height: 50)
                         VStack(alignment: .leading) {
-                            Text(userVM.loggedInUser?.user.username ?? "로그인필요")
-                            Text(userVM.loggedInUser?.user.email ?? "")
+                            Text(self.userVM.currentUser?.email ?? "로그인필요")
+//                            Text(self.userVM.currentUser?.email ?? "")
                         }
                         Spacer()
                     }.foregroundColor(Color.black)
@@ -68,16 +72,13 @@ struct MyPageView: View {
                         primaryButton: .destructive(Text("No"), action: {}),
                         secondaryButton: .default(Text("Yes"), action: {
                             isLogged = false
-                            userVM.loggedInUser = nil
+                            userVM.logOut()
                         })
                     )
                 }
                 .disabled(!isLogged)
-                    
-                
-                
             }
-        }
+        }//ScrollView
     }
 }
 
