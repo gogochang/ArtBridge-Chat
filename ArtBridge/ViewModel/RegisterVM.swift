@@ -32,7 +32,7 @@ class RegisterVM: ObservableObject {
     func registerUser() {
         print("RegisterVM - registerUser() called")
         if isValid {
-            FirebaseService.registerUser(email: emailInput, password: passwordInput) {
+            FirebaseService.registerUser(userName: userNameInput, email: emailInput, password: passwordInput) {
                 self.registrationSuccess.send()
             }
         } else {

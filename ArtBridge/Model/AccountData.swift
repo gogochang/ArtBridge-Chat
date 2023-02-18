@@ -28,3 +28,11 @@ struct User: Codable {
     let confirmed, blocked: Bool
     let createdAt, updatedAt: String
 }
+
+// MARK: - Firebase
+struct firesotreUsers: Codable, Identifiable {
+    let id: String
+    let email: String
+    let password: String
+    let username: String?
+}

@@ -35,12 +35,12 @@ enum FirebaseService {
     }
     
     // 회원가입
-    static func registerUser(email: String, password: String, completion: @escaping () -> Void) {
+    static func registerUser(userName: String, email: String, password: String, completion: @escaping () -> Void) {
         print("FirebaseService - registerUser() called")
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error == nil {
                 let db = Firestore.firestore()
-                db.collection("users").document(email).setData(["email": email, "password": password])
+                db.collection("users").document(email).setData(["id":result?.user.uid,"email": email, "password": password,"username": userName])
                 completion()
             }
         }
@@ -53,5 +53,30 @@ enum FirebaseService {
         return user
     }
     
-    
+    //모든 유저목록 가져오기
+    static func getAllUsers(completion: @escaping ([firesotreUsers]) -> Void) {
+        let db = Firestore.firestore()
+        db.collection("users").getDocuments() { (querySnapshot, error) in
+            var roadInfos: [firesotreUsers] = []
+            
+            if let error = error {
+                print("error: \(error)")
+            } else {
+                guard let documents = querySnapshot?.documents else { return }
+                let decoder = JSONDecoder()
+                
+                for document in documents {
+                    do {
+                        let data = document.data()
+                        let jsonData = try JSONSerialization.data(withJSONObject: data)
+                        let roadInfo = try decoder.decode(firesotreUsers.self, from: jsonData)
+                        roadInfos.append(roadInfo)
+                    } catch let error {
+                        print("err \(error)")
+                    }
+                }
+                completion(roadInfos)
+            }
+        }
+    }
 }

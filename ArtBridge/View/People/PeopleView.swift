@@ -6,16 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct PeopleView: View {
     
+    @State var users : [firesotreUsers] = []
+    
     var body: some View {
-        List {
-            Text("A 사람")
-            Text("B 사람")
-            Text("C 사람")
-            Text("D 사람")
+        List(users) { aUser in
+            Text("\(aUser.email)")
         }
+        .onAppear(perform: {
+            print("PeopleView - onAppear() called ")
+            FirebaseService.getAllUsers(completion: { roadInfos in
+                print(roadInfos)
+                self.users = roadInfos
+            })
+        })
+                  
     }
 }
 
