@@ -8,45 +8,54 @@
 import SwiftUI
 
 struct ChatView: View {
-    
-    @EnvironmentObject var userVM : UserVM
+
+    @Binding var chatUid: String
+    @State var chatMessages: [ChatMessage] = []
+    @State var message: String = ""
     
     var body: some View {
         VStack() {
-            if userVM.currentUser == nil {
-                Text("로그인이 필요합니다.")
-            } else {
-                //현재 유저
-                Button(action: {
-                    print("firebase currentUser -> \(userVM.currentUser?.email)")
-                }, label: {
-                    Text("CurrentUsers")
-                })
-                
-                // 로그아웃
-                Button(action: {
-                    print("LogOut Button is Clicked")
-                    userVM.logOut()
-                }, label: {
-                    Text("LogOut")
-                })
-                
-                // 채팅방 목록으로 이동
-                Button(action: {
-                    print("GoChatRooms Button is Clicked")
-                    userVM.getCurrentUser()
-                }, label: {
-                    Text("Go Chat Rooms")
-                })
-                
+            List(chatMessages) { aMessage in
+                if FirebaseService.getCurrentUser()?.uid == aMessage.senderUid {
+                    HStack() {
+                        Spacer()
+                        Text("\(aMessage.content)")
+                    }
+                } else {
+                    HStack() {
+                        Text("\(aMessage.content)")
+                        Spacer()
+                    }
+                }
             }
             
-        }//Vstack()
+            .onAppear(perform: {
+                FirebaseService.getMessage(chatUid: chatUid) { roadInfos in
+                    chatMessages = roadInfos
+                }
+                FirebaseService.observedData(chatUid: chatUid) {
+                    FirebaseService.getMessage(chatUid: chatUid) { roadInfos in
+                        chatMessages = roadInfos
+                        message = ""
+                    }
+                }
+            })
+            HStack() {
+                TextField("메세지를 입력해주세요.",text: $message)
+                Button(action: {
+                    print("Send Button is Clicked")
+                    FirebaseService.sendMessage(chatUid: chatUid,text: message)
+                }, label: {
+                    Text("Send")
+                })
+            }
+        }
+
     }//body
 }
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
-    }
-}
+//struct ChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatView()
+//    }
+//}

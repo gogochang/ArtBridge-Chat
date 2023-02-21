@@ -10,36 +10,48 @@ import SwiftUI
 struct ChatListView: View {
     
     @State var chatRooms: [ChatRoom] = []
+    @State var chatUid: String = ""
+    @State var tag:Int? = nil
     
     var body: some View {
-        VStack() {
-            List(chatRooms) { aRoom in
+        NavigationView {
+            
+             VStack() {
+                 NavigationLink(destination: ChatView(chatUid: $chatUid), tag: 1, selection: self.$tag ) {
+                     EmptyView()
+                 }
+                 
+                List(chatRooms) { aRoom in
+                    
+                    Button {
+                        print("Chat List Item  is Clicked, chatuid : \(aRoom.id)")
+                        //TODO: - 채팅화면으로 이동
+                        self.tag = 1
+                        self.chatUid = aRoom.id
+                    } label: {
+                        HStack() {
+                            Text(aRoom.destinationUserName)
+                            Spacer()
+                            Image(systemName: "arrowshape.right")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                        }//HStack
+                    }
+                }
+                .listStyle(PlainListStyle())
+                .onAppear(perform: {
+                    print("ChatListView - onAppear() called")
+                    FirebaseService.fetchChatRoomList() { roadInfos in
+                        print("chang##",roadInfos)
+                        self.chatRooms = roadInfos
+                    }
+                })
                 Button {
-                    print("Chat List Item  is Clicked")
-                    //TODO: - 채팅화면으로 이동 
+                    print("getUserNameWithUID Button is Clicked")
                 } label: {
-                    HStack() {
-                        Text(aRoom.destinationUserName)
-                        Spacer()
-                        Image(systemName: "arrowshape.right")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                    }//HStack
+                    Text("UID로 유저아이디 가져오기")
                 }
-            }
-            .listStyle(PlainListStyle())
-            .onAppear(perform: {
-                print("ChatListView - onAppear() called")
-                FirebaseService.fetchChatRoomList() { roadInfos in
-                    print(roadInfos)
-                    self.chatRooms = roadInfos
-                }
-            })
-            Button {
-                print("getUserNameWithUID Button is Clicked")
-            } label: {
-                Text("UID로 유저아이디 가져오기")
-            }
+            }//VStack
         }
     }
 }

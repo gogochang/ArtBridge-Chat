@@ -8,10 +8,11 @@
 import Foundation
 
 // 말풍선
-struct ChatMessage {
-    var fromUserId: String
-    var text: String
-    var timestamp: NSNumber
+struct ChatMessage: Codable, Identifiable {
+    var id: String
+    var content: String
+    var senderUid: String
+    var timestamp: String
 }
 
 // 채팅방

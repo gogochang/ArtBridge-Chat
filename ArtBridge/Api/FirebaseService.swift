@@ -91,6 +91,8 @@ enum FirebaseService {
             //TODO: - ChatData Struct내부에서 UUID정의
             let chatUID = "CHAT-\(UUID())"
             getUserWithUid(destinationUid: destinationUserUid, completion: { username in
+                
+                //User에 가지고있는 채팅방이 뭔지 저장
                 db.collection("users")
                     .document("\(uid)")
                     .collection("groups")
@@ -98,7 +100,27 @@ enum FirebaseService {
                     .setData(["chatUid":"\(chatUID)",
                               "destinationUid":"\(destinationUserUid)",
                               "destinationUserName":"\(username)",
-                              "senderUid":"\(uid)"]) })
+                              "senderUid":"\(uid)"])
+                
+                //전체 Chat목록에 저장
+                db.collection("chats")
+                    .document(chatUID)
+                    .setData(["chatUid":"\(chatUID)",
+                              "destinationUid":"\(destinationUserUid)",
+                              "destinationUserName":"\(username)",
+                              "senderUid":"\(uid)"])
+            })
+            getUserWithUid(destinationUid: uid, completion: { username in
+                // 상대 User에도 채팅방 저장
+                db.collection("users")
+                    .document("\(destinationUserUid)")
+                    .collection("groups")
+                    .document(chatUID)
+                    .setData(["chatUid":"\(chatUID)",
+                              "destinationUid":"\(uid)",
+                              "destinationUserName":"\(username)",
+                              "senderUid":"\(destinationUserUid)"])
+            })
         }
     }
     
@@ -151,5 +173,80 @@ enum FirebaseService {
                 }
             }
         }
+    }
+    //MARK: - 채팅방 가져오기
+    static func getChatContent(chatUid: String, completion: @escaping(ChatRoom) -> Void) {
+        db.collection("chats").document("\(chatUid)").getDocument{
+            documentSnapshot, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else {
+                guard let documents = documentSnapshot?.data() else { return }
+                do {
+                    let decoder = JSONDecoder()
+                    let jsonData = try JSONSerialization.data(withJSONObject: documents)
+                    let roadInfo = try decoder.decode(ChatRoom.self, from: jsonData)
+                    completion(roadInfo)
+                } catch let error {
+                    print("Error: \(error)")
+                }
+            }
+        }
+    }
+    
+    //MARK: - 채팅방의 메세지내용 가져오기
+    static func getMessage(chatUid: String, completion: @escaping([ChatMessage]) -> Void) {
+        db.collection("chats").document("\(chatUid)").collection("messages").getDocuments() { (querySnapshot, error) in
+            var roadInfos: [ChatMessage] = []
+            
+            if let error = error {
+                print("error: \(error)")
+            } else {
+                guard let documents = querySnapshot?.documents else { return }
+                let decoder = JSONDecoder()
+                
+                for document in documents {
+                    do {
+                        let data = document.data()
+                        let jsonData = try JSONSerialization.data(withJSONObject: data)
+                        let roadInfo = try decoder.decode(ChatMessage.self, from: jsonData)
+                        roadInfos.append(roadInfo)
+                    } catch let error {
+                        print("err \(error)")
+                    }
+                }
+                completion(roadInfos)
+            }
+        }
+    }
+    
+    //MARK: - 채팅방에 메세시 보내기 (FireStore에 저장)
+    static func sendMessage(chatUid: String, text: String) {
+        print("FirebaseService - sendMessage() called")
+        if let uid = getCurrentUser()?.uid {
+            let messageUID = "\(UUID())"
+            db.collection("chats")
+                .document("\(chatUid)")
+                .collection("messages")
+                .document(messageUID)
+                .setData(["content": "\(text)",
+                          "id": "\(messageUID)",
+                          "senderUid":"\(uid)",
+                          "timestamp":"\(Date())"])
+        }
+    }
+    
+    //MARK: - 채팅방에 메세지의 값이 변경되면 감지
+    static func observedData(chatUid: String, completion: @escaping() -> Void) {
+        db.collection("chats")
+            .document("\(chatUid)")
+            .collection("messages")
+            .addSnapshotListener(includeMetadataChanges: true, listener: { querySnapshot, error in
+                guard let document = querySnapshot else {
+                    print("Error fetching document : \(error!)")
+                    return
+                }
+                completion()
+            })
     }
 }
