@@ -15,7 +15,8 @@ struct ChatMessage {
 }
 
 // 채팅방
-struct ChatGroup {
+struct ChatGroup: Identifiable {
+    var id = UUID()
     var key: String
     var name: String
     var messages: Dictionary<String, Int>
@@ -37,17 +38,26 @@ struct ChatGroup {
     }
 }
 
+//MARK: - 채팅방
+struct ChatRoom: Codable, Identifiable {
+    //TODO: let id: String = "\(UUID())"
+    let id: String
+    let destinationUid: String
+    let destinationUserName: String
+    let senderUid: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "chatUid"
+        case destinationUid
+        case destinationUserName
+        case senderUid
+    }
+}
+
 //사용자
-struct ChatUser {
-    var uid: String
+struct ChatUser: Codable{
+    var id: String
     var email: String
     var username: String
-    var group: Dictionary<String,String>
-    
-    init(uid: String, email: String, username: String) {
-        self.uid = uid
-        self.email = email
-        self.username = username
-        self.group = [:]
-    }
+    var password: String
 }

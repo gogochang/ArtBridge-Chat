@@ -14,8 +14,23 @@ struct PeopleView: View {
     
     var body: some View {
         List(users) { aUser in
-            Text("\(aUser.email)")
+            Button(action: {
+                print("People Button is Clicked")
+                print("uid -> \(aUser.id)")
+                FirebaseService.createChatRoom(destinationUserUid: aUser.id)
+            }, label: {
+                HStack() {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                    VStack(alignment: .leading) {
+                        Text("\(aUser.username)").font(.system(size: 15))
+                        Text("\(aUser.email)").font(.system(size: 13))
+                    }
+                }
+            })
         }
+        .listStyle(PlainListStyle())
         .onAppear(perform: {
             print("PeopleView - onAppear() called ")
             FirebaseService.getAllUsers(completion: { roadInfos in

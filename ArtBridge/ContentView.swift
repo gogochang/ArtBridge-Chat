@@ -43,7 +43,7 @@ struct ContentView: View {
                             Text("사람")
                         }
                     
-                    ChatView()
+                    ChatListView()
                         .tabItem {
                             Image(systemName: "message")
                             Text("채팅")
