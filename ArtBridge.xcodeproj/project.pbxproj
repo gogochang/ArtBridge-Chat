@@ -45,7 +45,6 @@
 		95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39944298A615E00E7BD3D /* PostApiService.swift */; };
 		95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39948298A621F00E7BD3D /* PostRouter.swift */; };
 		95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C84D76298F858B0023C412 /* BoardCreateView.swift */; };
-		95D6269F29A4B47D0009CE29 /* ChatSenderMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6269E29A4B47D0009CE29 /* ChatSenderMessage.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
 		95E8717829850D4E00096049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E8717729850D4E00096049 /* Assets.xcassets */; };
@@ -119,7 +118,6 @@
 		95B39944298A615E00E7BD3D /* PostApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApiService.swift; sourceTree = "<group>"; };
 		95B39948298A621F00E7BD3D /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		95C84D76298F858B0023C412 /* BoardCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCreateView.swift; sourceTree = "<group>"; };
-		95D6269E29A4B47D0009CE29 /* ChatSenderMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSenderMessage.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
 		95E8717529850D4D00096049 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 			children = (
 				959A8071299E6BB600D0EDAF /* ChatView.swift */,
 				951F367529A0B03500E5978C /* ChatListView.swift */,
-				95D6269E29A4B47D0009CE29 /* ChatSenderMessage.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -655,7 +652,6 @@
 				959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */,
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
 				954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */,
-				95D6269F29A4B47D0009CE29 /* ChatSenderMessage.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,
 				95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,

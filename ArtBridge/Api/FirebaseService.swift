@@ -196,7 +196,11 @@ enum FirebaseService {
     
     //MARK: - 채팅방의 메세지내용 가져오기
     static func getMessage(chatUid: String, completion: @escaping([ChatMessage]) -> Void) {
-        db.collection("chats").document("\(chatUid)").collection("messages").getDocuments() { (querySnapshot, error) in
+        db.collection("chats")
+            .document("\(chatUid)")
+            .collection("messages")
+            .order(by: "timestamp")
+            .getDocuments() { (querySnapshot, error) in
             var roadInfos: [ChatMessage] = []
             
             if let error = error {
@@ -249,4 +253,12 @@ enum FirebaseService {
                 completion()
             })
     }
+    
+//    //MARK: - FireStore 정렬
+//    static func orderinData(chatUid: String) {
+//        db.collection("chats")
+//            .document("\(chatUid)")
+//            .collection("messages")
+//            .order(by: "timestamp")
+//    }
 }

@@ -15,20 +15,43 @@ struct ChatView: View {
     
     var body: some View {
         VStack() {
-            List(chatMessages) { aMessage in
-                if FirebaseService.getCurrentUser()?.uid == aMessage.senderUid {
-                    HStack() {
-                        Spacer()
-                        Text("\(aMessage.content)")
-                    }
-                } else {
-                    HStack() {
-                        Text("\(aMessage.content)")
-                        Spacer()
+//            List(chatMessages) { aMessage in
+//                if FirebaseService.getCurrentUser()?.uid == aMessage.senderUid {
+//                    HStack() {
+//                        Spacer()
+//                        Text("\(aMessage.content)")
+            
+//                    }
+//                } else {
+//                    HStack() {
+//                        Text("\(aMessage.content)")
+//                        Spacer()
+//                    }
+//                }
+//            }//List
+            ScrollView {
+                LazyVStack {
+                    ForEach(chatMessages) { aMessage in
+                        if FirebaseService.getCurrentUser()?.uid == aMessage.senderUid {
+                            HStack() {
+                                Spacer()
+                                Text("\(aMessage.content)")
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                            }
+                        } else {
+                            HStack() {
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                Text("\(aMessage.content)")
+                                Spacer()
+                            }
+                        }
                     }
                 }
             }
-            
             .onAppear(perform: {
                 FirebaseService.getMessage(chatUid: chatUid) { roadInfos in
                     chatMessages = roadInfos
@@ -39,7 +62,7 @@ struct ChatView: View {
                         message = ""
                     }
                 }
-            })
+            })//onAppear
             HStack() {
                 TextField("메세지를 입력해주세요.",text: $message)
                 Button(action: {
@@ -48,8 +71,9 @@ struct ChatView: View {
                 }, label: {
                     Text("Send")
                 })
-            }
+            }//HStack
         }
+        
 
     }//body
 }
