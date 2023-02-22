@@ -47,12 +47,13 @@ struct ChatView: View {
                 .onAppear(perform: {
                     FirebaseService.getMessage(chatUid: chatUid) { roadInfos in
                         chatMessages = roadInfos
-                        withAnimation { proxy.scrollTo(bottomID)}
+                        proxy.scrollTo(bottomID)
                     }
                     FirebaseService.observedData(chatUid: chatUid) {
                         FirebaseService.getMessage(chatUid: chatUid) { roadInfos in
                             chatMessages = roadInfos
                             message = ""
+                            withAnimation { proxy.scrollTo(bottomID)}
                         }
                     }
                     
