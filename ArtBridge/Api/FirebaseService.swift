@@ -253,12 +253,4 @@ enum FirebaseService {
                 completion()
             })
     }
-    
-//    //MARK: - FireStore 정렬
-//    static func orderinData(chatUid: String) {
-//        db.collection("chats")
-//            .document("\(chatUid)")
-//            .collection("messages")
-//            .order(by: "timestamp")
-//    }
 }
