@@ -43,7 +43,10 @@ struct ChatView: View {
                     }
                     Text("").id(bottomID)
                 }//ScrollView
-                
+                // 메인 스레드에서 작동하기 때문에 짧은 동작만
+                .onChange(of:chatMessages.count) { _ in
+                    proxy.scrollTo(bottomID)
+                }
                 .onAppear(perform: {
                     FirebaseService.getMessage(chatUid: chatUid) { roadInfos in
                         chatMessages = roadInfos
@@ -53,10 +56,8 @@ struct ChatView: View {
                         FirebaseService.getMessage(chatUid: chatUid) { roadInfos in
                             chatMessages = roadInfos
                             message = ""
-                            withAnimation { proxy.scrollTo(bottomID)}
                         }
                     }
-                    
                 })//onAppear
                 
                 HStack() {
@@ -67,10 +68,6 @@ struct ChatView: View {
                     }, label: {
                         Text("Send")
                     })
-                    .onChange(of: message == "" ) { _ in
-                        print("changgyu 00 ->d")
-                        withAnimation { proxy.scrollTo(bottomID)}
-                    }
                 }//HStack
             }//ScrollViewReader
         }
