@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseStorage
 import Firebase
 
 fileprivate let db = Firestore.firestore()
@@ -85,7 +86,7 @@ enum FirebaseService {
         }
     }
     //MARK: - 채팅방 만들기
-    static func createChatRoom(destinationUserUid: String) {
+    static func createChatRoom(destinationUserUid: String, completion: @escaping() -> Void) {
         print("FirebaseService - createChatRoom() called")
         if let uid = getCurrentUser()?.uid {
             //TODO: - ChatData Struct내부에서 UUID정의
@@ -109,6 +110,7 @@ enum FirebaseService {
                               "destinationUid":"\(destinationUserUid)",
                               "destinationUserName":"\(username)",
                               "senderUid":"\(uid)"])
+                completion()
             })
             getUserWithUid(destinationUid: uid, completion: { username in
                 // 상대 User에도 채팅방 저장
@@ -252,5 +254,23 @@ enum FirebaseService {
                 }
                 completion()
             })
+    }
+    
+    static func uploadImage(image: Data?, imageName: String) {
+        let storageRef = Storage.storage().reference().child("images/\(imageName)")
+        let data = image
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        
+        if let data = data{
+            storageRef.putData(data, metadata: metadata) { (metadata, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                }
+                if let metadata = metadata {
+                    print("metadata: \(metadata)")
+                }
+            }
+        }
     }
 }

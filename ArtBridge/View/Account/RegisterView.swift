@@ -18,6 +18,7 @@ struct RegisterView: View {
     @State private var presentsImagePicker = false
     @State private var onCamera = false
     @State private var onPhotoLibrary = false
+    @State private var profilUiImage: UIImage? = nil
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -32,15 +33,18 @@ struct RegisterView: View {
                 .onTapGesture {
                     presentsImagePicker = true
                 }
+            // 카메라 선택
                 .sheet(isPresented: $onCamera) {
                     ImagePicker(sourceType: .camera) { (pickedImage) in
                         profileImage = Image(uiImage: pickedImage)
+                        profilUiImage = pickedImage
                     }
                 }
             // 사진 앨범 선택
                 .sheet(isPresented: $onPhotoLibrary) {
                     ImagePicker(sourceType: .photoLibrary) { (pickedImage) in
                         profileImage = Image(uiImage: pickedImage)
+                        profilUiImage = pickedImage
                     }
                 }
                 .actionSheet(isPresented: $presentsImagePicker) {
@@ -104,7 +108,7 @@ struct RegisterView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        registerVM.registerUser()
+                        registerUser()
                     }) {
                         Text("Sign up")
                     }.disabled(!registerVM.isValid)
@@ -122,10 +126,11 @@ struct RegisterView: View {
         .padding()
     }
     
-//    func registerUser() {
-//        print("RegisterView - signUp() called")
-//        registerVM.registerUser()
-//    }
+    func registerUser() {
+        print("RegisterView - signUp() called")
+        registerVM.registerUser()
+        FirebaseService.uploadImage(image: profilUiImage?.jpegData(compressionQuality: 0.5), imageName: "profileImage_\(registerVM.emailInput)")
+    }
 }
 
 //struct RegisterView_Previews: PreviewProvider {
