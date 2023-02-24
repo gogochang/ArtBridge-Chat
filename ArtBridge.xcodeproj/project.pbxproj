@@ -52,6 +52,7 @@
 		95E8718529850D4E00096049 /* ArtBridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8718429850D4E00096049 /* ArtBridgeTests.swift */; };
 		95E8718F29850D4E00096049 /* ArtBridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */; };
 		95E8719129850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */; };
+		95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F617C929A8B3CC00C40E1C /* ImagePicker.swift */; };
 		DF9A38B8B5C97FD97E28CF4C /* Pods_ArtBridge_ArtBridgeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BFB2D5F2B5FD3FEFE7E89E /* Pods_ArtBridge_ArtBridgeUITests.framework */; };
 		F1A4D8CB3D56C0ED17F4B88D /* Pods_ArtBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		95E8718A29850D4E00096049 /* ArtBridgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArtBridgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITests.swift; sourceTree = "<group>"; };
 		95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		95F617C929A8B3CC00C40E1C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridgeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,8 +196,8 @@
 		957E46792985EEB900B61B12 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				959A8073299E712B00D0EDAF /* People */,
 				957BF9D82987B7FC007D9367 /* HomeView.swift */,
+				959A8073299E712B00D0EDAF /* People */,
 				959A8070299E6B9500D0EDAF /* Chat */,
 				957BF9E02987DD46007D9367 /* MyPage */,
 				957E468C2987A20100B61B12 /* Account */,
@@ -266,6 +268,7 @@
 				95B39944298A615E00E7BD3D /* PostApiService.swift */,
 				953BCD322996682C0001B787 /* UserApiService.swift */,
 				95482920299F75CA0054CB9A /* FirebaseService.swift */,
+				95F617C929A8B3CC00C40E1C /* ImagePicker.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */,
 				95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */,
 				957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */,
 				95B39940298A5E9600E7BD3D /* BaseInterceptor.swift in Sources */,

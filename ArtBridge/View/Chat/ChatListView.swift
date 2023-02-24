@@ -46,11 +46,6 @@ struct ChatListView: View {
                         self.chatRooms = roadInfos
                     }
                 })
-                Button {
-                    print("getUserNameWithUID Button is Clicked")
-                } label: {
-                    Text("UID로 유저아이디 가져오기")
-                }
             }//VStack
         }
     }

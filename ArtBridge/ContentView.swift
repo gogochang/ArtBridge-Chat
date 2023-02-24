@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @State private var selection = 0
     var body: some View {
         NavigationView {
             VStack() {
@@ -24,36 +24,36 @@ struct ContentView: View {
                 } //상단 메뉴
                 .padding()
                 
-                TabView {
+                TabView(selection: $selection) {
                     HomeView()
                         .tabItem {
                             Image(systemName: "house")
                             Text("홈")
-                        }
+                        }.tag(0)
                     
                     BoardListView()
                         .tabItem {
                             Image(systemName: "list.bullet")
                             Text("게시판")
-                        }
+                        }.tag(1)
                     
-                    PeopleView()
+                    PeopleView(selection: $selection)
                         .tabItem {
                             Image(systemName: "person.2")
                             Text("사람")
-                        }
+                        }.tag(2)
                     
                     ChatListView()
                         .tabItem {
                             Image(systemName: "message")
                             Text("채팅")
-                        }
+                        }.tag(3)
                     
                     MyPageView()
                         .tabItem {
                             Image(systemName: "person.crop.circle")
                             Text("마이페이지")
-                        }
+                        }.tag(4)
                 }//TabView
             }//VStack
         }//NavigationView

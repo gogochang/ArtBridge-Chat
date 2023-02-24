@@ -19,6 +19,7 @@ target 'ArtBridge' do
   # For example, to use Firebase Authentication and Cloud Firestore
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'FirebaseStorage'
 
   pod 'Firebase'
   pod 'Firebase/Database'

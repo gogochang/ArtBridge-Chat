@@ -14,10 +14,54 @@ struct RegisterView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @State private var profileImage: Image = Image(systemName: "person.circle")
+    @State private var presentsImagePicker = false
+    @State private var onCamera = false
+    @State private var onPhotoLibrary = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             
             Spacer()
+            
+            profileImage
+                .resizable()
+                .frame(width: 150, height: 150)
+                .clipShape(Circle())
+                .padding()
+                .onTapGesture {
+                    presentsImagePicker = true
+                }
+                .sheet(isPresented: $onCamera) {
+                    ImagePicker(sourceType: .camera) { (pickedImage) in
+                        profileImage = Image(uiImage: pickedImage)
+                    }
+                }
+            // 사진 앨범 선택
+                .sheet(isPresented: $onPhotoLibrary) {
+                    ImagePicker(sourceType: .photoLibrary) { (pickedImage) in
+                        profileImage = Image(uiImage: pickedImage)
+                    }
+                }
+                .actionSheet(isPresented: $presentsImagePicker) {
+                    ActionSheet(
+                        title: Text("이미지 선택하기"),
+                        message: nil,
+                        buttons: [
+                            .default(
+                                Text("카메라"),
+                                action: { onCamera = true }
+                            ),
+                            .default(
+                                Text("사진 앨범"),
+                                action: { onPhotoLibrary = true }
+                            ),
+                            .cancel(
+                                Text("돌아가기")
+                            )
+                        ]
+                    )
+                }
             
             //Name TextField
             Section(
@@ -74,6 +118,7 @@ struct RegisterView: View {
             
             Spacer()
         }
+        
         .padding()
     }
     
@@ -83,8 +128,8 @@ struct RegisterView: View {
 //    }
 }
 
-struct RegisterView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView()
-    }
-}
+//struct RegisterView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RegisterView()
+//    }
+//}
