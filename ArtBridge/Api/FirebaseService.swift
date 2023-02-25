@@ -48,7 +48,8 @@ enum FirebaseService {
                     .setData(["id":result?.user.uid,
                               "email": email,
                               "password": password,
-                              "username": userName])
+                              "username": userName,
+                              "url":"profileImgURL"])
 
                 completion()
             }
@@ -91,7 +92,7 @@ enum FirebaseService {
         if let uid = getCurrentUser()?.uid {
             //TODO: - ChatData Struct내부에서 UUID정의
             let chatUID = "CHAT-\(UUID())"
-            getUserWithUid(destinationUid: destinationUserUid, completion: { username in
+            getUserWithUid(destinationUid: destinationUserUid, completion: { loadInfo in
                 
                 //User에 가지고있는 채팅방이 뭔지 저장
                 db.collection("users")
@@ -100,7 +101,7 @@ enum FirebaseService {
                     .document(chatUID)
                     .setData(["chatUid":"\(chatUID)",
                               "destinationUid":"\(destinationUserUid)",
-                              "destinationUserName":"\(username)",
+                              "destinationUserName":"\(loadInfo.username)",
                               "senderUid":"\(uid)"])
                 
                 //전체 Chat목록에 저장
@@ -108,7 +109,7 @@ enum FirebaseService {
                     .document(chatUID)
                     .setData(["chatUid":"\(chatUID)",
                               "destinationUid":"\(destinationUserUid)",
-                              "destinationUserName":"\(username)",
+                              "destinationUserName":"\(loadInfo.username)",
                               "senderUid":"\(uid)"])
                 completion()
             })
@@ -155,7 +156,7 @@ enum FirebaseService {
         }
     }
     //MARK: - UID로 유저 이름 가져오기
-    static func getUserWithUid(destinationUid: String, completion: @escaping (String) -> Void){
+    static func getUserWithUid(destinationUid: String, completion: @escaping (firesotreUsers) -> Void){
         
         db.collection("users").document("\(destinationUid)").getDocument {
             documentSnapshot, error in
@@ -168,14 +169,15 @@ enum FirebaseService {
                 do {
                     let decoder = JSONDecoder()
                     let jsonData = try JSONSerialization.data(withJSONObject: documents)
-                    let roadInfo = try decoder.decode(ChatUser.self, from: jsonData)
-                    completion(roadInfo.username)
+                    let roadInfo = try decoder.decode(firesotreUsers.self, from: jsonData)
+                    completion(roadInfo)
                 } catch let error {
                     print("Error: \(error)")
                 }
             }
         }
     }
+    
     //MARK: - 채팅방 가져오기
     static func getChatContent(chatUid: String, completion: @escaping(ChatRoom) -> Void) {
         db.collection("chats").document("\(chatUid)").getDocument{
@@ -256,6 +258,7 @@ enum FirebaseService {
             })
     }
     
+    //MARK: - 이미지 Storage에 업로드
     static func uploadImage(image: Data?, imageName: String) {
         let storageRef = Storage.storage().reference().child("images/\(imageName)")
         let data = image
@@ -273,4 +276,9 @@ enum FirebaseService {
             }
         }
     }
+    
+//    static func downloadImageUrl(imageName: String) {
+//        let storageRef = Storage.storage().reference().child("images/\(imageName)")
+//        storageRef.
+//    }
 }

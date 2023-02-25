@@ -13,6 +13,7 @@ class UserVM: ObservableObject {
     var subscription = Set<AnyCancellable>()
     
     @Published var currentUser: Firebase.User?
+    @Published var loggedUser: firesotreUsers?
     
     //Input
     @Published var emailInput: String = ""
@@ -36,6 +37,7 @@ class UserVM: ObservableObject {
         print("UserVM - logOut() called")
         FirebaseService.logOut() {
             self.currentUser = nil
+            self.loggedUser = nil
             self.emailInput = ""
             self.passwordInput = ""
         }
@@ -44,5 +46,15 @@ class UserVM: ObservableObject {
     func getCurrentUser() {
         print("UserVM - currentUser() called")
         currentUser = FirebaseService.getCurrentUser()
+        
+        if let user = currentUser {
+            print("UserVM - currentUser() changgyu 45")
+            FirebaseService.getUserWithUid(destinationUid: user.uid) { loadInfo in
+                print(loadInfo.username)
+                self.loggedUser = loadInfo
+            }
+        } else {
+            print("UserVM - guetUserFromFirestore() curreuntUser is nil")
+        }
     }
 }

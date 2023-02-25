@@ -12,9 +12,10 @@ struct MyPageView: View {
     @State private var showModal = false
     @State private var showingAlert = false
     
-    @State private var email: String = "a"
-    @State private var username: String = ""
-
+    @State private var email: String?
+    @State private var username: String?
+    @State private var url: String?
+    
     @State var isLogged: Bool = false
         
     @EnvironmentObject var userVM : UserVM
@@ -30,8 +31,8 @@ struct MyPageView: View {
                             .resizable()
                             .frame(width: 50, height: 50)
                         VStack(alignment: .leading) {
-                            Text(self.userVM.currentUser?.email ?? "로그인필요")
-//                            Text(self.userVM.currentUser?.email ?? "")
+                            Text(self.username ?? "로그인이 필요합니다.")
+                            Text(self.email ?? "")
                         }
                         Spacer()
                     }.foregroundColor(Color.black)
@@ -79,6 +80,18 @@ struct MyPageView: View {
                 .disabled(!isLogged)
             }
         }//ScrollView
+        .onReceive(userVM.$loggedUser, perform: { loggedUser in
+            if let user = loggedUser {
+                print("MyPageView - onReceive() called \(user)")
+                self.email = user.email
+                self.username = user.username
+                self.url = user.url
+            } else {
+                self.email = nil
+                self.username = nil
+                self.url = nil
+            }
+        })
     }
 }
 

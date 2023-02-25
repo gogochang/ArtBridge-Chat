@@ -35,4 +35,5 @@ struct firesotreUsers: Codable, Identifiable {
     let email: String
     let password: String
     let username: String
+    let url: String
 }
