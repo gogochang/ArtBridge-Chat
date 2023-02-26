@@ -44,13 +44,14 @@ enum FirebaseService {
             if error == nil {
                 let db = Firestore.firestore()
                 
-                db.collection("users").document(result!.user.uid)
-                    .setData(["id":result?.user.uid,
-                              "email": email,
-                              "password": password,
-                              "username": userName,
-                              "url":"profileImgURL"])
-
+                downloadImageUrl(imageName: "profileImage_\(email)") { url in
+                    db.collection("users").document(result!.user.uid)
+                        .setData(["id":result?.user.uid,
+                                  "email": email,
+                                  "password": password,
+                                  "username": userName,
+                                  "url":url.absoluteString])
+                }
                 completion()
             }
         }
@@ -277,8 +278,17 @@ enum FirebaseService {
         }
     }
     
-//    static func downloadImageUrl(imageName: String) {
-//        let storageRef = Storage.storage().reference().child("images/\(imageName)")
-//        storageRef.
-//    }
+    //MARK: - Storage에 있는 프로필 이미지의 URL을 가져옴
+    static func downloadImageUrl(imageName: String, completion: @escaping(URL) -> Void) {
+        let storageRef = Storage.storage().reference().child("images/\(imageName)")
+        storageRef.downloadURL { (url, error) in
+            if let error = error {
+                print("Error: \(error)")
+            }
+            if let url = url {
+                print("URL: \(url)")
+                completion(url)
+            }
+        }
+    }
 }

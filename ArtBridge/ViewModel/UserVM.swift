@@ -14,6 +14,7 @@ class UserVM: ObservableObject {
     
     @Published var currentUser: Firebase.User?
     @Published var loggedUser: firesotreUsers?
+    @Published var data = Data()
     
     //Input
     @Published var emailInput: String = ""
@@ -29,7 +30,6 @@ class UserVM: ObservableObject {
         print("UserVM - logIn() called")
         FirebaseService.logIn(email: emailInput, password: passwordInput) {
             self.getCurrentUser()
-            self.logInSuccess.send()
         }
     }
     // 로그아웃
@@ -40,21 +40,35 @@ class UserVM: ObservableObject {
             self.loggedUser = nil
             self.emailInput = ""
             self.passwordInput = ""
+            self.data = Data()
         }
     }
     // 현재 유저 가져오기
     func getCurrentUser() {
         print("UserVM - currentUser() called")
         currentUser = FirebaseService.getCurrentUser()
-        
         if let user = currentUser {
-            print("UserVM - currentUser() changgyu 45")
             FirebaseService.getUserWithUid(destinationUid: user.uid) { loadInfo in
-                print(loadInfo.username)
+                // firestoreUsers 타입의 데이터를 가져와서 변수에 저장!
                 self.loggedUser = loadInfo
+                // 가져온 URL로 이미지 데이터를 가져오는 함수 실행!!
+                self.getDataFromUrl(urlString: loadInfo.url)
             }
         } else {
             print("UserVM - guetUserFromFirestore() curreuntUser is nil")
         }
+    }
+    
+    func getDataFromUrl(urlString: String) {
+        print("UserVM - getDataFromUrl() called")
+        guard let url = URL(string: urlString) else { return }
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let data = data, self != nil else { return }
+            DispatchQueue.main.sync { [ weak self] in
+                self?.data = data
+                self?.logInSuccess.send()
+            }
+        }
+        task.resume()
     }
 }
