@@ -39,6 +39,7 @@ struct LoginView: View {
                     .fontWeight(.heavy)
                     .padding()
                     .foregroundColor(.orange)
+                    .shadow(radius: 3)
                 
                 Spacer()
                 Group {
@@ -54,6 +55,7 @@ struct LoginView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(5)
                         .padding(.bottom, 20)
+                        .shadow(radius: 3)
                     
                     HStack{
                         Text("비밀번호")
@@ -67,6 +69,7 @@ struct LoginView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(5)
                         .padding(.bottom, 20)
+                        .shadow(radius: 3)
                 }//Group
                 
                 Button(action: {
@@ -99,6 +102,7 @@ struct LoginView: View {
                         .cornerRadius(10)
                     }
                 })//로그인 Button
+                .shadow(radius: 3)
     
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 .onReceive(userVM.logInSuccess, perform: {

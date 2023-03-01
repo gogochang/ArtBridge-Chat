@@ -31,6 +31,10 @@ struct MyPageView: View {
                             .resizable()
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())
+                            .overlay {
+                                Circle().stroke(.white, lineWidth: 4)
+                            }
+                            .shadow(radius: 7)
                         VStack(alignment: .leading) {
                             Text(self.username ?? "로그인이 필요합니다.")
                             Text(self.email ?? "")
