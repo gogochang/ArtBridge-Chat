@@ -71,16 +71,4 @@ class UserVM: ObservableObject {
         }
         task.resume()
     }
-    
-    func getDestinationDataFromUrl(urlString: String) {
-        print("UserVM - getDataFromUrl() called")
-        guard let url = URL(string: urlString) else { return }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let data = data, self != nil else { return }
-            DispatchQueue.main.sync { [ weak self] in
-                self?.destinationData = data
-            }
-        }
-        task.resume()
-    }
 }

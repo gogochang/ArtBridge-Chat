@@ -45,7 +45,6 @@
 		95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39944298A615E00E7BD3D /* PostApiService.swift */; };
 		95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39948298A621F00E7BD3D /* PostRouter.swift */; };
 		95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C84D76298F858B0023C412 /* BoardCreateView.swift */; };
-		95E00B1C29AB4A1D00F2A565 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E00B1B29AB4A1D00F2A565 /* ImageLoader.swift */; };
 		95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E00B1D29B21D9000F2A565 /* ChatVM.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
@@ -121,7 +120,6 @@
 		95B39944298A615E00E7BD3D /* PostApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApiService.swift; sourceTree = "<group>"; };
 		95B39948298A621F00E7BD3D /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		95C84D76298F858B0023C412 /* BoardCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCreateView.swift; sourceTree = "<group>"; };
-		95E00B1B29AB4A1D00F2A565 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		95E00B1D29B21D9000F2A565 /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				953BCD322996682C0001B787 /* UserApiService.swift */,
 				95482920299F75CA0054CB9A /* FirebaseService.swift */,
 				95F617C929A8B3CC00C40E1C /* ImagePicker.swift */,
-				95E00B1B29AB4A1D00F2A565 /* ImageLoader.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -653,7 +650,6 @@
 				957E467B2986C49F00B61B12 /* Logo.swift in Sources */,
 				95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */,
 				954ADC40299B86C000C715F8 /* UserVM.swift in Sources */,
-				95E00B1C29AB4A1D00F2A565 /* ImageLoader.swift in Sources */,
 				95B390402994F6120048B80A /* RegisterVM.swift in Sources */,
 				9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */,
 				9573B46D2992228C00732B70 /* FaceBookLoginView.swift in Sources */,

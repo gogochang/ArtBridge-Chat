@@ -81,10 +81,6 @@ struct ChatView: View {
                         }
                     }
                 })//onAppear
-                .onReceive(userVM.$destinationData) { data in
-                    print("ChatView - onReceive()  $destinationData called")
-                    self.destinationProfileImg = UIImage(data: data) ?? UIImage(systemName: "person.circle")
-                }
                 HStack() {
                     TextField("메세지를 입력해주세요.",text: $message)
                     Button(action: {
