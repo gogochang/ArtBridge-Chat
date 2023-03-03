@@ -103,6 +103,7 @@ enum FirebaseService {
                     .setData(["chatUid":"\(chatUID)",
                               "destinationUid":"\(destinationUserUid)",
                               "destinationUserName":"\(loadInfo.username)",
+                              "destinationUrl":"\(loadInfo.url)",
                               "senderUid":"\(uid)"])
                 
                 //전체 Chat목록에 저장
@@ -111,6 +112,7 @@ enum FirebaseService {
                     .setData(["chatUid":"\(chatUID)",
                               "destinationUid":"\(destinationUserUid)",
                               "destinationUserName":"\(loadInfo.username)",
+                              "destinationUrl":"\(loadInfo.url)",
                               "senderUid":"\(uid)"])
                 completion()
             })
@@ -122,7 +124,8 @@ enum FirebaseService {
                     .document(chatUID)
                     .setData(["chatUid":"\(chatUID)",
                               "destinationUid":"\(uid)",
-                              "destinationUserName":"\(username)",
+                              "destinationUserName":"\(username.username)",
+                              "destinationUrl":"\(username.url)",
                               "senderUid":"\(destinationUserUid)"])
             })
         }

@@ -45,13 +45,24 @@ struct ChatRoom: Codable, Identifiable {
     let id: String
     let destinationUid: String
     let destinationUserName: String
+    let destinationUrl: String
     let senderUid: String
+//    let senderUrl: String
     
     enum CodingKeys: String, CodingKey {
         case id = "chatUid"
         case destinationUid
         case destinationUserName
+        case destinationUrl
         case senderUid
+//        case senderUrl
+    }
+    init() {
+        self.id = ""
+        self.destinationUid = ""
+        self.destinationUrl = ""
+        self.destinationUserName = ""
+        self.senderUid = ""
     }
 }
 

@@ -10,14 +10,14 @@ import SwiftUI
 struct ChatListView: View {
     
     @State var chatRooms: [ChatRoom] = []
-    @State var chatUid: String = ""
+    @State var chatRoom: ChatRoom = ChatRoom()
     @State var tag:Int? = nil
     
     var body: some View {
         NavigationView {
             
              VStack() {
-                 NavigationLink(destination: ChatView(chatUid: $chatUid), tag: 1, selection: self.$tag ) {
+                 NavigationLink(destination: ChatView(chatRoom: $chatRoom), tag: 1, selection: self.$tag ) {
                      EmptyView()
                  }
                  
@@ -27,7 +27,7 @@ struct ChatListView: View {
                         print("Chat List Item  is Clicked, chatuid : \(aRoom.id)")
                         //TODO: - 채팅화면으로 이동
                         self.tag = 1
-                        self.chatUid = aRoom.id
+                        self.chatRoom = aRoom
                     } label: {
                         HStack() {
                             Text(aRoom.destinationUserName)
@@ -51,8 +51,8 @@ struct ChatListView: View {
     }
 }
 
-struct ChatListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatListView()
-    }
-}
+//struct ChatListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatListView()
+//    }
+//}
