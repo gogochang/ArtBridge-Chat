@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import KakaoSDKUser
 
 struct KakaoLoginView: View {
+    
+    @EnvironmentObject var userVM : UserVM
+    
     var body: some View {
         Button(action: {
             print("LoginView - Clicked kakao Button")
+            userVM.kakaoLogIn()
         }, label: {
             HStack() {
                 Spacer()
@@ -22,7 +27,7 @@ struct KakaoLoginView: View {
             .foregroundColor(.white)
             .padding()
             .background(Color(.systemYellow))
-            .cornerRadius(10)
+            .cornerRadius(12)
         })
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         .shadow(radius: 5)

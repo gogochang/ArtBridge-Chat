@@ -24,6 +24,11 @@ target 'ArtBridge' do
   pod 'Firebase'
   pod 'Firebase/Database'
 
+  # for Kakao
+  pod 'KakaoSDKCommon' # 카카오 필수 요소를 담은 공통 모듈
+  pod 'KakaoSDKAuth' # 카카오 사용자인증
+  pod 'KakaoSDKUser' # 카카오 로그인, 사용자 관리
+
   target 'ArtBridgeTests' do
     inherit! :search_paths
     # Pods for testing

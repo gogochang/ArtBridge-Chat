@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Firebase
+import KakaoSDKUser
 
 class UserVM: ObservableObject {
     var subscription = Set<AnyCancellable>()
@@ -30,6 +31,22 @@ class UserVM: ObservableObject {
         print("UserVM - logIn() called")
         FirebaseService.logIn(email: emailInput, password: passwordInput) {
             self.getCurrentUser()
+        }
+    }
+    
+    func kakaoLogIn() {
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
+                print("changgyu1",oauthToken)
+                print(error)
+                self.logInSuccess.send()
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                print("changgyu2",oauthToken)
+                print(error)
+                self.logInSuccess.send()
+            }
         }
     }
     // 로그아웃
