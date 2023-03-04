@@ -16,7 +16,6 @@ struct ChatView: View {
     @State private var profileImg: UIImage? = UIImage(systemName: "person.circle")
     @State private var destinationProfileImg: UIImage? = UIImage(systemName: "person.circle")
     
-    @EnvironmentObject var userVM : UserVM
     var chatVM = ChatVM()
     
     @Namespace var bottomID
@@ -55,9 +54,6 @@ struct ChatView: View {
                     proxy.scrollTo(bottomID)
                 }
                 .onAppear(perform: {
-                    // 현재 유저 uid 정보 가져오기
-                    userUid = FirebaseService.getCurrentUser()?.uid
-                    
                     // 현재 유저의 프로필 이미지 데이터 가져오기
                     chatVM.getDataFromUrl(uid: chatRoom.senderUid) { data in
                         self.profileImg = UIImage(data: data) ?? UIImage(systemName: "person.circle")
@@ -67,20 +63,13 @@ struct ChatView: View {
                     chatVM.getDataFromUrl(uid: chatRoom.destinationUid) { data in
                         self.destinationProfileImg = UIImage(data: data) ?? UIImage(systemName: "person.circle")
                     }
+                    // 메세지 내용 가져오기
+                    chatVM.getMessages(chatUid: chatRoom.id)
                     
-                    //메세지내용 가져오기
-                    FirebaseService.getMessage(chatUid: chatRoom.id) { loadInfos in
-                        chatMessages = loadInfos
-                        proxy.scrollTo(bottomID)
-                    }
-                    //메세지 firestore의 내부 값이 변경되면 감지하기
-                    FirebaseService.observedData(chatUid: chatRoom.id) {
-                        FirebaseService.getMessage(chatUid: chatRoom.id) { loadInfos in
-                            chatMessages = loadInfos
-                            message = ""
-                        }
-                    }
                 })//onAppear
+                
+                // 메세지 내용이 변경되면 ChatView의 chatMessages의 변수에 갱신
+                .onReceive(chatVM.$chatMessages, perform: { self.chatMessages = $0 })
                 HStack() {
                     TextField("메세지를 입력해주세요.",text: $message)
                     Button(action: {

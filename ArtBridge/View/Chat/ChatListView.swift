@@ -42,7 +42,6 @@ struct ChatListView: View {
                 .onAppear(perform: {
                     print("ChatListView - onAppear() called")
                     FirebaseService.fetchChatRoomList() { roadInfos in
-                        print("chang##",roadInfos)
                         self.chatRooms = roadInfos
                     }
                 })
