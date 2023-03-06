@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Binding var selection: Int
+    
     @State private var isClickedGenre = true
     @State private var isClickedRegion = false
-    private var genreList: [String] = [ "Piano","Cello","Violin","Drum","Flute","Guitar","Bass"]
+    var genreList: [String] = [ "Piano","Cello","Violin","Drum","Flute","Guitar","Bass"]
     
     var body: some View {
         VStack() {
@@ -68,20 +70,30 @@ struct HomeView: View {
                 
                 HStack() {
                     Spacer()
-                    Text("광고 및 공지사항 표시부분")
+//                    Text("광고 및 공지사항 표시부분")
                     Spacer()
                 }
-                .frame(height: 100)
-                .background(Color.orange)
+//                .frame(height: 50)
+//                .background(Color.white)
 
                 VStack() {
                     HStack() {
                         Text("게시글")
                             .fontWeight(.heavy)
                             .font(.system(size:20))
-                            .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                            .padding()
                         Spacer()
+                        Button(action: {
+                            print("전체보기 Button is Clicked")
+                            selection = 1
+                        }, label: {
+                            Text("전체보기 >")
+                                .font(.system(size:15))
+                        })
+                        .padding()
                     }
+                    .frame(maxWidth: .infinity)
+                    .background(Color(red: 245/255, green: 245/255, blue:245/255))
                     BoardListView()
                         .frame(width: UIScreen.main.bounds.width, height: 500)
                 }//VStack()
@@ -91,8 +103,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(selection: <#Binding<Int>#>)
+//    }
+//}

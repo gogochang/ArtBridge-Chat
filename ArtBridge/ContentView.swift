@@ -25,7 +25,7 @@ struct ContentView: View {
                 .padding()
                 
                 TabView(selection: $selection) {
-                    HomeView()
+                    HomeView(selection: $selection)
                         .tabItem {
                             Image(systemName: "house")
                             Text("홈")
