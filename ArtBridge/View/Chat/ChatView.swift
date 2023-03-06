@@ -84,6 +84,7 @@ struct ChatView: View {
                     Button(action: {
                         print("Send Button is Clicked")
                         FirebaseService.sendMessage(chatUid: chatRoom.id,text: message)
+                        message = ""
                     }, label: {
                         Text("Send")
                     })
