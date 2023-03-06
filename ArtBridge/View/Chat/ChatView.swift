@@ -30,6 +30,9 @@ struct ChatView: View {
                                 HStack() {
                                     Spacer()
                                     Text("\(aMessage.content)")
+                                        .padding()
+                                        .background(Color.white)
+                                        .cornerRadius(12)
                                     Image(uiImage: profileImg!)
                                         .resizable()
                                         .frame(width: 25, height: 25)
@@ -42,6 +45,9 @@ struct ChatView: View {
                                         .frame(width: 25, height: 25)
                                         .clipShape(Circle())
                                     Text("\(aMessage.content)")
+                                        .padding()
+                                        .background(Color.white)
+                                        .cornerRadius(12)
                                     Spacer()
                                 }
                             }
@@ -49,6 +55,7 @@ struct ChatView: View {
                     }
                     Text("").id(bottomID)
                 }//ScrollView
+                .background(Color(red: 255/255, green: 219/255, blue:88/255))
                 // 메인 스레드에서 작동하기 때문에 짧은 동작만
                 .onChange(of:chatMessages.count) { _ in
                     proxy.scrollTo(bottomID)
@@ -72,15 +79,20 @@ struct ChatView: View {
                 .onReceive(chatVM.$chatMessages, perform: { self.chatMessages = $0 })
                 HStack() {
                     TextField("메세지를 입력해주세요.",text: $message)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                     Button(action: {
                         print("Send Button is Clicked")
                         FirebaseService.sendMessage(chatUid: chatRoom.id,text: message)
                     }, label: {
                         Text("Send")
                     })
+                    .buttonStyle(BorderedButtonStyle())
+                    .tint(.orange)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 }//HStack
             }//ScrollViewReader
-        }
+        }//VStack
     }//body
 }
 
