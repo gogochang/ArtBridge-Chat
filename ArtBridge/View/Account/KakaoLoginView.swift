@@ -17,20 +17,8 @@ struct KakaoLoginView: View {
             print("LoginView - Clicked kakao Button")
             userVM.kakaoLogIn()
         }, label: {
-            HStack() {
-                Spacer()
-                Text("카카오로 시작")
-                Spacer()
-            }
-            .frame(height: 10)
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .background(Color(.systemYellow))
-            .cornerRadius(12)
+                Image("kakao_login_large_wide")
         })
-        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-        .shadow(radius: 5)
     }
 }
 
