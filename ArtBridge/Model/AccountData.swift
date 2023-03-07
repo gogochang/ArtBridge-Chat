@@ -36,4 +36,13 @@ struct firesotreUsers: Codable, Identifiable {
     let password: String
     let username: String
     let url: String
+    
+    // firestoreUses를 초기화할 때 사용 
+    init(email: String, username: String, url: String) {
+        self.id = UUID().uuidString
+        self.email = email
+        self.password = ""
+        self.username = username
+        self.url = url
+    }
 }

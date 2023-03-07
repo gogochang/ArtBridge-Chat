@@ -36,19 +36,48 @@ class UserVM: ObservableObject {
     
     func kakaoLogIn() {
         if (UserApi.isKakaoTalkLoginAvailable()) {
+            // 카카오톡이 다운로드 되어있으면 실행
             UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
                 print("changgyu1",oauthToken)
                 print(error)
                 self.logInSuccess.send()
             }
         } else {
+            // 카카오톡이 다운로드 되어있지 않으면 웹으로 실행
             UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-                print("changgyu2",oauthToken)
-                print(error)
-                self.logInSuccess.send()
+                if let error = error {
+                    print("KakaoLogin Error: \(error)")
+                } else {
+//                    print("changgyu2",oauthToken)
+                    UserApi.shared.me { (User, error) in
+                        if let error = error {
+                            print("UserVM - kakaoLogIn Error2: \(error)")
+                        } else {
+                            //카카오 로그인이 성공하여 계정 정보를 가져오는게 성공하면 실행
+                            print("UserVM - kakaoLogin User")
+                            // 카카오 계정 정보를 가지고 회원가입 실행
+                            FirebaseService.registerUser(userName: (User?.kakaoAccount?.profile?.nickname)!, email: (User?.kakaoAccount?.email)!, password: "\(String(describing: User?.id))", url: (User?.kakaoAccount?.profile?.profileImageUrl)!.absoluteString) {
+                                self.getCurrentUser()
+                                self.logInSuccess.send()
+                            }
+                        }
+                    }
+                }
             }
         }
     }
+    
+    func kakaoLogOut() {
+        print("UserVM - kakaoLotOut() called")
+        UserApi.shared.logout { error in
+            if let error = error {
+                print("UserVM - kakaoLogOut() error : \(error)")
+            } else {
+                print("UserVM - kakaoLogOut() success")
+            }
+        }
+    }
+    
     // 로그아웃
     func logOut() {
         print("UserVM - logOut() called")
@@ -66,6 +95,7 @@ class UserVM: ObservableObject {
         currentUser = FirebaseService.getCurrentUser()
         if let user = currentUser {
             FirebaseService.getUserWithUid(destinationUid: user.uid) { loadInfo in
+                print("chchchchchch -> \(loadInfo)")
                 // firestoreUsers 타입의 데이터를 가져와서 변수에 저장!
                 self.loggedUser = loadInfo
                 // 가져온 URL로 이미지 데이터를 가져오는 함수 실행!!

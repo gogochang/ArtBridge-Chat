@@ -94,6 +94,7 @@ struct HomeView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color(red: 245/255, green: 245/255, blue:245/255))
+                    .cornerRadius(12)
                     BoardListView()
                         .frame(width: UIScreen.main.bounds.width, height: 500)
                 }//VStack()

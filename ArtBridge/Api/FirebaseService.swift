@@ -38,20 +38,37 @@ enum FirebaseService {
     }
     
     //MARK: - 회원가입, 가입하는 유저정보를 Firestore에 저장
-    static func registerUser(userName: String, email: String, password: String, completion: @escaping () -> Void) {
+    static func registerUser(userName: String, email: String, password: String, url: String, completion: @escaping () -> Void) {
         print("FirebaseService - registerUser() called")
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error == nil {
+            if let error = error {
+                // 이미 계정이 만들어져 있으면 로그인 시도
+                print("FirebaseService - registerUser Error: \(error)")
+                self.logIn(email: email, password: password, completion: {
+                    completion()
+                })
+            } else {
+                print("FirebaseService - registerUser Success")
                 let db = Firestore.firestore()
-                
-                downloadImageUrl(imageName: "profileImage_\(email)") { url in
+                // 계정 생성 성공하면 url값 유무에 따라 Firestore에 계정 데이터 저장
+                if url == "" {
+                    downloadImageUrl(imageName: "profileImage_\(email)") { url in
+                        db.collection("users").document(result!.user.uid)
+                            .setData(["id":result?.user.uid,
+                                      "email": email,
+                                      "password": password,
+                                      "username": userName,
+                                      "url":url.absoluteString])
+                    }
+                } else {
                     db.collection("users").document(result!.user.uid)
                         .setData(["id":result?.user.uid,
                                   "email": email,
                                   "password": password,
                                   "username": userName,
-                                  "url":url.absoluteString])
+                                  "url":url])
                 }
+                
                 completion()
             }
         }
