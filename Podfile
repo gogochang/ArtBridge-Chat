@@ -29,6 +29,9 @@ target 'ArtBridge' do
   pod 'KakaoSDKAuth' # 카카오 사용자인증
   pod 'KakaoSDKUser' # 카카오 로그인, 사용자 관리
 
+  # for Google Login
+  pod 'GoogleSignIn' # 구글 로그인
+
   target 'ArtBridgeTests' do
     inherit! :search_paths
     # Pods for testing
