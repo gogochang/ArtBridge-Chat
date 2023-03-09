@@ -11,21 +11,10 @@ struct ContentView: View {
     @State private var selection = 0
     var body: some View {
         NavigationView {
-            VStack() {
-                HStack(alignment: .center, spacing: 10) {
-                    Text("ART BRIDGE")
-                        .fontWeight(.heavy)
-                        .font(.system(size: 10))
-                        .foregroundColor(Color.orange)
-                    SearchView()
-                    Image(systemName: "bell")
-                    Image(systemName: "person")
-                    
-                } //상단 메뉴
-                .padding()
-                
+            VStack() {                
                 TabView(selection: $selection) {
-                    HomeView(selection: $selection)
+                    
+                    NewHomeView(selection: $selection)
                         .tabItem {
                             Image(systemName: "house")
                             Text("홈")

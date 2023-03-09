@@ -54,6 +54,7 @@
 		95E8718F29850D4E00096049 /* ArtBridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */; };
 		95E8719129850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */; };
 		95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F617C929A8B3CC00C40E1C /* ImagePicker.swift */; };
+		95FEC3DC29B8E067000B1DD3 /* NewHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FEC3DB29B8E067000B1DD3 /* NewHomeView.swift */; };
 		DF9A38B8B5C97FD97E28CF4C /* Pods_ArtBridge_ArtBridgeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BFB2D5F2B5FD3FEFE7E89E /* Pods_ArtBridge_ArtBridgeUITests.framework */; };
 		F1A4D8CB3D56C0ED17F4B88D /* Pods_ArtBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */; };
 /* End PBXBuildFile section */
@@ -133,6 +134,7 @@
 		95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITests.swift; sourceTree = "<group>"; };
 		95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		95F617C929A8B3CC00C40E1C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		95FEC3DB29B8E067000B1DD3 /* NewHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeView.swift; sourceTree = "<group>"; };
 		C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridgeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -207,6 +209,7 @@
 				957E46892987A1CF00B61B12 /* Post */,
 				957E468A2987A1DC00B61B12 /* TopGroup */,
 				957E468B2987A1F900B61B12 /* Genre */,
+				95FEC3DB29B8E067000B1DD3 /* NewHomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */,
+				95FEC3DC29B8E067000B1DD3 /* NewHomeView.swift in Sources */,
 				95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */,
 				957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */,
 				95B39940298A5E9600E7BD3D /* BaseInterceptor.swift in Sources */,

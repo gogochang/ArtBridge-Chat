@@ -30,7 +30,7 @@ target 'ArtBridge' do
   pod 'KakaoSDKUser' # 카카오 로그인, 사용자 관리
 
   # for Google Login
-  pod 'GoogleSignIn' # 구글 로그인
+  # pod 'GoogleSignIn' # 구글 로그인
 
   target 'ArtBridgeTests' do
     inherit! :search_paths
