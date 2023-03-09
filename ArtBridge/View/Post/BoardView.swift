@@ -15,43 +15,46 @@ struct BoardView: View {
     @State var postData: Datum
     
     var body: some View {
-        HStack() {
-            VStack(alignment: .leading) {
-                // 제목
-                Text(postData.attributes.title)
-                    .font(.system(size: 15))
-                    .bold()
-                    .padding([.bottom], 5)
-                // 글 작성자, 날짜
-                HStack() {
-                    Image(systemName: "person.fill")
-                    Text(postData.attributes.author)
-                    Text(postData.attributes.createdAt.components(separatedBy: "T")[0]).foregroundColor(.gray)
+        NavigationView {
+            HStack() {
+                VStack(alignment: .leading) {
+                    // 제목
+                    Text(postData.attributes.title)
+                        .font(.system(size: 15))
+                        .bold()
+                        .padding([.bottom], 5)
+                    // 글 작성자, 날짜
+                    HStack() {
+                        Image(systemName: "person.fill")
+                        Text(postData.attributes.author)
+                        Text(postData.attributes.createdAt.components(separatedBy: "T")[0]).foregroundColor(.gray)
+                        Spacer()
+                        
+                        NavigationLink(destination: BoardEditView(postData: $postData), label: {
+                            Text("수정")}
+                        )
+                        
+                        Button(action: {
+                            print(" 삭제하기 버튼 클릭 ")
+                            postVM.removePostData(id: postData.id)
+                            presentationMode.wrappedValue.dismiss()
+                            
+                        }, label: {
+                            Text("삭제")
+                        })
+                        .foregroundColor(Color.red)
+                    }
+                    .font(.system(size:13))
+                    Divider()
+                        .padding([.bottom], 20)
+                    Text(postData.attributes.contents)
                     Spacer()
-                    
-                    NavigationLink(destination: BoardEditView(postData: $postData), label: {
-                        Text("수정")}
-                    )
-                    
-                    Button(action: {
-                        print(" 삭제하기 버튼 클릭 ")
-                        postVM.removePostData(id: postData.id)
-                        presentationMode.wrappedValue.dismiss()
-
-                    }, label: {
-                        Text("삭제")
-                    })
-                    .foregroundColor(Color.red)
-                }
-                .font(.system(size:13))
-                Divider()
-                    .padding([.bottom], 20)
-                Text(postData.attributes.contents)
+                }//VStack
+                .padding()
                 Spacer()
-            }//VStack
-            .padding()
-            Spacer()
-        }//HStack
+            }//HStack
+        }
+        .navigationTitle("게시글")
     }
 }
 

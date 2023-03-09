@@ -11,20 +11,14 @@ struct ContentView: View {
     @State private var selection = 0
     var body: some View {
         NavigationView {
-            VStack() {                
+            VStack() {
                 TabView(selection: $selection) {
-                    
-                    NewHomeView(selection: $selection)
-                        .tabItem {
-                            Image(systemName: "house")
-                            Text("홈")
-                        }.tag(0)
-                    
+                
                     BoardListView()
                         .tabItem {
                             Image(systemName: "list.bullet")
                             Text("게시판")
-                        }.tag(1)
+                        }.tag(0)
                     
                     PeopleView(selection: $selection)
                         .tabItem {
