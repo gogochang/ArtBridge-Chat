@@ -34,6 +34,7 @@
 		95AC51E029BB183400F7CBED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DF29BB183400F7CBED /* Post.swift */; };
 		95AC51E229BB479700F7CBED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E129BB479700F7CBED /* User.swift */; };
 		95AC51E429BB4C2600F7CBED /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E329BB4C2600F7CBED /* ImageUploader.swift */; };
+		95AC51E629BB803400F7CBED /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E529BB803400F7CBED /* LoadingIndicator.swift */; };
 		95B390402994F6120048B80A /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3903F2994F6120048B80A /* RegisterVM.swift */; };
 		95B39937298A590800E7BD3D /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39936298A590800E7BD3D /* PostData.swift */; };
 		95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39938298A5B0A00E7BD3D /* BoardView.swift */; };
@@ -104,6 +105,7 @@
 		95AC51DF29BB183400F7CBED /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		95AC51E129BB479700F7CBED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		95AC51E329BB4C2600F7CBED /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		95AC51E529BB803400F7CBED /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		95B3903F2994F6120048B80A /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		95B39936298A590800E7BD3D /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		95B39938298A5B0A00E7BD3D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				95F617C929A8B3CC00C40E1C /* ImagePicker.swift */,
+				95AC51E529BB803400F7CBED /* LoadingIndicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
 				95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */,
 				954ADC40299B86C000C715F8 /* UserVM.swift in Sources */,
+				95AC51E629BB803400F7CBED /* LoadingIndicator.swift in Sources */,
 				95B390402994F6120048B80A /* RegisterVM.swift in Sources */,
 				9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */,
 				9573B46D2992228C00732B70 /* FaceBookLoginView.swift in Sources */,

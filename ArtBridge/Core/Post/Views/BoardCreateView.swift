@@ -94,6 +94,7 @@ struct BoardCreateView: View {
         // 게시판 작성 완료 버튼
         .navigationBarItems(trailing: Button(action: {
             print("Success Button is Clicked")
+            LoadingIndicator.showLoading()
             isDisabled = true
             viewModel.uploadPost(title: title, content: content, image: selectedUiImage)
         }, label: {
@@ -103,6 +104,7 @@ struct BoardCreateView: View {
             if success {
                 viewModel.didUploadPost = false
                 isDisabled = false
+                LoadingIndicator.hideLoading()
                 presentationMode.wrappedValue.dismiss()
             }
         }
