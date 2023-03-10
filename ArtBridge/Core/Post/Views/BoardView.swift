@@ -18,7 +18,7 @@ struct BoardView: View {
     
     var body: some View {
         NavigationView {
-            HStack() {
+            ScrollView() {
                 VStack(alignment: .leading) {
                     // 제목
                     Text(postData.title)
@@ -42,12 +42,25 @@ struct BoardView: View {
                     .font(.system(size:13))
                     .padding([.bottom], 5)
                     
-
                     Divider()
                         .padding([.bottom], 20)
                     
                     Text(postData.content)
-                    
+                    if let url = postData.imageUrl {
+                        AsyncImage(
+                            url: URL(string:url),
+                            content: { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(12)
+                            },
+                            placeholder: {
+                                
+                            }
+                        )
+                        
+                    }
                     Spacer()
                 }//VStack
                 .padding()

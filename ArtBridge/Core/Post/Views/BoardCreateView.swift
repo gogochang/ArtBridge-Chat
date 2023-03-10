@@ -21,6 +21,7 @@ struct BoardCreateView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var isHidden: Bool = true
+    @State private var isDisabled: Bool = false
     
     @State var title: String = ""
     @State var content: String = ""
@@ -93,13 +94,15 @@ struct BoardCreateView: View {
         // 게시판 작성 완료 버튼
         .navigationBarItems(trailing: Button(action: {
             print("Success Button is Clicked")
+            isDisabled = true
             viewModel.uploadPost(title: title, content: content, image: selectedUiImage)
         }, label: {
             Text("완료")
-        }))
+        })).disabled(isDisabled)
         .onReceive(viewModel.$didUploadPost) { success in
             if success {
                 viewModel.didUploadPost = false
+                isDisabled = false
                 presentationMode.wrappedValue.dismiss()
             }
         }
