@@ -81,6 +81,7 @@ struct BoardCreateView: View {
         }// NavigationView
         .navigationTitle("작성하기")
         .navigationBarBackButtonHidden(true)
+        // 게시판 작성 취소 버튼
         .navigationBarItems(leading: Button(action: {
             print("Cancle Button is Clicked")
             presentationMode.wrappedValue.dismiss()
@@ -88,6 +89,7 @@ struct BoardCreateView: View {
             Text("취소")
                 .foregroundColor(Color.red)
         }))
+        // 게시판 작성 완료 버튼
         .navigationBarItems(trailing: Button(action: {
             print("Success Button is Clicked")
             postVM.createPostData(title: title,

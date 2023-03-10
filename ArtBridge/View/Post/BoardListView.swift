@@ -20,10 +20,14 @@ struct BoardListView: View {
             HStack() {
                 Text("홈")
                     .fontWeight(.heavy)
+                    .font(.title3)
                 Spacer()
                 NavigationLink(destination: BoardCreateView(), label: {
                     HStack() {
                         Image(systemName: "pencil.line")
+                            .resizable()
+                            .scaledToFit()
+//                            .frame(width:50,height: 50)
                     }
                     .frame(width: 25, height: 25)
                     .foregroundColor(Color.black)

@@ -12,6 +12,8 @@ struct BoardView: View {
     @EnvironmentObject var postVM: PostVM
     @Environment(\.presentationMode) var presentationMode
     
+    @State private var presentsAlert: Bool = false
+    @State private var presentsBoardEditor: Bool = false
     @State var postData: Datum
     
     var body: some View {
@@ -20,41 +22,74 @@ struct BoardView: View {
                 VStack(alignment: .leading) {
                     // 제목
                     Text(postData.attributes.title)
-                        .font(.system(size: 15))
+                        .font(.title3)
                         .bold()
                         .padding([.bottom], 5)
+                    
                     // 글 작성자, 날짜
                     HStack() {
                         Image(systemName: "person.fill")
-                        Text(postData.attributes.author)
-                        Text(postData.attributes.createdAt.components(separatedBy: "T")[0]).foregroundColor(.gray)
+                        
+                        VStack(alignment: .leading) {
+                            Text(postData.attributes.author).bold()
+                            HStack() {
+                                Text(postData.attributes.createdAt.components(separatedBy: "T")[0])
+                                Text("조회 0")
+                            }.opacity(0.7)
+                        }
                         Spacer()
-                        
-                        NavigationLink(destination: BoardEditView(postData: $postData), label: {
-                            Text("수정")}
-                        )
-                        
-                        Button(action: {
-                            print(" 삭제하기 버튼 클릭 ")
-                            postVM.removePostData(id: postData.id)
-                            presentationMode.wrappedValue.dismiss()
-                            
-                        }, label: {
-                            Text("삭제")
-                        })
-                        .foregroundColor(Color.red)
-                    }
+                    }// HStack
                     .font(.system(size:13))
+                    .padding([.bottom], 5)
+                    
+
                     Divider()
                         .padding([.bottom], 20)
+                    
                     Text(postData.attributes.contents)
+                    
                     Spacer()
                 }//VStack
                 .padding()
                 Spacer()
             }//HStack
         }
-        .navigationTitle("게시글")
+        //MARK: - Navigation 상단메뉴
+        .navigationTitle("")
+        .navigationBarBackButtonHidden(true)
+        //Navigation 상단 아이템
+        .navigationBarItems(
+            // 뒤로가기 커스텀 상단 버튼
+            leading: Button(action: {
+            print("Back Button is Clicked")
+            presentationMode.wrappedValue.dismiss()
+        }, label: {
+            Image(systemName: "chevron.backward")
+                .foregroundColor(Color.black)
+        }),
+            // 더보기 상단 버튼
+            trailing: Button(action: {
+            print("Success Button is Clicked")
+                presentsAlert = true
+        }, label: {
+            Image(systemName: "ellipsis")
+                .foregroundColor(Color.black)
+        }))
+        
+        // 더보기 메뉴
+        .confirmationDialog("",isPresented: $presentsAlert, titleVisibility: .hidden) {
+            Button("수정") {
+                presentsBoardEditor = true
+            }
+            Button("삭제", role: .destructive) {
+                postVM.removePostData(id: postData.id)
+                presentationMode.wrappedValue.dismiss()
+            }
+            Button("취소", role: .cancel) {}
+        }
+        .fullScreenCover(isPresented: $presentsBoardEditor) {
+            BoardEditView(postData: $postData)
+        }
     }
 }
 
