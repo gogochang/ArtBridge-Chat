@@ -15,11 +15,7 @@ struct SearchView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.orange)
             TextField("Search", text: $text)
-                
-//                .textFieldStyle(RoundedBorderTextFieldStyle())
-//                .overlay(RoundedRectangle(cornerRadius: 8)
-//                        .stroke(Color("black"), lineWidth: 2)
-//                      )
+
         }
         .padding()
         .frame(height: 60)

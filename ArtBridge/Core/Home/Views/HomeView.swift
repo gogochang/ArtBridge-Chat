@@ -59,13 +59,13 @@ struct HomeView: View {
                     }
                     
                     // 장르 선택 ScrollView
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0..<genreList.count) { i in
-                                ImageView(label: genreList[i])
-                            }
-                        }
-                    }//ScrollView
+//                    ScrollView(.horizontal, showsIndicators: false) {
+//                        HStack {
+//                            ForEach(0..<genreList.count) { i in
+//                                ImageView(label: genreList[i])
+//                            }
+//                        }
+//                    }//ScrollView
                 }
                 
                 HStack() {

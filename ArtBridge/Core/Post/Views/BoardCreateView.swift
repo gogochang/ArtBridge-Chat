@@ -9,12 +9,13 @@ import SwiftUI
 
 struct BoardCreateView: View {
     
-    @State private var presentsImagePicker = false
+    @State var didUploadPost = false
     
+    @State private var presentsImagePicker = false
     @State private var onPhotoLibrary = false
     @State private var selectedImage: Image = Image(systemName: "photo")
     @State private var selectedUiImage: UIImage? = nil
-    @EnvironmentObject var postVM: PostVM
+    @ObservedObject var viewModel = PostVM()
     @EnvironmentObject var userVM: UserVM
     
     @Environment(\.presentationMode) var presentationMode
@@ -92,14 +93,16 @@ struct BoardCreateView: View {
         // 게시판 작성 완료 버튼
         .navigationBarItems(trailing: Button(action: {
             print("Success Button is Clicked")
-            postVM.createPostData(title: title,
-                                  contents: content,
-                                  author: userVM.loggedInUser?.user.username ?? "익명")
-            FirebaseService.uploadImage(image: selectedUiImage?.jpegData(compressionQuality: 0.8), imageName: "test")
-            presentationMode.wrappedValue.dismiss()
+            viewModel.uploadPost(title: title, content: content, image: selectedUiImage)
         }, label: {
             Text("완료")
         }))
+        .onReceive(viewModel.$didUploadPost) { success in
+            if success {
+                viewModel.didUploadPost = false
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 }
 

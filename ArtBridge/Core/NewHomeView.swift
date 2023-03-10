@@ -24,8 +24,8 @@ struct NewHomeView: View {
             
             ScrollView() {
                 VStack(alignment: .leading) {
-                    SearchView()
-                        .padding()
+//                    SearchView()
+//                        .padding()
                     Text("악기별로 보기")
                         .fontWeight(.heavy)
                         .padding()

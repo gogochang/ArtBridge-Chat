@@ -28,6 +28,51 @@ class RegisterVM: ObservableObject {
     @Published var passwordMessage = ""
     @Published var isValid = false
     
+    //MARK: - 초기화 할 때 RegisterVM(자신)의 Publisher를 구독
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        print("RegisterVM - init() called")
+                
+        isUserNameValidPublisher
+            .receive(on: RunLoop.main)
+            .map { valid in
+                valid ? "" : "닉네임이 짧습니다. 3글자 이상"
+            }
+            .assign(to: \.userNameMessage, on: self)
+            .store(in: &cancellables)
+        
+        isEmailValidPublisher
+            .receive(on: RunLoop.main)
+            .map { valid in
+                valid ? "" : "이메일 형식이 올바르지 않습니다. example@mail.com"
+            }
+            .assign(to: \.emailMessage, on: self)
+            .store(in: &cancellables)
+        
+        isPasswordVaildPublisher
+            .receive(on: RunLoop.main)
+            .map { passwordCheck in
+                switch (passwordCheck) {
+                case .empty :
+                    return "비밀번호가 입력되지 않았습니다."
+                case .noMatch:
+                    return "비밀번호가 일치하지 않습니다."
+                case .short:
+                    return "비밀번호가 짧습니다. 8글자 이상"
+                default:
+                    return ""
+                }
+            }
+            .assign(to: \.passwordMessage, on: self)
+            .store(in: &cancellables)
+        
+        isAllValidPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.isValid, on: self)
+            .store(in: &cancellables)
+    }
+    
     //MARK: - Register User
     func registerUser() {
         print("RegisterVM - registerUser() called")
@@ -129,48 +174,5 @@ class RegisterVM: ObservableObject {
             .eraseToAnyPublisher()
     }
 
-    //MARK: - 초기화 할 때 RegisterVM(자신)의 Publisher를 구독
-    private var cancellables = Set<AnyCancellable>()
-    
-    init() {
-        print("RegisterVM - init() called")
-                
-        isUserNameValidPublisher
-            .receive(on: RunLoop.main)
-            .map { valid in
-                valid ? "" : "닉네임이 짧습니다. 3글자 이상"
-            }
-            .assign(to: \.userNameMessage, on: self)
-            .store(in: &cancellables)
-        
-        isEmailValidPublisher
-            .receive(on: RunLoop.main)
-            .map { valid in
-                valid ? "" : "이메일 형식이 올바르지 않습니다. example@mail.com"
-            }
-            .assign(to: \.emailMessage, on: self)
-            .store(in: &cancellables)
-        
-        isPasswordVaildPublisher
-            .receive(on: RunLoop.main)
-            .map { passwordCheck in
-                switch (passwordCheck) {
-                case .empty :
-                    return "비밀번호가 입력되지 않았습니다."
-                case .noMatch:
-                    return "비밀번호가 일치하지 않습니다."
-                case .short:
-                    return "비밀번호가 짧습니다. 8글자 이상"
-                default:
-                    return ""
-                }
-            }
-            .assign(to: \.passwordMessage, on: self)
-            .store(in: &cancellables)
-        
-        isAllValidPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.isValid, on: self)
-            .store(in: &cancellables)
-    }
+
 }

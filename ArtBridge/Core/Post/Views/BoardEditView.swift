@@ -9,10 +9,10 @@ import SwiftUI
 
 struct BoardEditView: View {
     
-    @EnvironmentObject var postVM: PostVM
+    @ObservedObject var viewModel = PostVM()
     @Environment(\.presentationMode) var presentationMode
     
-    @Binding var postData: Datum
+    @Binding var postData: Post
     
     @State var title: String = ""
     @State var content: String = ""
@@ -28,14 +28,11 @@ struct BoardEditView: View {
                             .foregroundColor(Color.red)
                     })
                     Spacer()
-                    Text("글 수정하기")
+                    Text("글 수정하기").bold()
                     Spacer()
                     Button(action: {
-                        print("button is clicked")
-                        postVM.editPostData(title: postData.attributes.title,
-                                            contents: postData.attributes.contents,
-                                            author: postData.attributes.author,
-                                            id: postData.id)
+                        print("edit button is clicked")
+                        viewModel.editPost(post: postData, title: postData.title, content: postData.content)
                         presentationMode.wrappedValue.dismiss()
                         
                     }, label: {
@@ -43,10 +40,10 @@ struct BoardEditView: View {
                     })
                 }
                 .padding()
-                TextField("제목을 입력하세요.", text: $postData.attributes.title)
+                TextField("제목을 입력하세요.", text: $postData.title)
                     .padding()
                 Divider()
-                TextField("내용을 입력하세요.", text: $postData.attributes.contents)
+                TextField("내용을 입력하세요.", text: $postData.content)
                     .padding()
                 Spacer()
             }

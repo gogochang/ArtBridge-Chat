@@ -20,6 +20,7 @@ target 'ArtBridge' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseStorage'
+  pod 'FirebaseFirestoreSwift'
 
   pod 'Firebase'
   pod 'Firebase/Database'

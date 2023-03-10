@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		951F367629A0B03500E5978C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F367529A0B03500E5978C /* ChatListView.swift */; };
-		953BCD332996682C0001B787 /* UserApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD322996682C0001B787 /* UserApiService.swift */; };
 		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
 		95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95482920299F75CA0054CB9A /* FirebaseService.swift */; };
-		954ADC3C299B7B0800C715F8 /* AccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3B299B7B0800C715F8 /* AccountRouter.swift */; };
 		954ADC40299B86C000C715F8 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3F299B86C000C715F8 /* UserVM.swift */; };
 		954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC41299B95A500C715F8 /* UserResponse.swift */; };
 		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
@@ -27,23 +25,19 @@
 		957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9D82987B7FC007D9367 /* HomeView.swift */; };
 		957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DE2987DC9D007D9367 /* MyPageView.swift */; };
 		957E46782985E3F200B61B12 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46772985E3F200B61B12 /* LoginView.swift */; };
-		957E467B2986C49F00B61B12 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467A2986C49F00B61B12 /* Logo.swift */; };
-		957E467D2986C4B800B61B12 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467C2986C4B800B61B12 /* SearchView.swift */; };
-		957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E467E2986DC9B00B61B12 /* ImageView.swift */; };
 		957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46872987A18900B61B12 /* PrevPostsView.swift */; };
 		959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A806E299E67AF00D0EDAF /* ChatData.swift */; };
 		959A8072299E6BB600D0EDAF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8071299E6BB600D0EDAF /* ChatView.swift */; };
 		959A8075299E713900D0EDAF /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8074299E713900D0EDAF /* PeopleView.swift */; };
 		959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8076299E7B4C00D0EDAF /* AuthVM.swift */; };
+		95AC51DE29BB12A800F7CBED /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DD29BB12A800F7CBED /* PostService.swift */; };
+		95AC51E029BB183400F7CBED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DF29BB183400F7CBED /* Post.swift */; };
+		95AC51E229BB479700F7CBED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E129BB479700F7CBED /* User.swift */; };
+		95AC51E429BB4C2600F7CBED /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E329BB4C2600F7CBED /* ImageUploader.swift */; };
 		95B390402994F6120048B80A /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3903F2994F6120048B80A /* RegisterVM.swift */; };
 		95B39937298A590800E7BD3D /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39936298A590800E7BD3D /* PostData.swift */; };
 		95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39938298A5B0A00E7BD3D /* BoardView.swift */; };
-		95B3993B298A5C3000E7BD3D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993A298A5C3000E7BD3D /* ApiClient.swift */; };
-		95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993D298A5E1800E7BD3D /* ApiLogger.swift */; };
-		95B39940298A5E9600E7BD3D /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */; };
 		95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39942298A5F0600E7BD3D /* PostVM.swift */; };
-		95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39944298A615E00E7BD3D /* PostApiService.swift */; };
-		95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39948298A621F00E7BD3D /* PostRouter.swift */; };
 		95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C84D76298F858B0023C412 /* BoardCreateView.swift */; };
 		95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E00B1D29B21D9000F2A565 /* ChatVM.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
@@ -54,7 +48,6 @@
 		95E8718F29850D4E00096049 /* ArtBridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */; };
 		95E8719129850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */; };
 		95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F617C929A8B3CC00C40E1C /* ImagePicker.swift */; };
-		95FEC3DC29B8E067000B1DD3 /* NewHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FEC3DB29B8E067000B1DD3 /* NewHomeView.swift */; };
 		DF9A38B8B5C97FD97E28CF4C /* Pods_ArtBridge_ArtBridgeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BFB2D5F2B5FD3FEFE7E89E /* Pods_ArtBridge_ArtBridgeUITests.framework */; };
 		F1A4D8CB3D56C0ED17F4B88D /* Pods_ArtBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */; };
 /* End PBXBuildFile section */
@@ -84,12 +77,10 @@
 		3CCEA3EF7A29498311CD1F40 /* Pods-ArtBridgeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridgeTests.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridgeTests/Pods-ArtBridgeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E515B0D990FB714CAEAF079 /* Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
-		95035AEA29B3280100B6259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		95035AEA29B3280100B6259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951F367529A0B03500E5978C /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
-		953BCD322996682C0001B787 /* UserApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApiService.swift; sourceTree = "<group>"; };
 		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		95482920299F75CA0054CB9A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
-		954ADC3B299B7B0800C715F8 /* AccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRouter.swift; sourceTree = "<group>"; };
 		954ADC3F299B86C000C715F8 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		954ADC41299B95A500C715F8 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
@@ -104,23 +95,19 @@
 		957BF9D82987B7FC007D9367 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		957BF9DE2987DC9D007D9367 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		957E46772985E3F200B61B12 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		957E467A2986C49F00B61B12 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
-		957E467C2986C4B800B61B12 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		957E467E2986DC9B00B61B12 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		957E46872987A18900B61B12 /* PrevPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevPostsView.swift; sourceTree = "<group>"; };
 		959A806E299E67AF00D0EDAF /* ChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatData.swift; sourceTree = "<group>"; };
 		959A8071299E6BB600D0EDAF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		959A8074299E713900D0EDAF /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 		959A8076299E7B4C00D0EDAF /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
+		95AC51DD29BB12A800F7CBED /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		95AC51DF29BB183400F7CBED /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		95AC51E129BB479700F7CBED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		95AC51E329BB4C2600F7CBED /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		95B3903F2994F6120048B80A /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		95B39936298A590800E7BD3D /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		95B39938298A5B0A00E7BD3D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
-		95B3993A298A5C3000E7BD3D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		95B3993D298A5E1800E7BD3D /* ApiLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLogger.swift; sourceTree = "<group>"; };
-		95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		95B39942298A5F0600E7BD3D /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
-		95B39944298A615E00E7BD3D /* PostApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostApiService.swift; sourceTree = "<group>"; };
-		95B39948298A621F00E7BD3D /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		95C84D76298F858B0023C412 /* BoardCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCreateView.swift; sourceTree = "<group>"; };
 		95E00B1D29B21D9000F2A565 /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +121,6 @@
 		95E8718E29850D4E00096049 /* ArtBridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITests.swift; sourceTree = "<group>"; };
 		95E8719029850D4E00096049 /* ArtBridgeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		95F617C929A8B3CC00C40E1C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		95FEC3DB29B8E067000B1DD3 /* NewHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeView.swift; sourceTree = "<group>"; };
 		C0A19C5A46F5B57938310974 /* Pods_ArtBridge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArtBridgeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -193,25 +179,23 @@
 		957BF9E02987DD46007D9367 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				957BF9DE2987DC9D007D9367 /* MyPageView.swift */,
+				95AC51D329BB10B200F7CBED /* ViewModels */,
+				95AC51D229BB10A800F7CBED /* Views */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
 		};
-		957E46792985EEB900B61B12 /* View */ = {
+		957E46792985EEB900B61B12 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				957BF9D82987B7FC007D9367 /* HomeView.swift */,
+				95AC51D829BB112500F7CBED /* Home */,
+				957E46892987A1CF00B61B12 /* Post */,
 				959A8073299E712B00D0EDAF /* People */,
 				959A8070299E6B9500D0EDAF /* Chat */,
 				957BF9E02987DD46007D9367 /* MyPage */,
-				957E468C2987A20100B61B12 /* Account */,
-				957E46892987A1CF00B61B12 /* Post */,
-				957E468A2987A1DC00B61B12 /* TopGroup */,
-				957E468B2987A1F900B61B12 /* Genre */,
-				95FEC3DB29B8E067000B1DD3 /* NewHomeView.swift */,
+				957E468C2987A20100B61B12 /* Authentication */,
 			);
-			path = View;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		957E46802986E3A500B61B12 /* Model */ = {
@@ -222,6 +206,8 @@
 				953BCD34299668B00001B787 /* AccountData.swift */,
 				954ADC41299B95A500C715F8 /* UserResponse.swift */,
 				959A806E299E67AF00D0EDAF /* ChatData.swift */,
+				95AC51DF29BB183400F7CBED /* Post.swift */,
+				95AC51E129BB479700F7CBED /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,33 +215,88 @@
 		957E46892987A1CF00B61B12 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				957E46872987A18900B61B12 /* PrevPostsView.swift */,
-				9561FC61298D25D900DFFB8A /* BoardListView.swift */,
-				95B39938298A5B0A00E7BD3D /* BoardView.swift */,
-				95C84D76298F858B0023C412 /* BoardCreateView.swift */,
-				9579BE39299105B100785E2E /* BoardEditView.swift */,
+				95AC51D729BB10E700F7CBED /* ViewModels */,
+				95AC51D629BB10DC00F7CBED /* Views */,
 			);
 			path = Post;
 			sourceTree = "<group>";
 		};
-		957E468A2987A1DC00B61B12 /* TopGroup */ = {
+		957E468C2987A20100B61B12 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				957E467A2986C49F00B61B12 /* Logo.swift */,
-				957E467C2986C4B800B61B12 /* SearchView.swift */,
+				95AC51D529BB10CD00F7CBED /* ViewModels */,
+				95AC51D429BB10BD00F7CBED /* Views */,
 			);
-			path = TopGroup;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
-		957E468B2987A1F900B61B12 /* Genre */ = {
+		959A8070299E6B9500D0EDAF /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				957E467E2986DC9B00B61B12 /* ImageView.swift */,
+				95AC51D129BB109700F7CBED /* ViewModels */,
+				95AC51D029BB109200F7CBED /* Views */,
 			);
-			path = Genre;
+			path = Chat;
 			sourceTree = "<group>";
 		};
-		957E468C2987A20100B61B12 /* Account */ = {
+		959A8073299E712B00D0EDAF /* People */ = {
+			isa = PBXGroup;
+			children = (
+				95AC51CF29BB108A00F7CBED /* ViewModels */,
+				95AC51CE29BB105200F7CBED /* Views */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		95AC51CE29BB105200F7CBED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				959A8074299E713900D0EDAF /* PeopleView.swift */,
+			);
+			name = Views;
+			path = "New Group/Views";
+			sourceTree = "<group>";
+		};
+		95AC51CF29BB108A00F7CBED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		95AC51D029BB109200F7CBED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				951F367529A0B03500E5978C /* ChatListView.swift */,
+				959A8071299E6BB600D0EDAF /* ChatView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95AC51D129BB109700F7CBED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				95E00B1D29B21D9000F2A565 /* ChatVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		95AC51D229BB10A800F7CBED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				957BF9DE2987DC9D007D9367 /* MyPageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95AC51D329BB10B200F7CBED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		95AC51D429BB10BD00F7CBED /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				957E46772985E3F200B61B12 /* LoginView.swift */,
@@ -265,68 +306,79 @@
 				9573B46C2992228C00732B70 /* FaceBookLoginView.swift */,
 				9573B46E299222AA00732B70 /* AppleLoginView.swift */,
 			);
-			path = Account;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		959A806B299E531700D0EDAF /* Service */ = {
+		95AC51D529BB10CD00F7CBED /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				95B39944298A615E00E7BD3D /* PostApiService.swift */,
-				953BCD322996682C0001B787 /* UserApiService.swift */,
-				95482920299F75CA0054CB9A /* FirebaseService.swift */,
-				95F617C929A8B3CC00C40E1C /* ImagePicker.swift */,
+				959A8076299E7B4C00D0EDAF /* AuthVM.swift */,
+				95B3903F2994F6120048B80A /* RegisterVM.swift */,
+				954ADC3F299B86C000C715F8 /* UserVM.swift */,
 			);
-			name = Service;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		959A8070299E6B9500D0EDAF /* Chat */ = {
+		95AC51D629BB10DC00F7CBED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				959A8071299E6BB600D0EDAF /* ChatView.swift */,
-				951F367529A0B03500E5978C /* ChatListView.swift */,
+				957E46872987A18900B61B12 /* PrevPostsView.swift */,
+				9561FC61298D25D900DFFB8A /* BoardListView.swift */,
+				95B39938298A5B0A00E7BD3D /* BoardView.swift */,
+				95C84D76298F858B0023C412 /* BoardCreateView.swift */,
+				9579BE39299105B100785E2E /* BoardEditView.swift */,
 			);
-			path = Chat;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		959A8073299E712B00D0EDAF /* People */ = {
-			isa = PBXGroup;
-			children = (
-				959A8074299E713900D0EDAF /* PeopleView.swift */,
-			);
-			path = People;
-			sourceTree = "<group>";
-		};
-		95B3993C298A5C4600E7BD3D /* Api */ = {
-			isa = PBXGroup;
-			children = (
-				959A806B299E531700D0EDAF /* Service */,
-				95B39946298A61FB00E7BD3D /* Router */,
-				95B3993A298A5C3000E7BD3D /* ApiClient.swift */,
-				95B3993D298A5E1800E7BD3D /* ApiLogger.swift */,
-				95B3993F298A5E9600E7BD3D /* BaseInterceptor.swift */,
-			);
-			path = Api;
-			sourceTree = "<group>";
-		};
-		95B39941298A5EF300E7BD3D /* ViewModel */ = {
+		95AC51D729BB10E700F7CBED /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				95B39942298A5F0600E7BD3D /* PostVM.swift */,
-				95B3903F2994F6120048B80A /* RegisterVM.swift */,
-				954ADC3F299B86C000C715F8 /* UserVM.swift */,
-				959A8076299E7B4C00D0EDAF /* AuthVM.swift */,
-				95E00B1D29B21D9000F2A565 /* ChatVM.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		95B39946298A61FB00E7BD3D /* Router */ = {
+		95AC51D829BB112500F7CBED /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				95B39948298A621F00E7BD3D /* PostRouter.swift */,
-				954ADC3B299B7B0800C715F8 /* AccountRouter.swift */,
+				95AC51DA29BB113900F7CBED /* ViewModels */,
+				95AC51D929BB112F00F7CBED /* Views */,
 			);
-			name = Router;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		95AC51D929BB112F00F7CBED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				957BF9D82987B7FC007D9367 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95AC51DA29BB113900F7CBED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		95AC51DB29BB118E00F7CBED /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				95F617C929A8B3CC00C40E1C /* ImagePicker.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		95AC51DC29BB11CA00F7CBED /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				95482920299F75CA0054CB9A /* FirebaseService.swift */,
+				95AC51DD29BB12A800F7CBED /* PostService.swift */,
+				95AC51E329BB4C2600F7CBED /* ImageUploader.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		95E8716729850D4D00096049 = {
@@ -356,13 +408,13 @@
 			children = (
 				95035AEA29B3280100B6259D /* Info.plist */,
 				956A4CC5299E0EC7008652B0 /* GoogleService-Info.plist */,
+				95E8717729850D4E00096049 /* Assets.xcassets */,
 				95E8717329850D4D00096049 /* ArtBridgeApp.swift */,
 				95E8717529850D4D00096049 /* ContentView.swift */,
-				95B3993C298A5C4600E7BD3D /* Api */,
-				957E46792985EEB900B61B12 /* View */,
+				95AC51DB29BB118E00F7CBED /* Utils */,
+				95AC51DC29BB11CA00F7CBED /* Service */,
+				957E46792985EEB900B61B12 /* Core */,
 				957E46802986E3A500B61B12 /* Model */,
-				95B39941298A5EF300E7BD3D /* ViewModel */,
-				95E8717729850D4E00096049 /* Assets.xcassets */,
 				95E8717929850D4E00096049 /* Preview Content */,
 			);
 			path = ArtBridge;
@@ -633,17 +685,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */,
-				95FEC3DC29B8E067000B1DD3 /* NewHomeView.swift in Sources */,
-				95B39945298A615E00E7BD3D /* PostApiService.swift in Sources */,
-				957E467F2986DC9B00B61B12 /* ImageView.swift in Sources */,
-				95B39940298A5E9600E7BD3D /* BaseInterceptor.swift in Sources */,
 				957E46782985E3F200B61B12 /* LoginView.swift in Sources */,
 				957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
 				9573B46F299222AA00732B70 /* AppleLoginView.swift in Sources */,
 				953BCD35299668B00001B787 /* AccountData.swift in Sources */,
 				951F367629A0B03500E5978C /* ChatListView.swift in Sources */,
-				95B3993E298A5E1800E7BD3D /* ApiLogger.swift in Sources */,
 				9579BE3A299105B100785E2E /* BoardEditView.swift in Sources */,
 				959A8075299E713900D0EDAF /* PeopleView.swift in Sources */,
 				95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */,
@@ -651,28 +698,26 @@
 				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
 				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
 				9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */,
-				957E467D2986C4B800B61B12 /* SearchView.swift in Sources */,
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
-				957E467B2986C49F00B61B12 /* Logo.swift in Sources */,
 				95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */,
 				954ADC40299B86C000C715F8 /* UserVM.swift in Sources */,
 				95B390402994F6120048B80A /* RegisterVM.swift in Sources */,
 				9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */,
 				9573B46D2992228C00732B70 /* FaceBookLoginView.swift in Sources */,
-				95B39949298A621F00E7BD3D /* PostRouter.swift in Sources */,
 				9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */,
 				95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */,
-				954ADC3C299B7B0800C715F8 /* AccountRouter.swift in Sources */,
 				959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */,
+				95AC51E229BB479700F7CBED /* User.swift in Sources */,
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
 				954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */,
+				95AC51E429BB4C2600F7CBED /* ImageUploader.swift in Sources */,
+				95AC51E029BB183400F7CBED /* Post.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,
 				95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
+				95AC51DE29BB12A800F7CBED /* PostService.swift in Sources */,
 				9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */,
 				959A8072299E6BB600D0EDAF /* ChatView.swift in Sources */,
-				953BCD332996682C0001B787 /* UserApiService.swift in Sources */,
-				95B3993B298A5C3000E7BD3D /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

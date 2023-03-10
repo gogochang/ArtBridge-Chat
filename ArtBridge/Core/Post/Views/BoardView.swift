@@ -9,19 +9,19 @@ import SwiftUI
 
 struct BoardView: View {
     
-    @EnvironmentObject var postVM: PostVM
+    @ObservedObject var viewModel = PostVM()
     @Environment(\.presentationMode) var presentationMode
     
     @State private var presentsAlert: Bool = false
     @State private var presentsBoardEditor: Bool = false
-    @State var postData: Datum
+    @State var postData: Post
     
     var body: some View {
         NavigationView {
             HStack() {
                 VStack(alignment: .leading) {
                     // 제목
-                    Text(postData.attributes.title)
+                    Text(postData.title)
                         .font(.title3)
                         .bold()
                         .padding([.bottom], 5)
@@ -31,9 +31,9 @@ struct BoardView: View {
                         Image(systemName: "person.fill")
                         
                         VStack(alignment: .leading) {
-                            Text(postData.attributes.author).bold()
+                            Text(postData.author).bold()
                             HStack() {
-                                Text(postData.attributes.createdAt.components(separatedBy: "T")[0])
+                                Text(postData.timestamp.dateValue().toString().components(separatedBy: " ")[0])
                                 Text("조회 0")
                             }.opacity(0.7)
                         }
@@ -46,7 +46,7 @@ struct BoardView: View {
                     Divider()
                         .padding([.bottom], 20)
                     
-                    Text(postData.attributes.contents)
+                    Text(postData.content)
                     
                     Spacer()
                 }//VStack
@@ -82,7 +82,7 @@ struct BoardView: View {
                 presentsBoardEditor = true
             }
             Button("삭제", role: .destructive) {
-                postVM.removePostData(id: postData.id)
+                viewModel.deletePost(post: postData)
                 presentationMode.wrappedValue.dismiss()
             }
             Button("취소", role: .cancel) {}
