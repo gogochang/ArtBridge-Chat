@@ -18,36 +18,38 @@ struct BoardEditView: View {
     @State var content: String = ""
     
     var body: some View {
-        VStack() {
-            TextField("제목을 입력하세요.", text: $postData.attributes.title)
+            VStack() {
+                HStack() {
+                    Button(action: {
+                        print("button is clicked")
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("취소")
+                            .foregroundColor(Color.red)
+                    })
+                    Spacer()
+                    Text("글 수정하기")
+                    Spacer()
+                    Button(action: {
+                        print("button is clicked")
+                        postVM.editPostData(title: postData.attributes.title,
+                                            contents: postData.attributes.contents,
+                                            author: postData.attributes.author,
+                                            id: postData.id)
+                        presentationMode.wrappedValue.dismiss()
+                        
+                    }, label: {
+                        Text("완료")
+                    })
+                }
                 .padding()
-            Divider()
-            TextField("내용을 입력하세요.", text: $postData.attributes.contents)
-                .padding()
-            Spacer()
-        }
-        .overlay(
-            HStack() {
+                TextField("제목을 입력하세요.", text: $postData.attributes.title)
+                    .padding()
+                Divider()
+                TextField("내용을 입력하세요.", text: $postData.attributes.contents)
+                    .padding()
                 Spacer()
-                Button(action: {
-                    print("BoardCreateView - Button Clicked")
-                    postVM.editPostData(title: postData.attributes.title,
-                                        contents: postData.attributes.contents,
-                                        author: postData.attributes.author,
-                                        id: postData.id)
-                    presentationMode.wrappedValue.dismiss()
-
-                }, label: {
-                    Image(systemName: "square.and.pencil")
-                })
-                .frame(width: 50, height: 50)
-                .foregroundColor(Color.white)
-                .background(Color.orange)
-                .cornerRadius(15)
-                .padding()
             }
-            ,alignment: .bottom
-        )//overlay
     }
 }
 

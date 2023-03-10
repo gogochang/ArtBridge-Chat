@@ -13,13 +13,21 @@ struct SearchView: View {
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .foregroundColor(.secondary)
+                .foregroundColor(.orange)
             TextField("Search", text: $text)
+                
+//                .textFieldStyle(RoundedBorderTextFieldStyle())
+//                .overlay(RoundedRectangle(cornerRadius: 8)
+//                        .stroke(Color("black"), lineWidth: 2)
+//                      )
         }
         .padding()
-        .frame(height: 30)
-        .background(Color(red: 240 / 255, green: 240 / 255, blue: 240 / 255))
-        .cornerRadius(10)
+        .frame(height: 60)
+        .overlay {
+            Capsule().stroke(.black, lineWidth: 2)
+        }
+//        .background(Color(red: 240 / 255, green: 240 / 255, blue: 240 / 255))
+//        .cornerRadius(10)
     }
 }
 

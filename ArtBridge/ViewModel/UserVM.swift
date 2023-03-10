@@ -8,7 +8,10 @@
 import Foundation
 import Combine
 import Firebase
+import FirebaseCore
+import FirebaseAuth
 import KakaoSDKUser
+//import GoogleSignIn
 
 class UserVM: ObservableObject {
     var subscription = Set<AnyCancellable>()
@@ -88,6 +91,7 @@ class UserVM: ObservableObject {
             self.passwordInput = ""
             self.data = Data()
         }
+        kakaoLogOut()
     }
     // 현재 유저 가져오기
     func getCurrentUser() {

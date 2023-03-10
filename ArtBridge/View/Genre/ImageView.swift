@@ -11,16 +11,13 @@ struct ImageView: View {
     @State var label: String
     
     var body: some View {
-        ZStack {
+        VStack {
             Image(label)
                 .resizable()
-                .frame(width:100, height: 100)
-                .cornerRadius(15)
-                .shadow(radius: 5)
+                .frame(width:75, height: 75)
+                .cornerRadius(12)
             Text(label)
-                .font(.system(size:25, weight: .bold))
-                .foregroundColor(.white)
-                .shadow(color: .black, radius: 5)
+                .opacity(0.7)
         }
     }
 }
