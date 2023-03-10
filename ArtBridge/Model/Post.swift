@@ -15,6 +15,7 @@ struct Post: Identifiable, Decodable {
     let timestamp: Timestamp
     let uid: String
     let author: String
+    let imageUrl: String
     var likes: Int
     
     var user: User?
