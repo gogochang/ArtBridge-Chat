@@ -8,90 +8,101 @@
 import SwiftUI
 
 struct BoardListView: View {
-    @ObservedObject var viewModel = PostVM()
     @State var posts = [Post]()
+    
+    @State var firstNavigationLinkActive: Bool = false
+    @State var previewImage: UIImage?
+    @EnvironmentObject var userVM : UserVM
+    
+    @ObservedObject var viewModel = PostVM()
+    
     var body: some View {
-        VStack() {
-            HStack() {
-                Text("홈")
-                    .fontWeight(.heavy)
-                    .font(.title3)
-                Spacer()
-                NavigationLink(destination: BoardCreateView(), label: {
-                    HStack() {
-                        Image(systemName: "pencil.line")
-                            .resizable()
-                            .scaledToFit()
-                    }
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(Color.black)
-                })
-            }// HStack
-            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-            
-            Divider()
-            
-            HStack() {
-                Text("자유게시판")
-                    .fontWeight(.heavy)
-                Text("질문게시판")
-                    .opacity(0.5)
-                Spacer()
-            }// HStack
-            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
-            
-            //MARK: - 게시판 List Layout
-            List(posts) { post in
-                ZStack() {
-                    HStack() {
-                        VStack() {
-                            HStack {
-                                Text(post.title)
-                                    .bold()
-                                    .font(.system(size:15))
-                                Spacer()
-                            }
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-                            
-                            HStack() {
-                                Text(post.author)
-                                Text(post.timestamp.dateValue().toString().components(separatedBy: " ")[0])
-                                Text("댓글 0")
-                                Spacer()
-                            }
-                            .opacity(0.7)
-                            .font(.system(size: 13))
-                        }//VStack
-                        Spacer()
-                        //post데이터에서 이미지가 있을 때만 이미지를 표시
-                        if let url = post.imageUrl {
-                            AsyncImage(
-                                url: URL(string:url),
-                                content: { image in
-                                    image
-                                        .resizable()
-                                        .frame(maxWidth: 50, maxHeight: 50)
-                                        .cornerRadius(12)
-                                },
-                                placeholder: {}
-                            )
+        NavigationView {
+            VStack() {
+                HStack() {
+                    Text("홈")
+                        .fontWeight(.heavy)
+                        .font(.title3)
+                    Spacer()
+                    NavigationLink(destination: BoardCreateView(), label: {
+                        HStack() {
+                            Image(systemName: "pencil.line")
+                                .resizable()
+                                .scaledToFit()
                         }
-                    }//HStack
-                    // List 우측 화살표 없애기
-                    NavigationLink(destination: BoardView(postData: post), label: {
-                    })// Navigation
-                    .opacity(0)
-                }//ZStack
-            }//List
-            .listStyle(PlainListStyle())
-            .onAppear(perform : {
-                print("chang@ appear")
-                viewModel.fetchPosts()
-            })
-            .onReceive(viewModel.$posts, perform: {self.posts = $0})
-        }//VStack
-    }//body
-}
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color.black)
+                    })
+                }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                
+                Divider()
+                
+                HStack() {
+                    Text("자유게시판")
+                        .fontWeight(.heavy)
+                    Text("질문게시판")
+                        .opacity(0.5)
+                    Spacer()
+                }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                
+                //MARK: - 게시판 List Layout
+                
+                    List(posts) { post in
+                        
+                        ZStack() {
+                            HStack() {
+                                VStack() {
+                                    HStack {
+                                        Text(post.title)
+                                            .bold()
+                                            .font(.system(size:15))
+                                        Spacer()
+                                    }
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                                    
+                                    HStack() {
+                                        Text(post.author)
+                                        Text(post.timestamp.dateValue().toString().components(separatedBy: " ")[0])
+                                        Text("댓글 0")
+                                        Spacer()
+                                    }
+                                    .opacity(0.7)
+                                    .font(.system(size: 13))
+                                }//VStack
+                                Spacer()
+                                if let url = post.imageUrl {
+                                    AsyncImage(
+                                        url: URL(string:url),
+                                        content: { image in
+                                            image
+                                                .resizable()
+                                                .frame(maxWidth: 50, maxHeight: 50)
+                                                .cornerRadius(12)
+                                        },
+                                        placeholder: {
+                                            
+                                        }
+                                    )
+                                }
+                            }//HStack
+                            // List 우측 화살표 없애기
+                            NavigationLink(destination: BoardView(postData: post), label: {
+                            })// Navigation
+                            .opacity(0)
+                        }
+                    
+                    }
+                    .listStyle(PlainListStyle())
+                    .onAppear(perform : {viewModel.fetchPosts()})
+                    .onReceive(viewModel.$posts, perform: {self.posts = $0})
+               
+            }//VStack
+        }
+    }
+    
+}//BoardListView
 
 struct BoardListView_Previews: PreviewProvider {
     static var previews: some View {
