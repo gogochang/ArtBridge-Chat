@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>123201711059-o1pbhe4p4c02raj8vk0r8hl1d8hn982p.apps.googleusercontent.com</string>
+	<string>62327660042-uvnrh8a9fk6r2752v49cuhdao8hdvhmm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.123201711059-o1pbhe4p4c02raj8vk0r8hl1d8hn982p</string>
+	<string>com.googleusercontent.apps.62327660042-uvnrh8a9fk6r2752v49cuhdao8hdvhmm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCmqstIg0cyf4JN7zBoArpoCmry2KKxMCw</string>
+	<string>AIzaSyCnvR6Td8nxv1BPvjoMhAT9OjaQ0jLaiPA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>123201711059</string>
+	<string>62327660042</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>ChangGyuKim.ArtBridge</string>
 	<key>PROJECT_ID</key>
-	<string>artbridge-with-firebase</string>
+	<string>my-project-21053</string>
 	<key>STORAGE_BUCKET</key>
-	<string>artbridge-with-firebase.appspot.com</string>
+	<string>my-project-21053.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:123201711059:ios:2542e5bc175be4ebf2dd26</string>
+	<string>1:62327660042:ios:6d4ff533dc2be600d089f3</string>
 </dict>
 </plist>

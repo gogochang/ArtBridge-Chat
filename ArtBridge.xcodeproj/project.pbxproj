@@ -14,7 +14,6 @@
 		954ADC40299B86C000C715F8 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3F299B86C000C715F8 /* UserVM.swift */; };
 		954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC41299B95A500C715F8 /* UserResponse.swift */; };
 		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
-		956A4CC6299E0EC7008652B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956A4CC5299E0EC7008652B0 /* GoogleService-Info.plist */; };
 		9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B468299221BF00732B70 /* KakaoLoginView.swift */; };
 		9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B46A2992226E00732B70 /* NaverLoginView.swift */; };
 		9573B46D2992228C00732B70 /* FaceBookLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B46C2992228C00732B70 /* FaceBookLoginView.swift */; };
@@ -40,6 +39,7 @@
 		95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39938298A5B0A00E7BD3D /* BoardView.swift */; };
 		95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39942298A5F0600E7BD3D /* PostVM.swift */; };
 		95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C84D76298F858B0023C412 /* BoardCreateView.swift */; };
+		95D993C429BEF5FF009C4FB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */; };
 		95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E00B1D29B21D9000F2A565 /* ChatVM.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
@@ -85,7 +85,6 @@
 		954ADC3F299B86C000C715F8 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		954ADC41299B95A500C715F8 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
-		956A4CC5299E0EC7008652B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9573B468299221BF00732B70 /* KakaoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginView.swift; sourceTree = "<group>"; };
 		9573B46A2992226E00732B70 /* NaverLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginView.swift; sourceTree = "<group>"; };
 		9573B46C2992228C00732B70 /* FaceBookLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBookLoginView.swift; sourceTree = "<group>"; };
@@ -111,6 +110,7 @@
 		95B39938298A5B0A00E7BD3D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		95B39942298A5F0600E7BD3D /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
 		95C84D76298F858B0023C412 /* BoardCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCreateView.swift; sourceTree = "<group>"; };
+		95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95E00B1D29B21D9000F2A565 /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
@@ -410,7 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				95035AEA29B3280100B6259D /* Info.plist */,
-				956A4CC5299E0EC7008652B0 /* GoogleService-Info.plist */,
+				95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */,
 				95E8717729850D4E00096049 /* Assets.xcassets */,
 				95E8717329850D4D00096049 /* ArtBridgeApp.swift */,
 				95E8717529850D4D00096049 /* ContentView.swift */,
@@ -558,8 +558,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				95E8717B29850D4E00096049 /* Preview Assets.xcassets in Resources */,
+				95D993C429BEF5FF009C4FB4 /* GoogleService-Info.plist in Resources */,
 				95E8717829850D4E00096049 /* Assets.xcassets in Resources */,
-				956A4CC6299E0EC7008652B0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
