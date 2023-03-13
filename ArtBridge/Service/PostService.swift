@@ -14,15 +14,15 @@ struct PostService {
     //MARK: - 게시글 올리기
     func uploadPost(title: String, content: String, image: UIImage?, completion: @escaping(Bool) -> Void) {
         print("PostService - uploadPost() called")
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let user = Auth.auth().currentUser else { return }
         
         if let image = image {
             ImageUploader.uploadImage(image: image) { imageUrl in
-                let data = ["uid": uid,
+                let data = ["uid": user.uid,
                             "title": title,
                             "content": content,
                             "likes": 0,
-                            "author": "anonymous",
+                            "author": user.displayName ?? "anonymous",
                             "imageUrl": imageUrl,
                             "timestamp": Timestamp(date: Date())] as [String: Any]
                 
@@ -39,11 +39,11 @@ struct PostService {
                 }
             }
         } else {
-            let data = ["uid": uid,
+            let data = ["uid": user.uid,
                         "title": title,
                         "content": content,
                         "likes": 0,
-                        "author": "anonymous",
+                        "author": user.displayName ?? "anonymous",
                         "imageUrl": "",
                         "timestamp": Timestamp(date: Date())] as [String: Any]
             
@@ -98,6 +98,42 @@ struct PostService {
                 
                 let posts = documents.compactMap({ try? $0.data(as: Post.self)})
                 completion(posts)
+            }
+    }
+    
+    //MARK: - 게시글 댓글 작성
+    func addComment(_ post: Post, comment: String, completion: @escaping (Bool) -> Void) {
+        print("PostService - addComment() called")
+        guard let user = Auth.auth().currentUser else { return }
+        let data = ["uid": user.uid,
+                    "comment": comment,
+                    "likes": 0,
+                    "author": user.displayName ?? "nil",
+                    "imageUrl": "",
+                    "timestamp": Timestamp(date: Date())] as [String: Any]
+
+        Firestore.firestore().collection("posts").document(post.id!).collection("comment").document()
+            .setData(data) { error in
+                if let error = error {
+                    print("PostService - addComment() Error: \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                print("PostService - addComment() upload success")
+                completion(true)
+            }
+    }
+    
+    //MARK: - 게시글 댓글 가져오기
+    func getComment(_ post: Post, completion: @escaping ([Comment]) -> Void) {
+        print("PostService - getComment() called")
+        Firestore.firestore().collection("posts").document(post.id!).collection("comment")
+            .order(by: "timestamp", descending: false)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                
+                let comments = documents.compactMap({ try? $0.data(as: Comment.self)})
+                completion(comments)
             }
     }
     

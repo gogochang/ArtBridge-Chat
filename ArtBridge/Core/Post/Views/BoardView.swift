@@ -12,10 +12,12 @@ struct BoardView: View {
     @ObservedObject var viewModel = PostVM()
     @Environment(\.presentationMode) var presentationMode
     
+    @State private var commentText: String = ""
     @State private var presentsAlert: Bool = false
     @State private var presentsBoardEditor: Bool = false
     @State var postData: Post
     
+    @State var comments = [Comment]()
     var body: some View {
         NavigationView {
             ScrollView() {
@@ -56,12 +58,48 @@ struct BoardView: View {
                                     .cornerRadius(12)
                             },
                             placeholder: {
-                                
+
                             }
                         )
-                        
                     }
-                    Spacer()
+                    Divider()
+                    Text("댓글").bold()
+                    Divider()
+                    Group {
+                        VStack(alignment: .leading) {
+                            ForEach(comments) { comment in
+                                VStack() {
+                                    HStack(alignment: .top) {
+                                        Image(systemName: "person.circle")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                            
+                                        VStack(alignment: .leading) {
+                                            Text(comment.author).bold()
+                                            Text(comment.timestamp.dateValue().toString().components(separatedBy: " ")[0]).opacity(0.5).font(.system(size:12))
+                                            Text(comment.comment)
+                                                .padding([.top], 2)
+                                        }
+                                    }
+                                }
+                                //                            .padding([.bottom],10)
+                            }
+                        }
+                        .listStyle(PlainListStyle())
+                        .onAppear(perform : {viewModel.getComment(post: postData)})
+                        .onReceive(viewModel.$comments, perform: { self.comments = $0 })
+                        
+                        HStack() {
+                            TextField("댓글 작성하기", text: $commentText).background()
+                            Button(action: {
+                                print("SendButton is Clicked")
+                                viewModel.addComment(post: postData, comment: commentText)
+                                self.commentText = ""
+                            }, label: {
+                                Text("Send")
+                            })
+                        }
+                    }
                 }//VStack
                 .padding()
                 Spacer()
@@ -103,6 +141,7 @@ struct BoardView: View {
         .fullScreenCover(isPresented: $presentsBoardEditor) {
             BoardEditView(postData: $postData)
         }
+
     }
 }
 

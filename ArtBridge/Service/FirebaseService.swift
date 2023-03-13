@@ -69,7 +69,19 @@ enum FirebaseService {
                                   "url":url])
                 }
                 
-                completion()
+                if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+                    changeRequest.displayName = userName
+                    //TODO: - 프로필 이미지 URL도 저장 필요
+                    //                changeRequest.photoURL = url.absoluteString
+                    changeRequest.commitChanges() { error in
+                        if let error = error {
+                            print("Error: \(error.localizedDescription)")
+                            return
+                        } else {
+                            completion()
+                        }
+                    }
+                }
             }
         }
     }

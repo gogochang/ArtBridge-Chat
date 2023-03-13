@@ -12,7 +12,7 @@ class PostVM: ObservableObject {
 
     @Published var didUploadPost = false
     @Published var posts = [Post]()
-    
+    @Published var comments = [Comment]()
     let service = PostService()
     
     @Published var postData: PostData? = nil
@@ -66,6 +66,27 @@ class PostVM: ObservableObject {
             for index in 0 ..< posts.count {
                 let uid = posts[index].uid
                 self.posts = posts
+            }
+        }
+    }
+    
+    //MARK: - Firebase 게시글 댓글 달기
+    func addComment(post: Post, comment: String) {
+        service.addComment(post, comment: comment) { success in
+            if success {
+                print("PostVM - addComment success")
+            } else {
+                print("PostVM - addComment fail")
+            }
+        }
+    }
+   
+    //MARK: - Firebase 게시글 댓글 가져오기
+    func getComment(post: Post) {
+        service.getComment(post) { comment in
+            for index in 0 ..< comment.count {
+                let uid = comment[index].uid
+                self.comments = comment
             }
         }
     }
