@@ -75,6 +75,7 @@ class PostVM: ObservableObject {
         service.addComment(post, comment: comment) { success in
             if success {
                 print("PostVM - addComment success")
+                self.getComment(post: post)
             } else {
                 print("PostVM - addComment fail")
             }

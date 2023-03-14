@@ -95,10 +95,6 @@ struct BoardView: View {
                                                 }
                                             )
                                         }
-//                                        Image(systemName: "person.circle")
-//                                            .resizable()
-//                                            .frame(width: 25, height: 25)
-//
                                         VStack(alignment: .leading) {
                                             Text(comment.author).bold()
                                             Text(comment.timestamp.dateValue().toString().components(separatedBy: " ")[0]).opacity(0.5).font(.system(size:12))
@@ -169,17 +165,8 @@ struct BoardView: View {
     }
 }
 
-#if DEBUG
 //struct BoardView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        BoardView(postData: Datum(
-//            id: 0, attributes: Attributes(
-//                title: "제목입니다. 동해물과 백두산이 마르고 ",
-//                contents: "내용입니다.",
-//                author: "작성자",
-//                createdAt: "2023-01-01",
-//                updatedAt: "2023-01-02",
-//                publishedAt: "2-23=-1=-1")))
+//        BoardView()
 //    }
 //}
-#endif
