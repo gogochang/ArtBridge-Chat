@@ -20,57 +20,59 @@ struct RegisterView: View {
     @State private var onPhotoLibrary = false
     @State private var profilUiImage: UIImage? = nil
     
+    @State var didRegisterUser = false
+    
     var body: some View {
         VStack(alignment: .leading) {
 
             Spacer()
             
-            profileImage
-                .resizable()
-                .frame(width: 150, height: 150)
-                .clipShape(Circle())
-                .overlay {
-                    Circle().stroke(.white, lineWidth: 4)
-                }
-                .shadow(radius:7)
-                .padding()
-                .onTapGesture {
-                    presentsImagePicker = true
-                }
-            // 카메라 선택
-                .sheet(isPresented: $onCamera) {
-                    ImagePicker(sourceType: .camera) { (pickedImage) in
-                        profileImage = Image(uiImage: pickedImage)
-                        profilUiImage = pickedImage
-                    }
-                }
-            // 사진 앨범 선택
-                .sheet(isPresented: $onPhotoLibrary) {
-                    ImagePicker(sourceType: .photoLibrary) { (pickedImage) in
-                        profileImage = Image(uiImage: pickedImage)
-                        profilUiImage = pickedImage
-                    }
-                }
-                .actionSheet(isPresented: $presentsImagePicker) {
-                    ActionSheet(
-                        title: Text("이미지 선택하기"),
-                        message: nil,
-                        buttons: [
-                            .default(
-                                Text("카메라"),
-                                action: { onCamera = true }
-                            ),
-                            .default(
-                                Text("사진 앨범"),
-                                action: { onPhotoLibrary = true }
-                            ),
-                            .cancel(
-                                Text("돌아가기")
-                            )
-                        ]
-                    )
-                }
-            
+//            profileImage
+//                .resizable()
+//                .frame(width: 150, height: 150)
+//                .clipShape(Circle())
+//                .overlay {
+//                    Circle().stroke(.white, lineWidth: 4)
+//                }
+//                .shadow(radius:7)
+//                .padding()
+//                .onTapGesture {
+//                    presentsImagePicker = true
+//                }
+//            // 카메라 선택
+//                .sheet(isPresented: $onCamera) {
+//                    ImagePicker(sourceType: .camera) { (pickedImage) in
+//                        profileImage = Image(uiImage: pickedImage)
+//                        profilUiImage = pickedImage
+//                    }
+//                }
+//            // 사진 앨범 선택
+//                .sheet(isPresented: $onPhotoLibrary) {
+//                    ImagePicker(sourceType: .photoLibrary) { (pickedImage) in
+//                        profileImage = Image(uiImage: pickedImage)
+//                        profilUiImage = pickedImage
+//                    }
+//                }
+//                .actionSheet(isPresented: $presentsImagePicker) {
+//                    ActionSheet(
+//                        title: Text("이미지 선택하기"),
+//                        message: nil,
+//                        buttons: [
+//                            .default(
+//                                Text("카메라"),
+//                                action: { onCamera = true }
+//                            ),
+//                            .default(
+//                                Text("사진 앨범"),
+//                                action: { onPhotoLibrary = true }
+//                            ),
+//                            .cancel(
+//                                Text("돌아가기")
+//                            )
+//                        ]
+//                    )
+//                }
+
             //Name TextField
             Section(
                 header: Text("닉네임").bold(),
@@ -112,29 +114,31 @@ struct RegisterView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        registerUser()
+                        registerVM.registerUser()
                     }) {
                         Text("Sign up")
                     }.disabled(!registerVM.isValid)
                     Spacer()
                 }
             }
-            .onReceive(registerVM.registrationSuccess, perform: {
-                print("registerVM - Registration Success")
-                presentationMode.wrappedValue.dismiss()
-            })
+            .onReceive(registerVM.$didRegisterUser){ success in
+                print("registerVM - Registration Success -> \(success)")
+                if success {
+                    registerVM.didRegisterUser = false
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
             
             Spacer()
         }
         
         .padding()
     }
-    
-    func registerUser() {
-        print("RegisterView - signUp() called")
-        registerVM.registerUser()
-        FirebaseService.uploadImage(image: profilUiImage?.jpegData(compressionQuality: 0.5), imageName: "profileImage_\(registerVM.emailInput)")
-    }
+//
+//    func registerUser() {
+//        print("RegisterView - signUp() called")
+//        registerVM.registerUser()
+//    }
 }
 
 //struct RegisterView_Previews: PreviewProvider {

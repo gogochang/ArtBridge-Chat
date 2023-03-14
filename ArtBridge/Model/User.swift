@@ -8,10 +8,11 @@
 import FirebaseFirestoreSwift
 import Firebase
 
-struct UserTemp: Identifiable, Decodable {
+struct User: Identifiable, Decodable {
     @DocumentID var id: String?
     let username: String
-    let profileImageUrl: String
+    let profileUrl: String
+    let uid: String
     let email: String
     
     var isCurrentUser: Bool {

@@ -14,9 +14,12 @@ import KakaoSDKUser
 //import GoogleSignIn
 
 class UserVM: ObservableObject {
+    let service = UserService()
+    
     var subscription = Set<AnyCancellable>()
     
-    @Published var currentUser: Firebase.User?
+    @Published var userSession: Firebase.User?
+    @Published var currentUser: User?
     @Published var loggedUser: firesotreUsers?
     @Published var data = Data()
     
@@ -29,85 +32,36 @@ class UserVM: ObservableObject {
     // 로그인 완료 이벤트
     var logInSuccess = PassthroughSubject<(), Never>()
     
+    @Published  var didLoginUser = false
+    
     // 로그인 하기
     func logIn() {
         print("UserVM - logIn() called")
-        FirebaseService.logIn(email: emailInput, password: passwordInput) {
-            self.getCurrentUser()
+        service.logIn(email: emailInput, password: passwordInput) { user in
+            self.userSession = user
+            self.fetchUser()
+            self.didLoginUser = true
         }
     }
-    
-    func kakaoLogIn() {
-        if (UserApi.isKakaoTalkLoginAvailable()) {
-            // 카카오톡이 다운로드 되어있으면 실행
-            UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
-                print("changgyu1",oauthToken)
-                print(error)
-                self.logInSuccess.send()
-            }
-        } else {
-            // 카카오톡이 다운로드 되어있지 않으면 웹으로 실행
-            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-                if let error = error {
-                    print("KakaoLogin Error: \(error)")
-                } else {
-//                    print("changgyu2",oauthToken)
-                    UserApi.shared.me { (User, error) in
-                        if let error = error {
-                            print("UserVM - kakaoLogIn Error2: \(error)")
-                        } else {
-                            //카카오 로그인이 성공하여 계정 정보를 가져오는게 성공하면 실행
-                            print("UserVM - kakaoLogin User")
-                            // 카카오 계정 정보를 가지고 회원가입 실행
-                            FirebaseService.registerUser(userName: (User?.kakaoAccount?.profile?.nickname)!, email: (User?.kakaoAccount?.email)!, password: "\(String(describing: User?.id))", url: (User?.kakaoAccount?.profile?.profileImageUrl)!.absoluteString) {
-                                self.getCurrentUser()
-                                self.logInSuccess.send()
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func kakaoLogOut() {
-        print("UserVM - kakaoLotOut() called")
-        UserApi.shared.logout { error in
-            if let error = error {
-                print("UserVM - kakaoLogOut() error : \(error)")
-            } else {
-                print("UserVM - kakaoLogOut() success")
-            }
+
+    // 유저 정보를 currentUser(User Struct)에 저장
+    func fetchUser() {
+        print("UserVM - fetchUser() called")
+        guard let uid = self.userSession?.uid else { return }
+        service.fetchUser(uid: uid) { user in
+            self.currentUser = user
         }
     }
     
     // 로그아웃
     func logOut() {
         print("UserVM - logOut() called")
-        FirebaseService.logOut() {
-            self.currentUser = nil
-            self.loggedUser = nil
-            self.emailInput = ""
-            self.passwordInput = ""
-            self.data = Data()
-        }
-        kakaoLogOut()
-    }
-    // 현재 유저 가져오기
-    func getCurrentUser() {
-        print("UserVM - currentUser() called")
-        currentUser = FirebaseService.getCurrentUser()
-        if let user = currentUser {
-            FirebaseService.getUserWithUid(destinationUid: user.uid) { loadInfo in
-                print("chchchchchch -> \(loadInfo)")
-                // firestoreUsers 타입의 데이터를 가져와서 변수에 저장!
-                self.loggedUser = loadInfo
-                // 가져온 URL로 이미지 데이터를 가져오는 함수 실행!!
-                self.getDataFromUrl(urlString: loadInfo.url)
-            }
-        } else {
-            print("UserVM - guetUserFromFirestore() curreuntUser is nil")
-        }
+        // 로그인 확인 false
+        didLoginUser = false
+        // user
+        userSession = nil
+        currentUser = nil
+        try? Auth.auth().signOut()
     }
     
     func getDataFromUrl(urlString: String) {

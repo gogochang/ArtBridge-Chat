@@ -17,7 +17,7 @@ struct MyPageView: View {
     @State private var url: String = ""
     @State private var profileImg: UIImage? = UIImage(systemName: "person.circle")
     @State var isLogged: Bool = false
-        
+    
     @EnvironmentObject var userVM : UserVM
     
     var body: some View {
@@ -27,17 +27,23 @@ struct MyPageView: View {
                     self.showModal = true
                 }) {
                     HStack() {
-                        Image(uiImage: profileImg!)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .overlay {
-                                Circle().stroke(.white, lineWidth: 4)
+                        AsyncImage(
+                            url: URL(string: userVM.currentUser?.profileUrl ?? ""),
+                            content: { image in
+                                image
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+                                    .overlay {
+                                        Circle().stroke(.white, lineWidth: 4)
+                                    }.shadow(radius: 2)
+                            },
+                            placeholder: {
                             }
-                            .shadow(radius: 7)
+                        )
                         VStack(alignment: .leading) {
-                            Text(self.username ?? "로그인이 필요합니다.")
-                            Text(self.email ?? "")
+                            Text(userVM.currentUser?.username ?? "로그인이 필요합니다.").bold()
+                            Text(userVM.currentUser?.email ?? "")
                         }
                         Spacer()
                     }.foregroundColor(Color.black)
@@ -85,18 +91,6 @@ struct MyPageView: View {
                 .disabled(!isLogged)
             }
         }//ScrollView
-        .onReceive(userVM.$loggedUser, perform: { loggedUser in
-            print("MyPAgeView - onReceive() called")
-            if let user = loggedUser {
-                self.email = user.email
-                self.username = user.username
-                self.url = user.url
-            } else {
-                self.email = nil
-                self.username = nil
-                self.url = ""
-            }
-        })
         .onReceive(userVM.$data) { data in
             print("MyPAgeView - onReceive() called")
             self.profileImg = UIImage(data: data) ?? UIImage(systemName: "person.circle")

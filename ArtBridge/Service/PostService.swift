@@ -14,8 +14,11 @@ struct PostService {
     //MARK: - 게시글 올리기
     func uploadPost(title: String, content: String, image: UIImage?, completion: @escaping(Bool) -> Void) {
         print("PostService - uploadPost() called")
-        guard let user = Auth.auth().currentUser else { return }
-        
+        guard let user = Auth.auth().currentUser else {
+//            completion(false)
+            return
+        }
+        print("PostService - uploadPost() called \(user)")
         if let image = image {
             ImageUploader.uploadImage(image: image) { imageUrl in
                 let data = ["uid": user.uid,
@@ -23,10 +26,11 @@ struct PostService {
                             "content": content,
                             "likes": 0,
                             "author": user.displayName ?? "anonymous",
+                            "profileUrl" : user.photoURL?.absoluteString ?? "",
                             "imageUrl": imageUrl,
                             "timestamp": Timestamp(date: Date())] as [String: Any]
-                
-                
+
+
                 Firestore.firestore().collection("posts").document().setData(data) { error in
                     if let error = error {
                         print("PostService - uploadPost() Error : \(error.localizedDescription)")
@@ -34,20 +38,22 @@ struct PostService {
                         return
                     }
                     print("PostService - uploadPost() upload success")
-                    
+
                     completion(true)
                 }
             }
         } else {
+            print("chang coffee -> \(user.displayName) ,  \(user.photoURL)")
             let data = ["uid": user.uid,
                         "title": title,
                         "content": content,
                         "likes": 0,
                         "author": user.displayName ?? "anonymous",
+                        "profileUrl" : user.photoURL?.absoluteString ?? "",
                         "imageUrl": "",
                         "timestamp": Timestamp(date: Date())] as [String: Any]
-            
-            
+
+
             Firestore.firestore().collection("posts").document().setData(data) { error in
                 if let error = error {
                     print("PostService - uploadPost() Error : \(error.localizedDescription)")
@@ -55,7 +61,7 @@ struct PostService {
                     return
                 }
                 print("PostService - uploadPost() upload success")
-                
+
                 completion(true)
             }
         }
@@ -109,7 +115,7 @@ struct PostService {
                     "comment": comment,
                     "likes": 0,
                     "author": user.displayName ?? "nil",
-                    "imageUrl": "",
+                    "profileUrl": user.photoURL?.absoluteString ?? "nil",
                     "timestamp": Timestamp(date: Date())] as [String: Any]
 
         Firestore.firestore().collection("posts").document(post.id!).collection("comment").document()

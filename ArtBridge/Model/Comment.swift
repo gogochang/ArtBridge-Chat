@@ -10,9 +10,11 @@ import Firebase
 
 struct Comment: Identifiable, Decodable {
     @DocumentID var id: String?
+    let uid: String
     var comment: String
     var likes: Int
-    let timestamp: Timestamp
     let author: String
-    let uid: String
+    var profileUrl: String
+    let timestamp: Timestamp
+    
 }

@@ -30,8 +30,19 @@ struct BoardView: View {
                     
                     // 글 작성자, 날짜
                     HStack() {
-                        Image(systemName: "person.fill")
-                        
+//                        Image(systemName: "person.fill")
+                        AsyncImage(
+                            url: URL(string:postData.profileUrl),
+                            content: { image in
+                                image
+                                    .resizable()
+                                    .frame(maxWidth: 50, maxHeight: 50)
+                                    .cornerRadius(12)
+                            },
+                            placeholder: {
+                                
+                            }
+                        )
                         VStack(alignment: .leading) {
                             Text(postData.author).bold()
                             HStack() {
@@ -70,10 +81,24 @@ struct BoardView: View {
                             ForEach(comments) { comment in
                                 VStack() {
                                     HStack(alignment: .top) {
-                                        Image(systemName: "person.circle")
-                                            .resizable()
-                                            .frame(width: 25, height: 25)
-                                            
+                                        if let url = comment.profileUrl {
+                                            AsyncImage(
+                                                url: URL(string:url),
+                                                content: { image in
+                                                    image
+                                                        .resizable()
+                                                        .frame(width: 25, height: 25)
+                                                        .cornerRadius(12)
+                                                },
+                                                placeholder: {
+
+                                                }
+                                            )
+                                        }
+//                                        Image(systemName: "person.circle")
+//                                            .resizable()
+//                                            .frame(width: 25, height: 25)
+//
                                         VStack(alignment: .leading) {
                                             Text(comment.author).bold()
                                             Text(comment.timestamp.dateValue().toString().components(separatedBy: " ")[0]).opacity(0.5).font(.system(size:12))
@@ -82,7 +107,6 @@ struct BoardView: View {
                                         }
                                     }
                                 }
-                                //                            .padding([.bottom],10)
                             }
                         }
                         .listStyle(PlainListStyle())

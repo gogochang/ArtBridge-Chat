@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import Alamofire
+import Firebase
 
 struct LoginView: View {
     
@@ -24,7 +25,7 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State var tag:Int? = nil
-    
+    @State var didLoginUser = false
     var disabledButton: Bool = true
     
     var body: some View {
@@ -103,15 +104,15 @@ struct LoginView: View {
                     }
                 })//로그인 Button
                 .shadow(radius: 3)
-    
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                .onReceive(userVM.logInSuccess, perform: {
-                    print("userVM - Registration Success")
-                    presentationMode.wrappedValue.dismiss()
-                    print("isLogged true???? \(isLogged)")
-                    isLogged = true
-                })
-                
+                .onReceive(userVM.$didLoginUser) { success in
+                    if success {
+                        print("LoginView - didLoginUser Success")
+                        userVM.didLoginUser = false
+                        isLogged = true
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
                 HStack() {
                     Spacer()
                     Button(action:{}) {
@@ -126,14 +127,19 @@ struct LoginView: View {
                     Spacer()
                 }.foregroundColor(Color.gray)
                 Spacer()
-                Group {
-                    // 카카오 로그인 버튼
-                    KakaoLoginView()
-                    NaverLoginView()
-                    FaceBookLoginView()
-                    AppleLoginView()
-                    
-                }//Group
+//                Group {
+//                    // 카카오 로그인 버튼
+//                    KakaoLoginView()
+//                    NaverLoginView()
+//                    FaceBookLoginView()
+//                    AppleLoginView()
+//                }//Group
+                Button(action: {
+                    print("chang current user -> \(userVM.currentUser)")
+                    print("chang current user -> \(Auth.auth().currentUser)")
+                }, label: {
+                    Text("지금 유저 ?")
+                })
                 Spacer()
             }//VStack
         }//NavigationView

@@ -15,7 +15,7 @@ struct KakaoLoginView: View {
     var body: some View {
         Button(action: {
             print("LoginView - Clicked kakao Button")
-            userVM.kakaoLogIn()
+//            userVM.kakaoLogIn()
         }, label: {
                 Image("kakao_login_large_wide")
         })

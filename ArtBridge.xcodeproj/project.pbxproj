@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		951F367629A0B03500E5978C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F367529A0B03500E5978C /* ChatListView.swift */; };
+		953587B229BF50C4006CBA19 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953587B129BF50C4006CBA19 /* UserService.swift */; };
 		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
 		95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95482920299F75CA0054CB9A /* FirebaseService.swift */; };
 		954ADC40299B86C000C715F8 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3F299B86C000C715F8 /* UserVM.swift */; };
@@ -81,6 +82,7 @@
 		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
 		95035AEA29B3280100B6259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951F367529A0B03500E5978C /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		953587B129BF50C4006CBA19 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		95482920299F75CA0054CB9A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		954ADC3F299B86C000C715F8 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				95482920299F75CA0054CB9A /* FirebaseService.swift */,
 				95AC51DD29BB12A800F7CBED /* PostService.swift */,
 				95AC51E329BB4C2600F7CBED /* ImageUploader.swift */,
+				953587B129BF50C4006CBA19 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */,
 				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
 				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
+				953587B229BF50C4006CBA19 /* UserService.swift in Sources */,
 				9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */,
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
 				95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */,

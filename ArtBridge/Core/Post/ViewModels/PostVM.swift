@@ -30,7 +30,6 @@ class PostVM: ObservableObject {
             if success {
                 self.didUploadPost = true
                 print("PostVM - uploadPost success")
-                
             } else {
                 print("PostVM - uploadPost fail")
             }
@@ -72,6 +71,7 @@ class PostVM: ObservableObject {
     
     //MARK: - Firebase 게시글 댓글 달기
     func addComment(post: Post, comment: String) {
+        print("PostVM - addComment")
         service.addComment(post, comment: comment) { success in
             if success {
                 print("PostVM - addComment success")

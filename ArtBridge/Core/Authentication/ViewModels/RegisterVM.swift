@@ -10,6 +10,7 @@ import Alamofire
 import Combine
 
 class RegisterVM: ObservableObject {
+    let service = UserService()
 
     var subscription = Set<AnyCancellable>()
 
@@ -28,6 +29,8 @@ class RegisterVM: ObservableObject {
     @Published var passwordMessage = ""
     @Published var isValid = false
     
+    //회원가입 완료 여부 체크
+    @Published var didRegisterUser = false
     //MARK: - 초기화 할 때 RegisterVM(자신)의 Publisher를 구독
     private var cancellables = Set<AnyCancellable>()
     
@@ -77,8 +80,16 @@ class RegisterVM: ObservableObject {
     func registerUser() {
         print("RegisterVM - registerUser() called")
         if isValid {
-            FirebaseService.registerUser(userName: userNameInput, email: emailInput, password: passwordInput, url: "") {
-                self.registrationSuccess.send()
+            service.register(email: emailInput,
+                             password: passwordInput,
+                             username: userNameInput) { success in
+                if success {
+                    print("RegisterVM - registerUser() success")
+                    self.didRegisterUser = true
+                    return
+                } else {
+                    print("RegisterVM - registerUser() Fail")
+                }
             }
         } else {
             print("RegisterVM - registerUser() Invalid")
