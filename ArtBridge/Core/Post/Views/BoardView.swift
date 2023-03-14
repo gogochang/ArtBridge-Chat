@@ -37,7 +37,7 @@ struct BoardView: View {
                                 image
                                     .resizable()
                                     .frame(maxWidth: 50, maxHeight: 50)
-                                    .cornerRadius(12)
+                                    .clipShape(Circle())
                             },
                             placeholder: {
                                 

@@ -32,7 +32,8 @@ class UserVM: ObservableObject {
     // 로그인 완료 이벤트
     var logInSuccess = PassthroughSubject<(), Never>()
     
-    @Published  var didLoginUser = false
+    @Published var didLoginUser = false
+    @Published var didUpdateUser = false
     
     // 로그인 하기
     func logIn() {
@@ -51,6 +52,16 @@ class UserVM: ObservableObject {
         service.fetchUser(uid: uid) { user in
             self.currentUser = user
         }
+    }
+    
+    // 유저 정보 변경
+    func updateUser(displayName: String?, profileUrl: String?) {
+        print("UserVM - updateUser() called")
+        guard let user = self.userSession else { return }
+        service.editUser(username: displayName ?? user.displayName!,
+                         profileUrl: profileUrl ?? (user.photoURL?.absoluteString)!)
+        fetchUser()
+        didUpdateUser = true
     }
     
     // 로그아웃

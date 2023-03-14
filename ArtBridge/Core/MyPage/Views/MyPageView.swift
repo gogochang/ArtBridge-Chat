@@ -16,8 +16,11 @@ struct MyPageView: View {
     @State private var username: String?
     @State private var url: String = ""
     @State private var profileImg: UIImage? = UIImage(systemName: "person.circle")
-    @State var isLogged: Bool = false
+    @State private var isLogged: Bool = false
     
+    //Image Picker
+    @State private var onPhotoLibrary = false
+    @State private var presentsImagePicker = false
     @EnvironmentObject var userVM : UserVM
     
     var body: some View {
@@ -54,7 +57,47 @@ struct MyPageView: View {
                 }.padding()
                 
                 Divider()
+                // [Temp] 프로필 사진 변경 Button
+                Button(action: {
+                    print("프로필 사진 변경 버튼 클릭되었습니다.")
+                    presentsImagePicker = true
+                }) {
+                    HStack() {
+                        Text("프로필 사진 변경")
+                        Spacer()
+                    }
+                }
+                .padding()
                 
+                .sheet(isPresented: $onPhotoLibrary) {
+                    // 이미지 선택
+                    ImagePicker(sourceType: .photoLibrary) { pickedImage in
+                        LoadingIndicator.showLoading()
+                        // 선택된 이미지 Storage에 업로드
+                        ImageUploader.uploadImage(image: pickedImage) { url in
+                            //업로드된 이미지의 url을 유저정보에 새롭게 업데이트
+                            userVM.updateUser(displayName: nil, profileUrl: url)
+                        }
+                    }
+                }
+                .actionSheet(isPresented: $presentsImagePicker) {
+                    ActionSheet(
+                        title: Text("이미지 선택하기"),
+                        message: nil,
+                        buttons: [
+                            .default(
+                                Text("사진 앨범"),
+                                action: { onPhotoLibrary = true }
+                            ),
+                            .cancel(
+                                Text("돌아가기")
+                            )
+                        ]
+                    )
+                }
+                .disabled(!isLogged)
+                
+                Divider()
                 // 계정설정 Button
                 Button(action: {
                     print("계정설정 버튼 클릭되었습니다.")
@@ -94,6 +137,12 @@ struct MyPageView: View {
         .onReceive(userVM.$data) { data in
             print("MyPAgeView - onReceive() called")
             self.profileImg = UIImage(data: data) ?? UIImage(systemName: "person.circle")
+        }
+        .onReceive(userVM.$didUpdateUser) { success in
+            if success {
+                userVM.didUpdateUser = false
+                LoadingIndicator.hideLoading()
+            }
         }
     }
 }
