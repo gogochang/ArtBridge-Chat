@@ -92,6 +92,19 @@ class PostVM: ObservableObject {
         }
     }
     
+    //MARK: - Firebase 게시글 댓글 삭제
+    func deleteComment(post: Post, comment: Comment) {
+        print("PostVM - deleteComment() called")
+        service.deleteComment(post, comment) { success in
+            if success {
+                print("PostVM - deleteComment() success")
+                self.getComment(post: post)
+            } else {
+                print("PostVM - deleteComment() fail")
+            }
+        }
+    }
+    
     //MARK: - Image 업로드
 //    func uploadImage(image: UIImage?) {
 //        print("PostVM - uploadImage called")

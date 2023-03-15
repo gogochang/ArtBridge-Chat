@@ -12,32 +12,42 @@ struct BoardView: View {
     @ObservedObject var viewModel = PostVM()
     @Environment(\.presentationMode) var presentationMode
     
+    // 댓글 TextField
     @State private var commentText: String = ""
+    
+    // 게시판 추가 메뉴
     @State private var presentsAlert: Bool = false
     @State private var presentsBoardEditor: Bool = false
+    // 댓글 추가 메뉴
+    @State private var presentsCommentAlert: Bool = false
+    @State private var presentsCommentEditor: Bool = false
     @State var postData: Post
     
     @State var comments = [Comment]()
+    @State private var currentComment: Comment?
+    
     var body: some View {
         NavigationView {
             ScrollView() {
                 VStack(alignment: .leading) {
-                    // 제목
+                    //MARK: - 게시그 제목
                     Text(postData.title)
                         .font(.title3)
                         .bold()
                         .padding([.bottom], 5)
                     
-                    // 글 작성자, 날짜
+                    //MARK: - 글 작성자, 날짜
                     HStack() {
-//                        Image(systemName: "person.fill")
                         AsyncImage(
                             url: URL(string:postData.profileUrl),
                             content: { image in
                                 image
                                     .resizable()
-                                    .frame(maxWidth: 50, maxHeight: 50)
+                                    .frame(maxWidth: 25, maxHeight: 25)
                                     .clipShape(Circle())
+                                    .overlay { Circle().stroke(.white, lineWidth: 1) }
+                                    .shadow(radius: 1)
+                                    
                             },
                             placeholder: {
                                 
@@ -58,7 +68,10 @@ struct BoardView: View {
                     Divider()
                         .padding([.bottom], 20)
                     
+                    //MARK: - 게시글 내용
                     Text(postData.content)
+                    
+                    //MARK: - 게시글 이미지
                     if let url = postData.imageUrl {
                         AsyncImage(
                             url: URL(string:url),
@@ -73,52 +86,9 @@ struct BoardView: View {
                             }
                         )
                     }
-                    Divider()
-                    Text("댓글").bold()
-                    Divider()
+                    //MARK: - 댓글 Group
                     Group {
-                        VStack(alignment: .leading) {
-                            ForEach(comments) { comment in
-                                VStack() {
-                                    HStack(alignment: .top) {
-                                        if let url = comment.profileUrl {
-                                            AsyncImage(
-                                                url: URL(string:url),
-                                                content: { image in
-                                                    image
-                                                        .resizable()
-                                                        .frame(width: 25, height: 25)
-                                                        .cornerRadius(12)
-                                                },
-                                                placeholder: {
-
-                                                }
-                                            )
-                                        }
-                                        VStack(alignment: .leading) {
-                                            Text(comment.author).bold()
-                                            Text(comment.timestamp.dateValue().toString().components(separatedBy: " ")[0]).opacity(0.5).font(.system(size:12))
-                                            Text(comment.comment)
-                                                .padding([.top], 2)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        .listStyle(PlainListStyle())
-                        .onAppear(perform : {viewModel.getComment(post: postData)})
-                        .onReceive(viewModel.$comments, perform: { self.comments = $0 })
-                        
-                        HStack() {
-                            TextField("댓글 작성하기", text: $commentText).background()
-                            Button(action: {
-                                print("SendButton is Clicked")
-                                viewModel.addComment(post: postData, comment: commentText)
-                                self.commentText = ""
-                            }, label: {
-                                Text("Send")
-                            })
-                        }
+                        commentList
                     }
                 }//VStack
                 .padding()
@@ -147,7 +117,7 @@ struct BoardView: View {
                 .foregroundColor(Color.black)
         }))
         
-        // 더보기 메뉴
+        //MARK: - 게시글 더보기 메뉴
         .confirmationDialog("",isPresented: $presentsAlert, titleVisibility: .hidden) {
             Button("수정") {
                 presentsBoardEditor = true
@@ -158,10 +128,90 @@ struct BoardView: View {
             }
             Button("취소", role: .cancel) {}
         }
+
+        //MARK: - 게시글 수정 화면으로 이동
         .fullScreenCover(isPresented: $presentsBoardEditor) {
             BoardEditView(postData: $postData)
+
         }
 
+    }
+    
+}
+
+extension BoardView {
+    var commentList: some View {
+        VStack(alignment: .leading) {
+            Divider()
+            Text("댓글").bold()
+            Divider()
+            
+            VStack(alignment: .leading) {
+                ForEach(comments) { comment in
+                    VStack() {
+                        HStack(alignment: .top) {
+                            if let url = comment.profileUrl {
+                                AsyncImage(
+                                    url: URL(string:url),
+                                    content: { image in
+                                        image
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                            .clipShape(Circle())
+                                            .overlay { Circle().stroke(.white, lineWidth: 1) }
+                                            .shadow(radius: 1)
+                                    },
+                                    placeholder: {
+                                        
+                                    }
+                                )
+                            }
+                            VStack(alignment: .leading) {
+                                Text(comment.author).bold().bold().font(.system(size:15))
+                                Text(comment.timestamp.dateValue().toString().components(separatedBy: " ")[0]).opacity(0.5).font(.system(size:12))
+                                Text(comment.comment)
+                            }
+                            Spacer()
+                            Button(action: {
+                                print("Comment button is clicked")
+                                presentsCommentAlert = true
+                                currentComment = comment
+                            }, label: {
+                                Image(systemName: "ellipsis")
+                                    .foregroundColor(Color.black)
+                            })
+                        }
+                    }
+                }
+            }
+            .listStyle(PlainListStyle())
+            .onAppear(perform : {viewModel.getComment(post: postData)})
+            .onReceive(viewModel.$comments, perform: { self.comments = $0 })
+            
+            HStack() {
+                TextField("댓글 작성하기", text: $commentText).background()
+                Button(action: {
+                    print("SendButton is Clicked")
+                    viewModel.addComment(post: postData, comment: commentText)
+                    self.commentText = ""
+                }, label: {
+                    Text("Send")
+                })
+            }
+        }
+        //MARK: - 댓글 더보기 메뉴
+        .confirmationDialog("", isPresented: $presentsCommentAlert, titleVisibility: .hidden) {
+            Button("수정") {
+                //TODO: 댓글 수정화면으로 이동
+                presentsCommentEditor = true
+            }
+            Button("삭제", role: .destructive) {
+                //TODO: 댓글 삭제 기능 추가
+                print("delete Button is Clicked -> \(currentComment?.comment)")
+                viewModel.deleteComment(post: postData, comment: currentComment!)
+            }
+            Button("취소", role: .cancel) {}
+        }
     }
 }
 

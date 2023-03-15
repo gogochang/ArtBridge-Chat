@@ -130,6 +130,19 @@ struct PostService {
             }
     }
     
+    //MARK: - 게시글 댓글 삭제하기
+    func deleteComment(_ post: Post,_ comment:Comment, completion: @escaping(Bool) -> Void) {
+        print("PostService - deletePost() call -> \(comment.id!)")
+        Firestore.firestore().collection("posts").document(post.id!).collection("comment").document(comment.id!)
+            .delete() { error in
+                if let error = error {
+                    print("PostService - deletePost() Error : \(error.localizedDescription)")
+                    completion(false)
+                }
+                completion(true)
+            }
+    }
+    
     //MARK: - 게시글 댓글 가져오기
     func getComment(_ post: Post, completion: @escaping ([Comment]) -> Void) {
         print("PostService - getComment() called")
