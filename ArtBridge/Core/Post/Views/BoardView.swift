@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BoardView: View {
     
-    @ObservedObject var viewModel = PostVM()
+    @EnvironmentObject var viewModel: PostVM
     @Environment(\.presentationMode) var presentationMode
     
     // 댓글 TextField
@@ -24,7 +24,7 @@ struct BoardView: View {
     @State var postData: Post
     
     @State var comments = [Comment]()
-    @State private var currentComment: Comment?
+    @State var currentComment: Comment?
     
     var body: some View {
         NavigationView {
@@ -132,14 +132,13 @@ struct BoardView: View {
         //MARK: - 게시글 수정 화면으로 이동
         .fullScreenCover(isPresented: $presentsBoardEditor) {
             BoardEditView(postData: $postData)
-
         }
-
     }
     
 }
 
 extension BoardView {
+    //MARK: - 댓글 View
     var commentList: some View {
         VStack(alignment: .leading) {
             Divider()
@@ -207,10 +206,16 @@ extension BoardView {
             }
             Button("삭제", role: .destructive) {
                 //TODO: 댓글 삭제 기능 추가
-                print("delete Button is Clicked -> \(currentComment?.comment)")
+                print("delete Button is Clicked")
+                // 댓글 추가메뉴가 클릭되면 currentComment에 할당되기 때문에 강제 언랩핑을 사용함
                 viewModel.deleteComment(post: postData, comment: currentComment!)
             }
             Button("취소", role: .cancel) {}
+        }
+        //MARK: - 게시글 수정 화면으로 이동
+        .fullScreenCover(isPresented: $presentsCommentEditor) {
+            // 댓글 추가메뉴가 클릭되면 currentComment에 할당되기 때문에 강제 언랩핑을 사용함
+            CommentEditView(postData: postData, comment: currentComment!)
         }
     }
 }

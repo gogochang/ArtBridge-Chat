@@ -14,11 +14,8 @@ struct PostService {
     //MARK: - 게시글 올리기
     func uploadPost(title: String, content: String, image: UIImage?, completion: @escaping(Bool) -> Void) {
         print("PostService - uploadPost() called")
-        guard let user = Auth.auth().currentUser else {
-//            completion(false)
-            return
-        }
-        print("PostService - uploadPost() called \(user)")
+        guard let user = Auth.auth().currentUser else { return }
+
         if let image = image {
             ImageUploader.uploadImage(image: image) { imageUrl in
                 let data = ["uid": user.uid,
@@ -43,7 +40,6 @@ struct PostService {
                 }
             }
         } else {
-            print("chang coffee -> \(user.displayName) ,  \(user.photoURL)")
             let data = ["uid": user.uid,
                         "title": title,
                         "content": content,
@@ -153,6 +149,19 @@ struct PostService {
                 
                 let comments = documents.compactMap({ try? $0.data(as: Comment.self)})
                 completion(comments)
+            }
+    }
+    
+    //MARK: - 게시글 댓글 수정하기
+    func editComment(_ post: Post, _ comment: Comment, commentText: String, completion: @escaping(Bool) -> Void) {
+        print("PostService - editComment() called")
+        Firestore.firestore().collection("posts").document(post.id!).collection("comment").document(comment.id!)
+            .updateData(["comment": commentText]) { error in
+                if let error = error {
+                    print("PostService - editComment() Error : \(error.localizedDescription)")
+                    completion(false)
+                }
+                completion(true)
             }
     }
     

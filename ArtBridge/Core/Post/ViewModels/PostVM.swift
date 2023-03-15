@@ -87,6 +87,7 @@ class PostVM: ObservableObject {
         service.getComment(post) { comment in
             for index in 0 ..< comment.count {
                 let uid = comment[index].uid
+                print("chang comment -> \(comment)")
                 self.comments = comment
             }
         }
@@ -101,6 +102,19 @@ class PostVM: ObservableObject {
                 self.getComment(post: post)
             } else {
                 print("PostVM - deleteComment() fail")
+            }
+        }
+    }
+    
+    //MARK: - Firebase 게시글 댓글 수정
+    func editComment(post: Post, comment: Comment, content: String) {
+        print("PostVM - editComment() called")
+        service.editComment(post, comment, commentText: content) { success in
+            if success {
+                print("PostVM - editComment() success")
+                self.getComment(post: post)
+            } else {
+                print("PostVM - editComment() fail")
             }
         }
     }

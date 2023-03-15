@@ -43,6 +43,7 @@
 		95D993C429BEF5FF009C4FB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */; };
 		95D993C629BEFC6A009C4FB4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D993C529BEFC6A009C4FB4 /* Comment.swift */; };
 		95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E00B1D29B21D9000F2A565 /* ChatVM.swift */; };
+		95E72DAC29C1979D002FDFA1 /* CommentEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
 		95E8717829850D4E00096049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E8717729850D4E00096049 /* Assets.xcassets */; };
@@ -116,6 +117,7 @@
 		95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95D993C529BEFC6A009C4FB4 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		95E00B1D29B21D9000F2A565 /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
+		95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEditView.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
 		95E8717529850D4D00096049 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				95B39938298A5B0A00E7BD3D /* BoardView.swift */,
 				95C84D76298F858B0023C412 /* BoardCreateView.swift */,
 				9579BE39299105B100785E2E /* BoardEditView.swift */,
+				95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
 				953587B229BF50C4006CBA19 /* UserService.swift in Sources */,
 				9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */,
+				95E72DAC29C1979D002FDFA1 /* CommentEditView.swift in Sources */,
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
 				95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */,
 				954ADC40299B86C000C715F8 /* UserVM.swift in Sources */,
