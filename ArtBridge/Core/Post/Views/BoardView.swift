@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct BoardView: View {
     
@@ -14,6 +15,9 @@ struct BoardView: View {
     
     // 댓글 TextField
     @State private var commentText: String = ""
+    
+    // 권한 경고창
+    @State private var warningAlert: Bool = false
     
     // 게시판 추가 메뉴
     @State private var presentsAlert: Bool = false
@@ -84,7 +88,7 @@ struct BoardView: View {
                             placeholder: {
 
                             }
-                        )
+                        ).padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
                     }
                     //MARK: - 댓글 Group
                     Group {
@@ -111,7 +115,11 @@ struct BoardView: View {
             // 더보기 상단 버튼
             trailing: Button(action: {
             print("Success Button is Clicked")
-                presentsAlert = true
+                if postData.uid == Auth.auth().currentUser?.uid {
+                    presentsAlert = true
+                } else {
+                    warningAlert = true
+                }
         }, label: {
             Image(systemName: "ellipsis")
                 .foregroundColor(Color.black)
@@ -132,6 +140,12 @@ struct BoardView: View {
         //MARK: - 게시글 수정 화면으로 이동
         .fullScreenCover(isPresented: $presentsBoardEditor) {
             BoardEditView(postData: $postData)
+        }
+        //MARK: - 경고 알림창
+        .alert("Error", isPresented: $warningAlert) {
+            Button("Ok") {}
+        } message: {
+            Text("권한이 없습니다.")
         }
     }
     
@@ -173,8 +187,12 @@ extension BoardView {
                             Spacer()
                             Button(action: {
                                 print("Comment button is clicked")
-                                presentsCommentAlert = true
-                                currentComment = comment
+                                if comment.uid == Auth.auth().currentUser?.uid {
+                                    presentsCommentAlert = true
+                                    currentComment = comment
+                                } else {
+                                    warningAlert = true
+                                }
                             }, label: {
                                 Image(systemName: "ellipsis")
                                     .foregroundColor(Color.black)
