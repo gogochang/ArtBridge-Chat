@@ -62,8 +62,7 @@ class PostVM: ObservableObject {
     func fetchPosts() {
         print("PostVM - fetchPosts called")
         service.fetchPosts { posts in
-            for index in 0 ..< posts.count {
-                let uid = posts[index].uid
+            for _ in 0 ..< posts.count {
                 self.posts = posts
             }
         }
@@ -85,10 +84,12 @@ class PostVM: ObservableObject {
     //MARK: - Firebase 게시글 댓글 가져오기
     func getComment(post: Post) {
         service.getComment(post) { comment in
-            for index in 0 ..< comment.count {
-                let uid = comment[index].uid
-                print("chang comment -> \(comment)")
-                self.comments = comment
+            if comment.count == 0 {
+                self.comments = [Comment]()
+            } else {
+                for _ in 0 ..< comment.count {
+                    self.comments = comment
+                }
             }
         }
     }
