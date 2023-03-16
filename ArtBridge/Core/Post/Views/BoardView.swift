@@ -207,27 +207,26 @@ extension BoardView {
             
             HStack {
                 // TextField 설정
-                TextField("댓글을 입력하세요", text: $commentText)
-                    .padding(.vertical, 12)
-                    .padding(.horizontal, 16)
-                    .background(Color(red: 0.95, green: 0.95, blue: 0.95))
-                    .cornerRadius(16)
-                    .shadow(color: .gray, radius: 1, x: 1, y: 1)
-                
-                // Button에 이미지 추가
-                Button(action: {
-                    print("SendButton is Clicked")
-                    viewModel.addComment(post: postData, comment: commentText)
-                    self.commentText = ""
-                }, label: {
-                    Image(systemName: "paperplane.fill")
-                        .foregroundColor(.white)
+                ZStack(alignment: .trailing) {
+                    TextField("댓글을 입력하세요", text: $commentText)
+                        .padding(.vertical, 12)
                         .padding(.horizontal, 16)
-                        .frame(width: 40, height: 40)
-                        .background(Color.blue)
-                        .cornerRadius(20)
-                        .shadow(color: .gray, radius: 1, x: 1, y: 1)
-                })
+                        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                        .cornerRadius(16)
+                    
+                    // Button에 이미지 추가
+                    Button(action: {
+                        print("SendButton is Clicked")
+                        viewModel.addComment(post: postData, comment: commentText)
+                        self.commentText = ""
+                    }, label: {
+                        Image(systemName: "paperplane.fill")
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 16)
+                            .padding(.trailing, 16)
+                            .frame(width: 40, height: 40)
+                    })
+                }
             }
         }
         //MARK: - 댓글 더보기 메뉴
