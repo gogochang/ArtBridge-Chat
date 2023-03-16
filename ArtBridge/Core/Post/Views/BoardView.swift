@@ -205,14 +205,28 @@ extension BoardView {
             .onAppear(perform : {viewModel.getComment(post: postData)})
             .onReceive(viewModel.$comments, perform: { self.comments = $0 })
             
-            HStack() {
-                TextField("댓글 작성하기", text: $commentText).background()
+            HStack {
+                // TextField 설정
+                TextField("댓글을 입력하세요", text: $commentText)
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 16)
+                    .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                    .cornerRadius(16)
+                    .shadow(color: .gray, radius: 1, x: 1, y: 1)
+                
+                // Button에 이미지 추가
                 Button(action: {
                     print("SendButton is Clicked")
                     viewModel.addComment(post: postData, comment: commentText)
                     self.commentText = ""
                 }, label: {
-                    Text("Send")
+                    Image(systemName: "paperplane.fill")
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 16)
+                        .frame(width: 40, height: 40)
+                        .background(Color.blue)
+                        .cornerRadius(20)
+                        .shadow(color: .gray, radius: 1, x: 1, y: 1)
                 })
             }
         }
