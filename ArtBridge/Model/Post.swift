@@ -16,7 +16,7 @@ struct Post: Identifiable, Decodable {
     let uid: String
     let author: String
     var profileUrl: String
-    let imageUrl: String
+    var imageUrl: String
     var likes: Int
     var postType: String
     

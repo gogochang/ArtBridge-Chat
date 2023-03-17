@@ -33,7 +33,7 @@
 		95AC51DE29BB12A800F7CBED /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DD29BB12A800F7CBED /* PostService.swift */; };
 		95AC51E029BB183400F7CBED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DF29BB183400F7CBED /* Post.swift */; };
 		95AC51E229BB479700F7CBED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E129BB479700F7CBED /* User.swift */; };
-		95AC51E429BB4C2600F7CBED /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E329BB4C2600F7CBED /* ImageUploader.swift */; };
+		95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E329BB4C2600F7CBED /* ImageService.swift */; };
 		95AC51E629BB803400F7CBED /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E529BB803400F7CBED /* LoadingIndicator.swift */; };
 		95B390402994F6120048B80A /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3903F2994F6120048B80A /* RegisterVM.swift */; };
 		95B39937298A590800E7BD3D /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39936298A590800E7BD3D /* PostData.swift */; };
@@ -107,7 +107,7 @@
 		95AC51DD29BB12A800F7CBED /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		95AC51DF29BB183400F7CBED /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		95AC51E129BB479700F7CBED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		95AC51E329BB4C2600F7CBED /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		95AC51E329BB4C2600F7CBED /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		95AC51E529BB803400F7CBED /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		95B3903F2994F6120048B80A /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		95B39936298A590800E7BD3D /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
@@ -387,7 +387,7 @@
 			children = (
 				95482920299F75CA0054CB9A /* FirebaseService.swift */,
 				95AC51DD29BB12A800F7CBED /* PostService.swift */,
-				95AC51E329BB4C2600F7CBED /* ImageUploader.swift */,
+				95AC51E329BB4C2600F7CBED /* ImageService.swift */,
 				953587B129BF50C4006CBA19 /* UserService.swift */,
 			);
 			path = Service;
@@ -726,7 +726,7 @@
 				95AC51E229BB479700F7CBED /* User.swift in Sources */,
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
 				954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */,
-				95AC51E429BB4C2600F7CBED /* ImageUploader.swift in Sources */,
+				95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */,
 				95AC51E029BB183400F7CBED /* Post.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,
 				95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */,

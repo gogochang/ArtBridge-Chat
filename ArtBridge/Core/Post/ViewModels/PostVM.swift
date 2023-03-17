@@ -12,12 +12,15 @@ import Firebase
 class PostVM: ObservableObject {
 
     @Published var didUploadPost = false
+    @Published var didEditPost = false
     @Published var posts = [Post]()
     @Published var comments = [Comment]()
     let service = PostService()
     
     @Published var postData: PostData? = nil
     @Published var Boards : BoardResponse? = nil
+    
+    @Published var imageUrl: String = ""
     
     // 게시판 주제 선택
     enum PostType {
@@ -67,10 +70,14 @@ class PostVM: ObservableObject {
     }
 
     //MARK: - Firebase 게시글 수정
-    func editPost(post: Post, title: String, content: String) {
-        service.editPost(post, title: title, content: content) { success in
+    func editPost(post: Post, title: String, content: String, postType: String, image: UIImage?) {
+        service.editPost(post, title: title, content: content, postType: postType, image: image) { imageUrl, success in
             if success {
-                print("PostVM - editPost success")
+                print("PostVM - editPost success \(imageUrl)")
+                // 가져옴 이미지URL을 저장
+                self.imageUrl = imageUrl
+                // 게시판 수정완료 트리거
+                self.didEditPost = true
             } else {
                 print("PostVM - editPost fail")
             }
@@ -150,16 +157,4 @@ class PostVM: ObservableObject {
         }
     }
     
-    //MARK: - Image 업로드
-//    func uploadImage(image: UIImage?) {
-//        print("PostVM - uploadImage called")
-//        guard let image = image else{ return }
-//        service.uploadImage(image: image) { success in
-//        if success {
-//            print("PostVM - uploadImage success")
-//        } else {
-//            print("PostVM - uploadImage fail")
-//        }
-//    }
-//    }
 }

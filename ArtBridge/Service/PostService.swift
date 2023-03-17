@@ -16,31 +16,7 @@ struct PostService {
         print("PostService - uploadPost() called")
         guard let user = Auth.auth().currentUser else { return }
 
-        if let image = image {
-            ImageUploader.uploadImage(image: image) { imageUrl in
-                let data = ["uid": user.uid,
-                            "postType": postType,
-                            "title": title,
-                            "content": content,
-                            "likes": 0,
-                            "author": user.displayName ?? "anonymous",
-                            "profileUrl" : user.photoURL?.absoluteString ?? "",
-                            "imageUrl": imageUrl,
-                            "timestamp": Timestamp(date: Date())] as [String: Any]
-
-
-                Firestore.firestore().collection("posts").document().setData(data) { error in
-                    if let error = error {
-                        print("PostService - uploadPost() Error : \(error.localizedDescription)")
-                        completion(false)
-                        return
-                    }
-                    print("PostService - uploadPost() upload success")
-
-                    completion(true)
-                }
-            }
-        } else {
+        ImageService.uploadImage(image: image) { imageUrl in
             let data = ["uid": user.uid,
                         "postType": postType,
                         "title": title,
@@ -48,9 +24,8 @@ struct PostService {
                         "likes": 0,
                         "author": user.displayName ?? "anonymous",
                         "profileUrl" : user.photoURL?.absoluteString ?? "",
-                        "imageUrl": "",
+                        "imageUrl": imageUrl,
                         "timestamp": Timestamp(date: Date())] as [String: Any]
-
 
             Firestore.firestore().collection("posts").document().setData(data) { error in
                 if let error = error {
@@ -59,24 +34,30 @@ struct PostService {
                     return
                 }
                 print("PostService - uploadPost() upload success")
-
+                
                 completion(true)
             }
         }
     }
     
     //MARK: - 게시글 수정하기
-    func editPost(_ post: Post, title: String, content: String, completion: @escaping(Bool) -> Void) {
+    func editPost(_ post: Post, title: String, content: String, postType: String, image: UIImage?, completion: @escaping(String, Bool) -> Void) {
         print("PostService - editPost() call")
-        Firestore.firestore().collection("posts").document(post.id!)
-            .updateData(["title": title,
-                         "content": content]) { error in
-                if let error = error {
-                    print("PostService - editPost() Error : \(error.localizedDescription)")
-                    completion(false)
+        ImageService.uploadImage(image: image) { imageUrl in
+            Firestore.firestore().collection("posts").document(post.id!)
+                .updateData(["title": title,
+                             "content": content,
+                             "imageUrl": imageUrl,
+                             "postType": postType]) { error in
+                    if let error = error {
+                        print("PostService - editPost() Error : \(error.localizedDescription)")
+                        // 데이터 업데이트가 실패하면 ""와 false
+                        completion("",false)
+                    }
+                    //데이터 업데이트가 성공하면 imageUrl과 true를 보냄
+                    completion(imageUrl,true)
                 }
-                completion(true)
-            }
+        }
     }
     
     //MARK: - 게시글 삭제하기

@@ -71,7 +71,7 @@ struct MyPageView: View {
                     ImagePicker(sourceType: .photoLibrary) { pickedImage in
                         LoadingIndicator.showLoading()
                         // 선택된 이미지 Storage에 업로드
-                        ImageUploader.uploadImage(image: pickedImage) { url in
+                        ImageService.uploadImage(image: pickedImage) { url in
                             //업로드된 이미지의 url을 유저정보에 새롭게 업데이트
                             userVM.updateUser(displayName: nil, profileUrl: url)
                         }
