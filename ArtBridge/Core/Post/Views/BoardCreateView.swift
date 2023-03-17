@@ -26,13 +26,29 @@ struct BoardCreateView: View {
     @State var title: String = ""
     @State var content: String = ""
     
+    //게시글의 타입을 선택하는 Picker
+    @State private var selectedPicker = 0
+    // 게시글 타입 종류
+    private let PostTypes = ["자유","질문"]
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                
-                TextField(userVM.loggedInUser?.user.username ?? "제목을 입력하세요.", text: $title)
-                    .padding()
-                
+                HStack() {
+                    
+                    // 게시판카테고리 선택 Picker
+                    Picker("Select Choice PostType", selection: $selectedPicker) {
+                        ForEach(0 ..< PostTypes.count) {
+                            Text(self.PostTypes[$0])
+                        }
+                    }
+                    .colorMultiply(Color.black)
+                    .background(Capsule().fill(Color.white).shadow(radius: 1,x: 1,y:1))
+                    .overlay(Capsule().stroke(Color.gray , lineWidth: 0.5))
+                    
+                    // 제목입력 TextField
+                    TextField(userVM.loggedInUser?.user.username ?? "제목을 입력하세요.", text: $title)
+                }.padding(.horizontal, 10)
                 Divider()
                 
                 TextEditor(text: $content)
@@ -66,8 +82,11 @@ struct BoardCreateView: View {
                             Image(systemName: "photo")
                             Text("사진")
                         }
+                        .foregroundColor(Color.black)
+                        .padding(.vertical,5).padding(.horizontal,10)
+                        .background(Capsule().fill(Color.white).shadow(radius: 1,x: 1,y:1))
                     })//Button
-                    .foregroundColor(Color.black)
+                    .overlay(Capsule().stroke(Color.gray , lineWidth: 0.5))
                     .sheet(isPresented: $onPhotoLibrary) {
                         ImagePicker(sourceType: .photoLibrary) { (pickedImage) in
                             selectedImage = Image(uiImage: pickedImage)
@@ -96,7 +115,7 @@ struct BoardCreateView: View {
             print("Success Button is Clicked")
             LoadingIndicator.showLoading()
             isDisabled = true
-            viewModel.uploadPost(title: title, content: content, image: selectedUiImage)
+            viewModel.uploadPost(title: title, content: content, postType: PostTypes[selectedPicker], image: selectedUiImage)
         }, label: {
             Text("완료")
         })).disabled(isDisabled)
@@ -110,6 +129,8 @@ struct BoardCreateView: View {
         }
     }
 }
+
+
 
 //struct BoardCreateView_Previews: PreviewProvider {
 //    static var previews: some View {

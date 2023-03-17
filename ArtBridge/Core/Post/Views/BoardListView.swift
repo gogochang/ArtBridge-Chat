@@ -71,41 +71,42 @@ struct BoardListView: View {
                 //MARK: - 게시판 List Layout
                 
                     List(posts) { post in
-                        
-                        ZStack() {
-                            HStack() {
-                                VStack() {
-                                    HStack {
-                                        Text(post.title)
-                                            .bold()
-                                            .font(.system(size:15))
-                                        Spacer()
+                        // 선택된 타입과 게시글의 타입이 일치하면 if문을 실행 
+                        if(viewModel.postType.isPostTypeMatch(type: post.postType)) {
+                            ZStack() {
+                                HStack() {
+                                    VStack() {
+                                        HStack {
+                                            Text(post.title)
+                                                .bold()
+                                                .font(.system(size:15))
+                                            Spacer()
+                                        }
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                                        
+                                        HStack() {
+                                            Text(post.author)
+                                            Text(post.timestamp.dateValue().toString().components(separatedBy: " ")[0])
+                                            Text("댓글 0")
+                                            Spacer()
+                                        }
+                                        .opacity(0.7)
+                                        .font(.system(size: 13))
+                                    }//VStack
+                                    Spacer()
+                                    if let url = post.imageUrl {
+                                        KFImage(URL(string:url))
+                                            .resizable()
+                                            .frame(maxWidth: 50, maxHeight: 50)
+                                            .cornerRadius(12)
                                     }
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-                                    
-                                    HStack() {
-                                        Text(post.author)
-                                        Text(post.timestamp.dateValue().toString().components(separatedBy: " ")[0])
-                                        Text("댓글 0")
-                                        Spacer()
-                                    }
-                                    .opacity(0.7)
-                                    .font(.system(size: 13))
-                                }//VStack
-                                Spacer()
-                                if let url = post.imageUrl {
-                                    KFImage(URL(string:url))
-                                        .resizable()
-                                        .frame(maxWidth: 50, maxHeight: 50)
-                                        .cornerRadius(12)
-                                }
-                            }//HStack
-                            // List 우측 화살표 없애기
-                            NavigationLink(destination: BoardView(postData: post), label: {
-                            })// Navigation
-                            .opacity(0)
+                                }//HStack
+                                // List 우측 화살표 없애기
+                                NavigationLink(destination: BoardView(postData: post), label: {
+                                })// Navigation
+                                .opacity(0)
+                            }
                         }
-                    
                     }
                     .listStyle(PlainListStyle())
                     .onAppear(perform : {viewModel.fetchPosts()})

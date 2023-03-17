@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import Firebase
 
 class PostVM: ObservableObject {
@@ -23,6 +24,25 @@ class PostVM: ObservableObject {
         case all
         case free
         case question
+        
+        func isPostTypeMatch(type: String) -> Bool {
+            switch self {
+            case .all:
+                return true
+            case .free:
+                if (type == "자유") {
+                    return true
+                } else {
+                    return false
+                }
+            case .question:
+                if (type == "질문") {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
     }
     
     @Published var postType: PostType = .all
@@ -34,9 +54,9 @@ class PostVM: ObservableObject {
     }
     
     //MARK: - Firebase 게시글 업로드
-    func uploadPost(title: String, content: String, image: UIImage?) {
+    func uploadPost(title: String, content: String, postType: String, image: UIImage?) {
         print("PostVM - uploadPost called")
-        service.uploadPost(title: title, content: content, image: image) { success in
+        service.uploadPost(title: title, content: content, postType: postType, image: image) { success in
             if success {
                 self.didUploadPost = true
                 print("PostVM - uploadPost success")

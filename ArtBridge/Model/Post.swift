@@ -18,6 +18,7 @@ struct Post: Identifiable, Decodable {
     var profileUrl: String
     let imageUrl: String
     var likes: Int
+    var postType: String
     
     var user: User?
     var didLike: Bool? = false

@@ -12,13 +12,14 @@ import Firebase
 struct PostService {
     
     //MARK: - 게시글 올리기
-    func uploadPost(title: String, content: String, image: UIImage?, completion: @escaping(Bool) -> Void) {
+    func uploadPost(title: String, content: String, postType: String, image: UIImage?, completion: @escaping(Bool) -> Void) {
         print("PostService - uploadPost() called")
         guard let user = Auth.auth().currentUser else { return }
 
         if let image = image {
             ImageUploader.uploadImage(image: image) { imageUrl in
                 let data = ["uid": user.uid,
+                            "postType": postType,
                             "title": title,
                             "content": content,
                             "likes": 0,
@@ -41,6 +42,7 @@ struct PostService {
             }
         } else {
             let data = ["uid": user.uid,
+                        "postType": postType,
                         "title": title,
                         "content": content,
                         "likes": 0,
