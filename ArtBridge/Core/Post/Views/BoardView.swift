@@ -69,8 +69,8 @@ struct BoardView: View {
                     Text(postData.content)
                     
                     //MARK: - 게시글 이미지
-                    if let url = postData.imageUrl {
-                        KFImage(URL(string:url))
+                    if "" != postData.imageUrl {
+                        KFImage(URL(string:postData.imageUrl))
                             .resizable()
                             .scaledToFit()
                             .cornerRadius(12)
@@ -144,11 +144,12 @@ extension BoardView {
             Divider()
             Text("댓글").bold()
             Divider()
-            
+            //MARK: - 댓글 구성
             VStack(alignment: .leading) {
                 ForEach(comments) { comment in
                     VStack() {
                         HStack(alignment: .top) {
+                            // 댓글 작성자 프로필 이미지
                             if let url = comment.profileUrl {
                                 KFImage(URL(string:url))
                                     .resizable()
@@ -157,12 +158,16 @@ extension BoardView {
                                     .overlay { Circle().stroke(.white, lineWidth: 1) }
                                     .shadow(radius: 1)
                             }
+                            // 댓글 작성자 및 내용
                             VStack(alignment: .leading) {
                                 Text(comment.author).bold().bold().font(.system(size:15))
                                 Text(comment.timestamp.dateValue().toString().components(separatedBy: " ")[0]).opacity(0.5).font(.system(size:12))
                                 Text(comment.comment)
                             }
+                            
                             Spacer()
+                            
+                            //댓글 추가메뉴 버튼
                             Button(action: {
                                 print("Comment button is clicked")
                                 if comment.uid == Auth.auth().currentUser?.uid {

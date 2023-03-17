@@ -17,6 +17,14 @@ struct BoardListView: View {
     
     @ObservedObject var viewModel = PostVM()
     
+    enum PostType {
+        case all
+        case free
+        case question
+    }
+    
+    @State var postType: PostType = .all
+    
     var body: some View {
         NavigationView {
             VStack() {
@@ -40,10 +48,30 @@ struct BoardListView: View {
                 Divider()
                 
                 HStack() {
-                    Text("자유게시판")
-                        .fontWeight(.heavy)
-                    Text("질문게시판")
-                        .opacity(0.5)
+                    Button(action: {
+                        print("전체 게시판 버튼 클릭")
+                        postType = PostType.all
+                    }, label: {
+                        Text("전체")
+                    })
+                    .buttonStyle(CapsuleButtonStyle(selected: postType == .all))
+                    
+                    Button(action: {
+                        print("자유게시판 버튼 클릭")
+                        postType = PostType.free
+                    }, label: {
+                        Text("자유게시판")
+                    })
+                    .buttonStyle(CapsuleButtonStyle(selected: postType == .free))
+                    
+                    Button(action: {
+                        print("질문게시판 버튼 클릭")
+                        postType = PostType.question
+                    }, label: {
+                        Text("질문게시판")
+                    })
+                    .buttonStyle(CapsuleButtonStyle(selected: postType == .question))
+                    
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
@@ -97,8 +125,21 @@ struct BoardListView: View {
     
 }//BoardListView
 
-struct BoardListView_Previews: PreviewProvider {
-    static var previews: some View {
-        BoardListView()
+// 게시판 종류 선택버튼 스타일
+struct CapsuleButtonStyle: ButtonStyle {
+    var selected: Bool
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.foregroundColor(selected ? Color.black : Color.gray)
+            .padding(.vertical,5).padding(.horizontal,10)
+            .background(Capsule().fill(Color.white).shadow(radius: 1,x: 1,y:1))
+            .overlay(Capsule().stroke(selected ? Color.black: Color.gray , lineWidth: 0.5))
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .opacity(configuration.isPressed ? 0.5 : 1.0)
     }
 }
+
+//struct BoardListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BoardListView()
+//    }
+//}

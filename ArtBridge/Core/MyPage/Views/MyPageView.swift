@@ -7,6 +7,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import Kingfisher
 
 struct MyPageView: View {
     @State private var showModal = false
@@ -30,20 +31,16 @@ struct MyPageView: View {
                     self.showModal = true
                 }) {
                     HStack() {
-                        AsyncImage(
-                            url: URL(string: userVM.currentUser?.profileUrl ?? ""),
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(Circle())
-                                    .overlay {
-                                        Circle().stroke(.white, lineWidth: 4)
-                                    }.shadow(radius: 2)
-                            },
-                            placeholder: {
-                            }
-                        )
+                        // 프로필 이미지
+                        if let profileUrl = userVM.currentUser?.profileUrl {
+                            KFImage(URL(string:profileUrl))
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .clipShape(Circle())
+                                .overlay {
+                                    Circle().stroke(.white, lineWidth: 4)
+                                }.shadow(radius: 2)
+                        }
                         VStack(alignment: .leading) {
                             Text(userVM.currentUser?.username ?? "로그인이 필요합니다.").bold()
                             Text(userVM.currentUser?.email ?? "")
