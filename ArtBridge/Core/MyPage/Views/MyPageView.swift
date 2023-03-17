@@ -38,7 +38,7 @@ struct MyPageView: View {
                                 .frame(width: 50, height: 50)
                                 .clipShape(Circle())
                                 .overlay {
-                                    Circle().stroke(.white, lineWidth: 4)
+                                    Circle().stroke(.white, lineWidth: 2)
                                 }.shadow(radius: 2)
                         }
                         VStack(alignment: .leading) {

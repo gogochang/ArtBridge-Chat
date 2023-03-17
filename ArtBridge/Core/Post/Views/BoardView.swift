@@ -33,57 +33,79 @@ struct BoardView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView() {
-                VStack(alignment: .leading) {
-                    //MARK: - 게시그 제목
-                    Text(postData.title)
-                        .font(.title3)
-                        .bold()
-                        .padding([.bottom], 5)
-                    
-                    //MARK: - 글 작성자, 날짜
-                    HStack() {
-                        KFImage(URL(string:postData.profileUrl))
-                            .resizable()
-                            .frame(maxWidth: 25, maxHeight: 25)
-                            .clipShape(Circle())
-                            .overlay { Circle().stroke(.white, lineWidth: 1) }
-                            .shadow(radius: 1)
+            VStack() {
+                ScrollView() {
+                    VStack(alignment: .leading) {
+                        //MARK: - 게시그 제목
+                        Text(postData.title)
+                            .font(.title3)
+                            .bold()
+                            .padding([.bottom], 5)
                         
-                        VStack(alignment: .leading) {
-                            Text(postData.author).bold()
-                            HStack() {
-                                Text(postData.timestamp.dateValue().toString().components(separatedBy: " ")[0])
-                                Text("조회 0")
-                            }.opacity(0.7)
+                        //MARK: - 글 작성자, 날짜
+                        HStack() {
+                            KFImage(URL(string:postData.profileUrl))
+                                .resizable()
+                                .frame(maxWidth: 25, maxHeight: 25)
+                                .clipShape(Circle())
+                                .overlay { Circle().stroke(.white, lineWidth: 1) }
+                                .shadow(radius: 1)
+                            
+                            VStack(alignment: .leading) {
+                                Text(postData.author).bold()
+                                HStack() {
+                                    Text(postData.timestamp.dateValue().toString().components(separatedBy: " ")[0])
+                                    Text("조회 0")
+                                }.opacity(0.7)
+                            }
+                            Spacer()
+                        }// HStack
+                        .font(.system(size:13))
+                        .padding([.bottom], 5)
+                        
+                        Divider()
+                        
+                        //MARK: - 게시글 내용
+                        Text(postData.content).padding(.vertical,20)
+                        
+                        //MARK: - 게시글 이미지
+                        if "" != postData.imageUrl {
+                            KFImage(URL(string:postData.imageUrl))
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(12)
+                                .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
                         }
-                        Spacer()
-                    }// HStack
-                    .font(.system(size:13))
-                    .padding([.bottom], 5)
+                        //MARK: - 댓글 Group
+                        Group {
+                            commentList
+                        }
+                    }//VStack
+                    .padding()
+                    Spacer()
+                }// ScrollView
+                // 댓글 입력창 TextField 설정
+                ZStack(alignment: .trailing) {
+                    TextField("댓글을 입력하세요", text: $commentText)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 16)
+                        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                        .cornerRadius(16)
                     
-                    Divider()
-                        .padding([.bottom], 20)
-                    
-                    //MARK: - 게시글 내용
-                    Text(postData.content)
-                    
-                    //MARK: - 게시글 이미지
-                    if "" != postData.imageUrl {
-                        KFImage(URL(string:postData.imageUrl))
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(12)
-                            .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
-                    }
-                    //MARK: - 댓글 Group
-                    Group {
-                        commentList
-                    }
-                }//VStack
-                .padding()
-                Spacer()
-            }//HStack
+                    // Button에 이미지 추가
+                    Button(action: {
+                        print("SendButton is Clicked")
+                        viewModel.addComment(post: postData, comment: commentText)
+                        self.commentText = ""
+                    }, label: {
+                        Image(systemName: "paperplane.fill")
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 16)
+                            .padding(.trailing, 16)
+                            .frame(width: 40, height: 40)
+                    })
+                }.padding(.horizontal,10)
+            }
         }
         //MARK: - Navigation 상단메뉴
         .navigationTitle("")
@@ -142,7 +164,7 @@ extension BoardView {
     var commentList: some View {
         VStack(alignment: .leading) {
             Divider()
-            Text("댓글").bold()
+            Text("댓글").font(.system(size: 13)).opacity(0.5)
             Divider()
             //MARK: - 댓글 구성
             VStack(alignment: .leading) {
@@ -187,30 +209,6 @@ extension BoardView {
             .listStyle(PlainListStyle())
             .onAppear(perform : {viewModel.getComment(post: postData)})
             .onReceive(viewModel.$comments, perform: { self.comments = $0 })
-            
-            HStack {
-                // TextField 설정
-                ZStack(alignment: .trailing) {
-                    TextField("댓글을 입력하세요", text: $commentText)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, 16)
-                        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
-                        .cornerRadius(16)
-                    
-                    // Button에 이미지 추가
-                    Button(action: {
-                        print("SendButton is Clicked")
-                        viewModel.addComment(post: postData, comment: commentText)
-                        self.commentText = ""
-                    }, label: {
-                        Image(systemName: "paperplane.fill")
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 16)
-                            .padding(.trailing, 16)
-                            .frame(width: 40, height: 40)
-                    })
-                }
-            }
         }
         //MARK: - 댓글 더보기 메뉴
         .confirmationDialog("", isPresented: $presentsCommentAlert, titleVisibility: .hidden) {
