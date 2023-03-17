@@ -99,6 +99,7 @@ struct BoardEditView: View {
                         Button(action: {
                             print("cancle Button is Clicked")
                             isHidden = true
+                            selectedUiImage = nil
                         }, label: {
                             Image(systemName: "x.square.fill")
                         }),alignment: .topTrailing
