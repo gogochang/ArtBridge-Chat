@@ -31,6 +31,10 @@ struct BoardCreateView: View {
     // 게시글 타입 종류
     private let PostTypes = ["자유","질문"]
 
+    // 내용 없음 경고창
+    @State private var warningAlert: Bool = false
+    @State private var wargningMessage: String = ""
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -113,9 +117,17 @@ struct BoardCreateView: View {
         // 게시판 작성 완료 버튼
         .navigationBarItems(trailing: Button(action: {
             print("Success Button is Clicked")
-            LoadingIndicator.showLoading()
-            isDisabled = true
-            viewModel.uploadPost(title: title, content: content, postType: PostTypes[selectedPicker], image: selectedUiImage)
+            if (title == "") {
+                warningAlert = true
+                self.wargningMessage = "제목이 없습니다."
+            } else if (content == "") {
+                warningAlert = true
+                self.wargningMessage = "내용이 없습니다."
+            } else {
+                LoadingIndicator.showLoading()
+                isDisabled = true
+                viewModel.uploadPost(title: title, content: content, postType: PostTypes[selectedPicker], image: selectedUiImage)
+            }
         }, label: {
             Text("완료")
         })).disabled(isDisabled)
@@ -126,6 +138,13 @@ struct BoardCreateView: View {
                 LoadingIndicator.hideLoading()
                 presentationMode.wrappedValue.dismiss()
             }
+        }
+        
+        // MARK: - 경고창
+        .alert("Error", isPresented: $warningAlert) {
+            Button("Ok") {}
+        } message: {
+            Text(wargningMessage)
         }
     }
 }

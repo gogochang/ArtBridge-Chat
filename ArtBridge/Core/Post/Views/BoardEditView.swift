@@ -30,6 +30,10 @@ struct BoardEditView: View {
     // 게시글 타입 종류
     private let postTypes = ["자유","질문"]
     
+    // 내용 없음 경고창
+    @State private var warningAlert: Bool = false
+    @State private var wargningMessage: String = ""
+    
     var body: some View {
         VStack(alignment: .leading) {
             //MARK: - 상단 바 메뉴
@@ -46,11 +50,24 @@ struct BoardEditView: View {
                     Spacer()
                     Button(action: {
                         print("edit button is clicked")
-                        viewModel.editPost(post: postData, title: postData.title, content: postData.content, postType: postTypes[selectedPicker], image: selectedUiImage)
-                        LoadingIndicator.showLoading()
+                        if (postData.title == "") {
+                            warningAlert = true
+                            self.wargningMessage = "제목이 없습니다."
+                        } else if (postData.content == "") {
+                            warningAlert = true
+                            self.wargningMessage = "내용이 없습니다."
+                        } else {
+                            viewModel.editPost(post: postData, title: postData.title, content: postData.content, postType: postTypes[selectedPicker], image: selectedUiImage)
+                            LoadingIndicator.showLoading()
+                        }
                     }, label: {
                         Text("완료")
                     })
+                    .alert("Error", isPresented: $warningAlert) {
+                        Button("Ok") {}
+                    } message: {
+                        Text(wargningMessage)
+                    }
                 }
                 .padding()
             //MARK: - 게시글의 카테고리 선택, 제목
