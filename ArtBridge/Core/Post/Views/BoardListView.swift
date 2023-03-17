@@ -17,14 +17,6 @@ struct BoardListView: View {
     
     @ObservedObject var viewModel = PostVM()
     
-    enum PostType {
-        case all
-        case free
-        case question
-    }
-    
-    @State var postType: PostType = .all
-    
     var body: some View {
         NavigationView {
             VStack() {
@@ -50,27 +42,27 @@ struct BoardListView: View {
                 HStack() {
                     Button(action: {
                         print("전체 게시판 버튼 클릭")
-                        postType = PostType.all
+                        viewModel.postType = PostVM.PostType.all
                     }, label: {
                         Text("전체")
                     })
-                    .buttonStyle(CapsuleButtonStyle(selected: postType == .all))
+                    .buttonStyle(CapsuleButtonStyle(selected: viewModel.postType == .all))
                     
                     Button(action: {
                         print("자유게시판 버튼 클릭")
-                        postType = PostType.free
+                        viewModel.postType = PostVM.PostType.free
                     }, label: {
                         Text("자유게시판")
                     })
-                    .buttonStyle(CapsuleButtonStyle(selected: postType == .free))
+                    .buttonStyle(CapsuleButtonStyle(selected: viewModel.postType == .free))
                     
                     Button(action: {
                         print("질문게시판 버튼 클릭")
-                        postType = PostType.question
+                        viewModel.postType = PostVM.PostType.question
                     }, label: {
                         Text("질문게시판")
                     })
-                    .buttonStyle(CapsuleButtonStyle(selected: postType == .question))
+                    .buttonStyle(CapsuleButtonStyle(selected: viewModel.postType == .question))
                     
                     Spacer()
                 }

@@ -18,6 +18,16 @@ class PostVM: ObservableObject {
     @Published var postData: PostData? = nil
     @Published var Boards : BoardResponse? = nil
     
+    // 게시판 주제 선택
+    enum PostType {
+        case all
+        case free
+        case question
+    }
+    
+    @Published var postType: PostType = .all
+    
+    
     init() {
         print("PostVM - init called")
         fetchPosts()
