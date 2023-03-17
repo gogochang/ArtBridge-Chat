@@ -25,6 +25,9 @@ target 'ArtBridge' do
   pod 'Firebase'
   pod 'Firebase/Database'
 
+  # KingFisher
+  pod 'Kingfisher', '~> 7.0'
+
   # for Kakao
   pod 'KakaoSDKCommon' # 카카오 필수 요소를 담은 공통 모듈
   pod 'KakaoSDKAuth' # 카카오 사용자인증

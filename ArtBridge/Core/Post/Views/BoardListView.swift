@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct BoardListView: View {
     @State var posts = [Post]()
@@ -73,18 +74,10 @@ struct BoardListView: View {
                                 }//VStack
                                 Spacer()
                                 if let url = post.imageUrl {
-                                    AsyncImage(
-                                        url: URL(string:url),
-                                        content: { image in
-                                            image
-                                                .resizable()
-                                                .frame(maxWidth: 50, maxHeight: 50)
-                                                .cornerRadius(12)
-                                        },
-                                        placeholder: {
-                                            
-                                        }
-                                    )
+                                    KFImage(URL(string:url))
+                                        .resizable()
+                                        .frame(maxWidth: 50, maxHeight: 50)
+                                        .cornerRadius(12)
                                 }
                             }//HStack
                             // List 우측 화살표 없애기

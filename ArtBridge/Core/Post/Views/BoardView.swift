@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import Kingfisher
 
 struct BoardView: View {
     
@@ -42,21 +43,13 @@ struct BoardView: View {
                     
                     //MARK: - 글 작성자, 날짜
                     HStack() {
-                        AsyncImage(
-                            url: URL(string:postData.profileUrl),
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .frame(maxWidth: 25, maxHeight: 25)
-                                    .clipShape(Circle())
-                                    .overlay { Circle().stroke(.white, lineWidth: 1) }
-                                    .shadow(radius: 1)
-                                    
-                            },
-                            placeholder: {
-                                
-                            }
-                        )
+                        KFImage(URL(string:postData.profileUrl))
+                            .resizable()
+                            .frame(maxWidth: 25, maxHeight: 25)
+                            .clipShape(Circle())
+                            .overlay { Circle().stroke(.white, lineWidth: 1) }
+                            .shadow(radius: 1)
+                        
                         VStack(alignment: .leading) {
                             Text(postData.author).bold()
                             HStack() {
@@ -77,18 +70,11 @@ struct BoardView: View {
                     
                     //MARK: - 게시글 이미지
                     if let url = postData.imageUrl {
-                        AsyncImage(
-                            url: URL(string:url),
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(12)
-                            },
-                            placeholder: {
-
-                            }
-                        ).padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
+                        KFImage(URL(string:url))
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(12)
+                            .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
                     }
                     //MARK: - 댓글 Group
                     Group {
@@ -164,20 +150,12 @@ extension BoardView {
                     VStack() {
                         HStack(alignment: .top) {
                             if let url = comment.profileUrl {
-                                AsyncImage(
-                                    url: URL(string:url),
-                                    content: { image in
-                                        image
-                                            .resizable()
-                                            .frame(width: 25, height: 25)
-                                            .clipShape(Circle())
-                                            .overlay { Circle().stroke(.white, lineWidth: 1) }
-                                            .shadow(radius: 1)
-                                    },
-                                    placeholder: {
-                                        
-                                    }
-                                )
+                                KFImage(URL(string:url))
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .clipShape(Circle())
+                                    .overlay { Circle().stroke(.white, lineWidth: 1) }
+                                    .shadow(radius: 1)
                             }
                             VStack(alignment: .leading) {
                                 Text(comment.author).bold().bold().font(.system(size:15))
