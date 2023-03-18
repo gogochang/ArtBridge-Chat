@@ -14,12 +14,12 @@ struct BoardListView: View {
     @State var posts = [Post]()
     
     // 글 작성 버튼
-    @State var showingAlert: Bool = false
     @State var showingNavigation: Bool = false
+    @State var showingModal: Bool = false
+    @State var isLogged: Bool = false
     
     //유저 ViewModel
     @EnvironmentObject var userVM : UserVM
-    
     //게시판 ViewModel
     @ObservedObject var viewModel = PostVM()
     
@@ -33,11 +33,11 @@ struct BoardListView: View {
                     Spacer()
                     Button(action: {
                         if let user = userVM.currentUser {
-                            //로그인 되어있으면 로그인뷰 이동
+                            //로그인 되어있으면 글 작성뷰로 이동
                             showingNavigation = true
                         } else {
-                            //로그인 안되어 있으면 알림창
-                            showingAlert = true
+                            //로그인 안되어 있으면 로그인뷰로 이동
+                            showingModal = true
                         }
                     }, label: {
                         HStack() {
@@ -52,9 +52,9 @@ struct BoardListView: View {
                     NavigationLink(destination: BoardCreateView(), isActive: $showingNavigation, label: {
                         EmptyView()
                     })
-                    // 로그인이 안되어 있으면 알림창
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text(""), message: Text("로그인이 필요합니다. \n 로그인하겠습니까?"), dismissButton: .default(Text("취소")))
+                    // 글작성 버튼 클릭 시 로그인이 안되어있으면 로그인뷰 띄우기
+                    .sheet(isPresented: self.$showingModal) {
+                        LoginView(showModal: $showingModal, isLogged: $isLogged)
                     }
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
