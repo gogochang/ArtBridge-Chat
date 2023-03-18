@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 import Kingfisher
 
 struct BoardListView: View {
+    //게시글 목록
     @State var posts = [Post]()
     
-    @State var firstNavigationLinkActive: Bool = false
-    @State var previewImage: UIImage?
+    // 글 작성 버튼
+    @State var showingAlert: Bool = false
+    @State var showingNavigation: Bool = false
+    
+    //유저 ViewModel
     @EnvironmentObject var userVM : UserVM
     
+    //게시판 ViewModel
     @ObservedObject var viewModel = PostVM()
     
     var body: some View {
@@ -25,7 +31,15 @@ struct BoardListView: View {
                         .fontWeight(.heavy)
                         .font(.title3)
                     Spacer()
-                    NavigationLink(destination: BoardCreateView(), label: {
+                    Button(action: {
+                        if let user = userVM.currentUser {
+                            //로그인 되어있으면 로그인뷰 이동
+                            showingNavigation = true
+                        } else {
+                            //로그인 안되어 있으면 알림창
+                            showingAlert = true
+                        }
+                    }, label: {
                         HStack() {
                             Image(systemName: "pencil.line")
                                 .resizable()
@@ -34,6 +48,14 @@ struct BoardListView: View {
                         .frame(width: 25, height: 25)
                         .foregroundColor(Color.black)
                     })
+                    // 로그인이 되어 있으면 게시글 작성 뷰
+                    NavigationLink(destination: BoardCreateView(), isActive: $showingNavigation, label: {
+                        EmptyView()
+                    })
+                    // 로그인이 안되어 있으면 알림창
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text(""), message: Text("로그인이 필요합니다. \n 로그인하겠습니까?"), dismissButton: .default(Text("취소")))
+                    }
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 

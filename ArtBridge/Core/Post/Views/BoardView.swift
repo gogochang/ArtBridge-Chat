@@ -95,6 +95,7 @@ struct BoardView: View {
                     // Button에 이미지 추가
                     Button(action: {
                         print("SendButton is Clicked")
+                        guard let user = Auth.auth().currentUser else { return }
                         viewModel.addComment(post: postData, comment: commentText)
                         self.commentText = ""
                     }, label: {
@@ -150,7 +151,7 @@ struct BoardView: View {
             BoardEditView(postData: $postData)
         }
         //MARK: - 경고 알림창
-        .alert("Error", isPresented: $warningAlert) {
+        .alert("", isPresented: $warningAlert) {
             Button("Ok") {}
         } message: {
             Text("권한이 없습니다.")
