@@ -28,6 +28,9 @@ struct BoardView: View {
     @State private var presentsCommentEditor: Bool = false
     @State var postData: Post
     
+    // 프로필
+    @State private var presentsProfileView: Bool = false
+    
     @State var comments = [Comment]()
     @State var currentComment: Comment?
     
@@ -36,7 +39,7 @@ struct BoardView: View {
             VStack() {
                 ScrollView() {
                     VStack(alignment: .leading) {
-                        //MARK: - 게시그 제목
+                        //MARK: - 게시글 제목
                         Text(postData.title)
                             .font(.title3)
                             .bold()
@@ -44,18 +47,25 @@ struct BoardView: View {
                         
                         //MARK: - 글 작성자, 날짜
                         HStack() {
+                            // 글 작성자 프로필 이미지
                             KFImage(URL(string:postData.profileUrl))
                                 .resizable()
                                 .frame(maxWidth: 25, maxHeight: 25)
                                 .clipShape(Circle())
                                 .overlay { Circle().stroke(.white, lineWidth: 1) }
                                 .shadow(radius: 1)
-                            
+                            // 글 작성자 프로필 클릭 이벤트
+                                .onTapGesture {
+                                    print("chang on TabGetsture")
+                                    // 프로필 뷰 이동
+                                    presentsProfileView = true
+                                }
                             VStack(alignment: .leading) {
+                                // 글 작성자 이름
                                 Text(postData.author).bold()
+                                // 글 작성 시간
                                 HStack() {
                                     Text(postData.timestamp.dateValue().toString().components(separatedBy: " ")[0])
-                                    Text("조회 0")
                                 }.opacity(0.7)
                             }
                             Spacer()
@@ -106,6 +116,12 @@ struct BoardView: View {
                             .frame(width: 40, height: 40)
                     })
                 }.padding(.horizontal,10)
+            }
+            //MARK: - 게시글 작성자 프로필 이미지 클릭 시 프로필 화면으로 이동
+            .fullScreenCover(isPresented: $presentsProfileView) {
+                NavigationView {
+                    ProfileView(profileUrl: postData.profileUrl, username: postData.author)
+                }
             }
         }
         //MARK: - Navigation 상단메뉴

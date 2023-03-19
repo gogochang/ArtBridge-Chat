@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
+		951492F829C715F2003BB8FC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492F729C715F2003BB8FC /* ProfileView.swift */; };
+		951492FA29C73D03003BB8FC /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492F929C73D03003BB8FC /* CircleView.swift */; };
 		951F367629A0B03500E5978C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F367529A0B03500E5978C /* ChatListView.swift */; };
 		953587B229BF50C4006CBA19 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953587B129BF50C4006CBA19 /* UserService.swift */; };
 		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
@@ -82,6 +84,8 @@
 		7E515B0D990FB714CAEAF079 /* Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; path = "Target Support Files/Pods-ArtBridge-ArtBridgeUITests/Pods-ArtBridge-ArtBridgeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
 		95035AEA29B3280100B6259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		951492F729C715F2003BB8FC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		951492F929C73D03003BB8FC /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		951F367529A0B03500E5978C /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		953587B129BF50C4006CBA19 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
@@ -184,6 +188,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		951492F429C715C9003BB8FC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				951492F529C715D4003BB8FC /* ViewModels */,
+				951492F629C715DC003BB8FC /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		951492F529C715D4003BB8FC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		951492F629C715DC003BB8FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				951492F729C715F2003BB8FC /* ProfileView.swift */,
+				951492F929C73D03003BB8FC /* CircleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		957BF9E02987DD46007D9367 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +225,7 @@
 		957E46792985EEB900B61B12 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				951492F429C715C9003BB8FC /* Profile */,
 				95AC51D829BB112500F7CBED /* Home */,
 				957E46892987A1CF00B61B12 /* Post */,
 				959A8073299E712B00D0EDAF /* People */,
@@ -697,6 +727,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */,
+				951492F829C715F2003BB8FC /* ProfileView.swift in Sources */,
 				957E46782985E3F200B61B12 /* LoginView.swift in Sources */,
 				957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
@@ -711,6 +742,7 @@
 				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
 				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
 				953587B229BF50C4006CBA19 /* UserService.swift in Sources */,
+				951492FA29C73D03003BB8FC /* CircleView.swift in Sources */,
 				9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */,
 				95E72DAC29C1979D002FDFA1 /* CommentEditView.swift in Sources */,
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
