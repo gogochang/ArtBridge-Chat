@@ -12,10 +12,7 @@ struct ProfileView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    // 프로필 정보
-    // TODO: User 데이터를 사용하는 것으로 변경 필요
-    let profileUrl: String
-    let username: String
+    @EnvironmentObject var viewModel: ProfileVM
     
     //MARK: body
     var body: some View {
@@ -42,6 +39,10 @@ struct ProfileView: View {
                 Image(systemName: "xmark")
                     .foregroundColor(Color.black)
             }))
+        .onAppear(perform: {
+            // Profile View가 렌더링 되면 프로필에 표시할 유저를 가져오기
+            viewModel.fetchUser()
+        })
     }
 }
 
@@ -59,7 +60,7 @@ private extension ProfileView {
 //                .frame(height: $0.size.height - 150)
         }
     }
-    
+    // 프로필 정보
     var Profile: some View {
         VStack {
             ProfileImage // 프로필 이미지
@@ -67,8 +68,9 @@ private extension ProfileView {
         }
     }
     
+    //프로필 이미지
     var ProfileImage: some View {
-        KFImage(URL(string:profileUrl))
+        KFImage(URL(string:viewModel.userProfile?.profileUrl ?? ""))
             .resizable()
             .frame(width: 150, height: 150)
             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
@@ -79,11 +81,13 @@ private extension ProfileView {
         
     }
     
+    // 프로필 유저네임
     var UserName: some View {
-        Text(username)
+        Text(viewModel.userProfile?.username ?? "")
             .font(.title)
     }
     
+    // 채팅 버튼
     var chatButton: some View {
         Button(action: {
             // TODO: 해당 유저와 1:1 채팅 View로 이동

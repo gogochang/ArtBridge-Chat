@@ -12,6 +12,7 @@ import Kingfisher
 struct BoardView: View {
     
     @EnvironmentObject var viewModel: PostVM
+    @EnvironmentObject var profileVM: ProfileVM
     @Environment(\.presentationMode) var presentationMode
     
     // 댓글 TextField
@@ -56,7 +57,7 @@ struct BoardView: View {
                                 .shadow(radius: 1)
                             // 글 작성자 프로필 클릭 이벤트
                                 .onTapGesture {
-                                    print("chang on TabGetsture")
+                                    profileVM.uid = postData.uid
                                     // 프로필 뷰 이동
                                     presentsProfileView = true
                                 }
@@ -120,7 +121,7 @@ struct BoardView: View {
             //MARK: - 게시글 작성자 프로필 이미지 클릭 시 프로필 화면으로 이동
             .fullScreenCover(isPresented: $presentsProfileView) {
                 NavigationView {
-                    ProfileView(profileUrl: postData.profileUrl, username: postData.author)
+                    ProfileView()
                 }
             }
         }
@@ -196,6 +197,11 @@ extension BoardView {
                                     .clipShape(Circle())
                                     .overlay { Circle().stroke(.white, lineWidth: 1) }
                                     .shadow(radius: 1)
+                                    .onTapGesture {
+                                        profileVM.uid = comment.uid
+                                        // 프로필 뷰 이동
+                                        presentsProfileView = true
+                                    }
                             }
                             // 댓글 작성자 및 내용
                             VStack(alignment: .leading) {

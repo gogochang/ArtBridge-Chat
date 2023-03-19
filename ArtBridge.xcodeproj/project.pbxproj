@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		951492F829C715F2003BB8FC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492F729C715F2003BB8FC /* ProfileView.swift */; };
-		951492FA29C73D03003BB8FC /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492F929C73D03003BB8FC /* CircleView.swift */; };
+		951492FC29C763FF003BB8FC /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492FB29C763FF003BB8FC /* ProfileVM.swift */; };
 		951F367629A0B03500E5978C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F367529A0B03500E5978C /* ChatListView.swift */; };
 		953587B229BF50C4006CBA19 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953587B129BF50C4006CBA19 /* UserService.swift */; };
 		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
@@ -85,7 +85,7 @@
 		7F869E1C777A8516FDCD13C0 /* Pods-ArtBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArtBridge.release.xcconfig"; path = "Target Support Files/Pods-ArtBridge/Pods-ArtBridge.release.xcconfig"; sourceTree = "<group>"; };
 		95035AEA29B3280100B6259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951492F729C715F2003BB8FC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		951492F929C73D03003BB8FC /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		951492FB29C763FF003BB8FC /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		951F367529A0B03500E5978C /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		953587B129BF50C4006CBA19 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
@@ -208,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				951492F729C715F2003BB8FC /* ProfileView.swift */,
-				951492F929C73D03003BB8FC /* CircleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -426,6 +425,7 @@
 		95E8716729850D4D00096049 = {
 			isa = PBXGroup;
 			children = (
+				951492FB29C763FF003BB8FC /* ProfileVM.swift */,
 				95E8717229850D4D00096049 /* ArtBridge */,
 				95E8718329850D4E00096049 /* ArtBridgeTests */,
 				95E8718D29850D4E00096049 /* ArtBridgeUITests */,
@@ -742,7 +742,6 @@
 				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
 				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
 				953587B229BF50C4006CBA19 /* UserService.swift in Sources */,
-				951492FA29C73D03003BB8FC /* CircleView.swift in Sources */,
 				9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */,
 				95E72DAC29C1979D002FDFA1 /* CommentEditView.swift in Sources */,
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
@@ -757,6 +756,7 @@
 				959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */,
 				95AC51E229BB479700F7CBED /* User.swift in Sources */,
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
+				951492FC29C763FF003BB8FC /* ProfileVM.swift in Sources */,
 				954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */,
 				95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */,
 				95AC51E029BB183400F7CBED /* Post.swift in Sources */,

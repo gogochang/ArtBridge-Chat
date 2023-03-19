@@ -36,6 +36,7 @@ struct ArtBridgeApp: App {
             ContentView()
                 .environmentObject(UserVM())
                 .environmentObject(PostVM())
+                .environmentObject(ProfileVM())
                 .onOpenURL{ url in
                     if (AuthApi.isKakaoTalkLoginUrl(url)) {
                         _ = AuthController.handleOpenUrl(url: url)
