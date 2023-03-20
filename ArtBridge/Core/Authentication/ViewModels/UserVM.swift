@@ -20,14 +20,11 @@ class UserVM: ObservableObject {
     
     @Published var userSession: Firebase.User?
     @Published var currentUser: User?
-    @Published var loggedUser: firesotreUsers?
     @Published var data = Data()
     
     //Input
     @Published var emailInput: String = ""
     @Published var passwordInput: String = ""
-    
-    @Published var loggedInUser: UserResponse? = nil
     
     // 로그인 완료 이벤트
     var logInSuccess = PassthroughSubject<(), Never>()

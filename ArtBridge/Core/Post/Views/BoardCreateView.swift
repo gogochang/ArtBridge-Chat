@@ -51,7 +51,7 @@ struct BoardCreateView: View {
                     .overlay(Capsule().stroke(Color.gray , lineWidth: 0.5))
                     
                     // 제목입력 TextField
-                    TextField(userVM.loggedInUser?.user.username ?? "제목을 입력하세요.", text: $title)
+                    TextField("제목을 입력하세요.", text: $title)
                 }.padding(.horizontal, 10)
                 Divider()
                 

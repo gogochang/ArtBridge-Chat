@@ -17,9 +17,6 @@ class PostVM: ObservableObject {
     @Published var comments = [Comment]()
     let service = PostService()
     
-    @Published var postData: PostData? = nil
-    @Published var Boards : BoardResponse? = nil
-    
     @Published var imageUrl: String = ""
     
     // 게시판 주제 선택

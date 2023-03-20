@@ -20,13 +20,15 @@ struct ContentView: View {
                             Text("게시판")
                         }.tag(0)
                     
-                    PeopleView(selection: $selection)
+//                    PeopleView(selection: $selection)
+                    Text("UserListView")
                         .tabItem {
                             Image(systemName: "person.2")
                             Text("사람")
                         }.tag(2)
                     
-                    ChatListView()
+//                    ChatListView()
+                    Text("ChatListView")
                         .tabItem {
                             Image(systemName: "message")
                             Text("채팅")

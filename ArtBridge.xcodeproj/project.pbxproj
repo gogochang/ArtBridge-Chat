@@ -10,27 +10,15 @@
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		951492F829C715F2003BB8FC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492F729C715F2003BB8FC /* ProfileView.swift */; };
 		951492FC29C763FF003BB8FC /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492FB29C763FF003BB8FC /* ProfileVM.swift */; };
-		951F367629A0B03500E5978C /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F367529A0B03500E5978C /* ChatListView.swift */; };
 		953587B229BF50C4006CBA19 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953587B129BF50C4006CBA19 /* UserService.swift */; };
-		953BCD35299668B00001B787 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BCD34299668B00001B787 /* AccountData.swift */; };
-		95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95482920299F75CA0054CB9A /* FirebaseService.swift */; };
 		954ADC40299B86C000C715F8 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3F299B86C000C715F8 /* UserVM.swift */; };
-		954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC41299B95A500C715F8 /* UserResponse.swift */; };
 		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
-		9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B468299221BF00732B70 /* KakaoLoginView.swift */; };
-		9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B46A2992226E00732B70 /* NaverLoginView.swift */; };
-		9573B46D2992228C00732B70 /* FaceBookLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B46C2992228C00732B70 /* FaceBookLoginView.swift */; };
-		9573B46F299222AA00732B70 /* AppleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B46E299222AA00732B70 /* AppleLoginView.swift */; };
 		9573B471299224D800732B70 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9573B470299224D800732B70 /* RegisterView.swift */; };
-		9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579BE35298F9B6B00785E2E /* BoardResponse.swift */; };
 		9579BE3A299105B100785E2E /* BoardEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9579BE39299105B100785E2E /* BoardEditView.swift */; };
-		957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9D82987B7FC007D9367 /* HomeView.swift */; };
 		957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BF9DE2987DC9D007D9367 /* MyPageView.swift */; };
 		957E46782985E3F200B61B12 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46772985E3F200B61B12 /* LoginView.swift */; };
 		957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46872987A18900B61B12 /* PrevPostsView.swift */; };
 		959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A806E299E67AF00D0EDAF /* ChatData.swift */; };
-		959A8072299E6BB600D0EDAF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8071299E6BB600D0EDAF /* ChatView.swift */; };
-		959A8075299E713900D0EDAF /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8074299E713900D0EDAF /* PeopleView.swift */; };
 		959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8076299E7B4C00D0EDAF /* AuthVM.swift */; };
 		95AC51DE29BB12A800F7CBED /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DD29BB12A800F7CBED /* PostService.swift */; };
 		95AC51E029BB183400F7CBED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DF29BB183400F7CBED /* Post.swift */; };
@@ -38,13 +26,11 @@
 		95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E329BB4C2600F7CBED /* ImageService.swift */; };
 		95AC51E629BB803400F7CBED /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E529BB803400F7CBED /* LoadingIndicator.swift */; };
 		95B390402994F6120048B80A /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3903F2994F6120048B80A /* RegisterVM.swift */; };
-		95B39937298A590800E7BD3D /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39936298A590800E7BD3D /* PostData.swift */; };
 		95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39938298A5B0A00E7BD3D /* BoardView.swift */; };
 		95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B39942298A5F0600E7BD3D /* PostVM.swift */; };
 		95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C84D76298F858B0023C412 /* BoardCreateView.swift */; };
 		95D993C429BEF5FF009C4FB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */; };
 		95D993C629BEFC6A009C4FB4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D993C529BEFC6A009C4FB4 /* Comment.swift */; };
-		95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E00B1D29B21D9000F2A565 /* ChatVM.swift */; };
 		95E72DAC29C1979D002FDFA1 /* CommentEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
@@ -86,27 +72,15 @@
 		95035AEA29B3280100B6259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951492F729C715F2003BB8FC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		951492FB29C763FF003BB8FC /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
-		951F367529A0B03500E5978C /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		953587B129BF50C4006CBA19 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		953BCD34299668B00001B787 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
-		95482920299F75CA0054CB9A /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		954ADC3F299B86C000C715F8 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
-		954ADC41299B95A500C715F8 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
-		9573B468299221BF00732B70 /* KakaoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginView.swift; sourceTree = "<group>"; };
-		9573B46A2992226E00732B70 /* NaverLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginView.swift; sourceTree = "<group>"; };
-		9573B46C2992228C00732B70 /* FaceBookLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBookLoginView.swift; sourceTree = "<group>"; };
-		9573B46E299222AA00732B70 /* AppleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginView.swift; sourceTree = "<group>"; };
 		9573B470299224D800732B70 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		9579BE35298F9B6B00785E2E /* BoardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardResponse.swift; sourceTree = "<group>"; };
 		9579BE39299105B100785E2E /* BoardEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardEditView.swift; sourceTree = "<group>"; };
-		957BF9D82987B7FC007D9367 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		957BF9DE2987DC9D007D9367 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		957E46772985E3F200B61B12 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		957E46872987A18900B61B12 /* PrevPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevPostsView.swift; sourceTree = "<group>"; };
 		959A806E299E67AF00D0EDAF /* ChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatData.swift; sourceTree = "<group>"; };
-		959A8071299E6BB600D0EDAF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		959A8074299E713900D0EDAF /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 		959A8076299E7B4C00D0EDAF /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
 		95AC51DD29BB12A800F7CBED /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		95AC51DF29BB183400F7CBED /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -114,13 +88,11 @@
 		95AC51E329BB4C2600F7CBED /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		95AC51E529BB803400F7CBED /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		95B3903F2994F6120048B80A /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
-		95B39936298A590800E7BD3D /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		95B39938298A5B0A00E7BD3D /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		95B39942298A5F0600E7BD3D /* PostVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVM.swift; sourceTree = "<group>"; };
 		95C84D76298F858B0023C412 /* BoardCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCreateView.swift; sourceTree = "<group>"; };
 		95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95D993C529BEFC6A009C4FB4 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		95E00B1D29B21D9000F2A565 /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
 		95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEditView.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
@@ -225,10 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				951492F429C715C9003BB8FC /* Profile */,
-				95AC51D829BB112500F7CBED /* Home */,
 				957E46892987A1CF00B61B12 /* Post */,
-				959A8073299E712B00D0EDAF /* People */,
-				959A8070299E6B9500D0EDAF /* Chat */,
 				957BF9E02987DD46007D9367 /* MyPage */,
 				957E468C2987A20100B61B12 /* Authentication */,
 			);
@@ -238,10 +207,6 @@
 		957E46802986E3A500B61B12 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				95B39936298A590800E7BD3D /* PostData.swift */,
-				9579BE35298F9B6B00785E2E /* BoardResponse.swift */,
-				953BCD34299668B00001B787 /* AccountData.swift */,
-				954ADC41299B95A500C715F8 /* UserResponse.swift */,
 				959A806E299E67AF00D0EDAF /* ChatData.swift */,
 				95AC51DF29BB183400F7CBED /* Post.swift */,
 				95AC51E129BB479700F7CBED /* User.swift */,
@@ -268,57 +233,6 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		959A8070299E6B9500D0EDAF /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				95AC51D129BB109700F7CBED /* ViewModels */,
-				95AC51D029BB109200F7CBED /* Views */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		959A8073299E712B00D0EDAF /* People */ = {
-			isa = PBXGroup;
-			children = (
-				95AC51CF29BB108A00F7CBED /* ViewModels */,
-				95AC51CE29BB105200F7CBED /* Views */,
-			);
-			path = People;
-			sourceTree = "<group>";
-		};
-		95AC51CE29BB105200F7CBED /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				959A8074299E713900D0EDAF /* PeopleView.swift */,
-			);
-			name = Views;
-			path = "New Group/Views";
-			sourceTree = "<group>";
-		};
-		95AC51CF29BB108A00F7CBED /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		95AC51D029BB109200F7CBED /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				951F367529A0B03500E5978C /* ChatListView.swift */,
-				959A8071299E6BB600D0EDAF /* ChatView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		95AC51D129BB109700F7CBED /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				95E00B1D29B21D9000F2A565 /* ChatVM.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		95AC51D229BB10A800F7CBED /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,10 +253,6 @@
 			children = (
 				957E46772985E3F200B61B12 /* LoginView.swift */,
 				9573B470299224D800732B70 /* RegisterView.swift */,
-				9573B468299221BF00732B70 /* KakaoLoginView.swift */,
-				9573B46A2992226E00732B70 /* NaverLoginView.swift */,
-				9573B46C2992228C00732B70 /* FaceBookLoginView.swift */,
-				9573B46E299222AA00732B70 /* AppleLoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,30 +288,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		95AC51D829BB112500F7CBED /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				95AC51DA29BB113900F7CBED /* ViewModels */,
-				95AC51D929BB112F00F7CBED /* Views */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		95AC51D929BB112F00F7CBED /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				957BF9D82987B7FC007D9367 /* HomeView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		95AC51DA29BB113900F7CBED /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		95AC51DB29BB118E00F7CBED /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,7 +300,6 @@
 		95AC51DC29BB11CA00F7CBED /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				95482920299F75CA0054CB9A /* FirebaseService.swift */,
 				95AC51DD29BB12A800F7CBED /* PostService.swift */,
 				95AC51E329BB4C2600F7CBED /* ImageService.swift */,
 				953587B129BF50C4006CBA19 /* UserService.swift */,
@@ -731,41 +616,27 @@
 				957E46782985E3F200B61B12 /* LoginView.swift in Sources */,
 				957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
-				9573B46F299222AA00732B70 /* AppleLoginView.swift in Sources */,
-				953BCD35299668B00001B787 /* AccountData.swift in Sources */,
-				951F367629A0B03500E5978C /* ChatListView.swift in Sources */,
 				95D993C629BEFC6A009C4FB4 /* Comment.swift in Sources */,
 				9579BE3A299105B100785E2E /* BoardEditView.swift in Sources */,
-				959A8075299E713900D0EDAF /* PeopleView.swift in Sources */,
 				95B39943298A5F0600E7BD3D /* PostVM.swift in Sources */,
 				95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */,
-				957BF9D92987B7FC007D9367 /* HomeView.swift in Sources */,
-				95B39937298A590800E7BD3D /* PostData.swift in Sources */,
 				953587B229BF50C4006CBA19 /* UserService.swift in Sources */,
-				9579BE36298F9B6B00785E2E /* BoardResponse.swift in Sources */,
 				95E72DAC29C1979D002FDFA1 /* CommentEditView.swift in Sources */,
 				9573B471299224D800732B70 /* RegisterView.swift in Sources */,
-				95E00B1E29B21D9000F2A565 /* ChatVM.swift in Sources */,
 				954ADC40299B86C000C715F8 /* UserVM.swift in Sources */,
 				95AC51E629BB803400F7CBED /* LoadingIndicator.swift in Sources */,
 				95B390402994F6120048B80A /* RegisterVM.swift in Sources */,
-				9573B46B2992226E00732B70 /* NaverLoginView.swift in Sources */,
-				9573B46D2992228C00732B70 /* FaceBookLoginView.swift in Sources */,
 				9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */,
 				95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */,
 				959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */,
 				95AC51E229BB479700F7CBED /* User.swift in Sources */,
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
 				951492FC29C763FF003BB8FC /* ProfileVM.swift in Sources */,
-				954ADC42299B95A500C715F8 /* UserResponse.swift in Sources */,
 				95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */,
 				95AC51E029BB183400F7CBED /* Post.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,
-				95482921299F75CA0054CB9A /* FirebaseService.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
 				95AC51DE29BB12A800F7CBED /* PostService.swift in Sources */,
-				9573B469299221BF00732B70 /* KakaoLoginView.swift in Sources */,
-				959A8072299E6BB600D0EDAF /* ChatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
