@@ -13,6 +13,7 @@ struct ProfileView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @EnvironmentObject var viewModel: ProfileVM
+    @EnvironmentObject var userVM: UserVM
     
     //MARK: body
     var body: some View {
@@ -30,15 +31,25 @@ struct ProfileView: View {
             
         }
         .edgesIgnoringSafeArea(.top)
-        // 뒤로가기 커스텀 상단 버튼
+        // 네비게이션 커스텀 상단 버튼
         .navigationBarItems(
+            // 뒤로가기 버튼
             leading: Button(action: {
                 print("Back Button is Clicked")
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(systemName: "xmark")
                     .foregroundColor(Color.black)
-            }))
+            }),
+            // 설정 버튼
+            trailing: Button(action: {
+                // some action
+                print("profile setting button is clicked")
+            }, label: {
+                Image(systemName: "gearshape")
+                    .foregroundColor(Color.black)
+            }).opacity(viewModel.userProfile?.uid == userVM.currentUser?.uid ? 1 : 0))
+        
         .onAppear(perform: {
             // Profile View가 렌더링 되면 프로필에 표시할 유저를 가져오기
             viewModel.fetchUser()
@@ -93,12 +104,12 @@ private extension ProfileView {
             // TODO: 해당 유저와 1:1 채팅 View로 이동
         }, label: {
             VStack {
-                Image(systemName: "message")
+                Image(systemName: "bubble.left")
                     .resizable()
                     .frame(width: 30, height: 30)
                 Text("채팅하기")
             }.foregroundColor(Color.black)
-        })
+        }).opacity(viewModel.userProfile?.uid == userVM.currentUser?.uid ? 0 : 1)
     }
 }
 
