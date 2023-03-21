@@ -10,6 +10,7 @@
 		84B6178D2717B738272B8152 /* Pods_ArtBridgeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06E197DBFE271768FEE19BD /* Pods_ArtBridgeTests.framework */; };
 		951492F829C715F2003BB8FC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492F729C715F2003BB8FC /* ProfileView.swift */; };
 		951492FC29C763FF003BB8FC /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951492FB29C763FF003BB8FC /* ProfileVM.swift */; };
+		9514931929C9E919003BB8FC /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9514931829C9E919003BB8FC /* ChatListView.swift */; };
 		953587B229BF50C4006CBA19 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953587B129BF50C4006CBA19 /* UserService.swift */; };
 		954ADC40299B86C000C715F8 /* UserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954ADC3F299B86C000C715F8 /* UserVM.swift */; };
 		9561FC62298D25D900DFFB8A /* BoardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561FC61298D25D900DFFB8A /* BoardListView.swift */; };
@@ -20,6 +21,9 @@
 		957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46872987A18900B61B12 /* PrevPostsView.swift */; };
 		959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A806E299E67AF00D0EDAF /* ChatData.swift */; };
 		959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8076299E7B4C00D0EDAF /* AuthVM.swift */; };
+		95A1ADF029C9EC7D00BDA25C /* ChatVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1ADEF29C9EC7D00BDA25C /* ChatVM.swift */; };
+		95A1ADF229C9ED5A00BDA25C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1ADF129C9ED5A00BDA25C /* Message.swift */; };
+		95A1ADF429C9F49A00BDA25C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1ADF329C9F49A00BDA25C /* ChatView.swift */; };
 		95AC51DE29BB12A800F7CBED /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DD29BB12A800F7CBED /* PostService.swift */; };
 		95AC51E029BB183400F7CBED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51DF29BB183400F7CBED /* Post.swift */; };
 		95AC51E229BB479700F7CBED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AC51E129BB479700F7CBED /* User.swift */; };
@@ -72,6 +76,7 @@
 		95035AEA29B3280100B6259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951492F729C715F2003BB8FC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		951492FB29C763FF003BB8FC /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
+		9514931829C9E919003BB8FC /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		953587B129BF50C4006CBA19 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		954ADC3F299B86C000C715F8 /* UserVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVM.swift; sourceTree = "<group>"; };
 		9561FC61298D25D900DFFB8A /* BoardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardListView.swift; sourceTree = "<group>"; };
@@ -82,6 +87,9 @@
 		957E46872987A18900B61B12 /* PrevPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevPostsView.swift; sourceTree = "<group>"; };
 		959A806E299E67AF00D0EDAF /* ChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatData.swift; sourceTree = "<group>"; };
 		959A8076299E7B4C00D0EDAF /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
+		95A1ADEF29C9EC7D00BDA25C /* ChatVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVM.swift; sourceTree = "<group>"; };
+		95A1ADF129C9ED5A00BDA25C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		95A1ADF329C9F49A00BDA25C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		95AC51DD29BB12A800F7CBED /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		95AC51DF29BB183400F7CBED /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		95AC51E129BB479700F7CBED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -184,6 +192,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9514931629C9E8FE003BB8FC /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				95A1ADEE29C9EC7200BDA25C /* ViewModels */,
+				9514931729C9E909003BB8FC /* Views */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		9514931729C9E909003BB8FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9514931829C9E919003BB8FC /* ChatListView.swift */,
+				95A1ADF329C9F49A00BDA25C /* ChatView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		957BF9E02987DD46007D9367 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +222,7 @@
 		957E46792985EEB900B61B12 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9514931629C9E8FE003BB8FC /* Chat */,
 				951492F429C715C9003BB8FC /* Profile */,
 				957E46892987A1CF00B61B12 /* Post */,
 				957BF9E02987DD46007D9367 /* MyPage */,
@@ -211,6 +238,7 @@
 				95AC51DF29BB183400F7CBED /* Post.swift */,
 				95AC51E129BB479700F7CBED /* User.swift */,
 				95D993C529BEFC6A009C4FB4 /* Comment.swift */,
+				95A1ADF129C9ED5A00BDA25C /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +259,14 @@
 				95AC51D429BB10BD00F7CBED /* Views */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		95A1ADEE29C9EC7200BDA25C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				95A1ADEF29C9EC7D00BDA25C /* ChatVM.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		95AC51D229BB10A800F7CBED /* Views */ = {
@@ -613,7 +649,9 @@
 			files = (
 				95F617CA29A8B3CC00C40E1C /* ImagePicker.swift in Sources */,
 				951492F829C715F2003BB8FC /* ProfileView.swift in Sources */,
+				95A1ADF029C9EC7D00BDA25C /* ChatVM.swift in Sources */,
 				957E46782985E3F200B61B12 /* LoginView.swift in Sources */,
+				95A1ADF229C9ED5A00BDA25C /* Message.swift in Sources */,
 				957BF9DF2987DC9D007D9367 /* MyPageView.swift in Sources */,
 				95E8717629850D4D00096049 /* ContentView.swift in Sources */,
 				95D993C629BEFC6A009C4FB4 /* Comment.swift in Sources */,
@@ -631,8 +669,10 @@
 				959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */,
 				95AC51E229BB479700F7CBED /* User.swift in Sources */,
 				95B39939298A5B0A00E7BD3D /* BoardView.swift in Sources */,
+				95A1ADF429C9F49A00BDA25C /* ChatView.swift in Sources */,
 				951492FC29C763FF003BB8FC /* ProfileVM.swift in Sources */,
 				95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */,
+				9514931929C9E919003BB8FC /* ChatListView.swift in Sources */,
 				95AC51E029BB183400F7CBED /* Post.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,

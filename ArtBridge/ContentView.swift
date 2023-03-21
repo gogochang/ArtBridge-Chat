@@ -13,7 +13,6 @@ struct ContentView: View {
         NavigationView {
             VStack() {
                 TabView(selection: $selection) {
-                
                     BoardListView()
                         .tabItem {
                             Image(systemName: "list.bullet")
@@ -27,8 +26,7 @@ struct ContentView: View {
                             Text("사람")
                         }.tag(2)
                     
-//                    ChatListView()
-                    Text("ChatListView")
+                    ChatListView()
                         .tabItem {
                             Image(systemName: "message")
                             Text("채팅")

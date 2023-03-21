@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Firebase
 
 class ProfileVM: ObservableObject {
     let userService = UserService()
@@ -25,4 +25,32 @@ class ProfileVM: ObservableObject {
             self.userProfile = user
         }
     }
+    
+    //채팅 만들기
+    func createChat() {
+        print("ProfileVM - createChat() called")
+        guard let currentUser = Auth.auth().currentUser else { return }
+        guard let chatPartner = userProfile else { return }
+        
+        let fromUser = ["username":currentUser.displayName,
+                        "profileUrl":currentUser.photoURL?.absoluteString,
+                        "uid":currentUser.uid,
+                        "email":currentUser.email]
+        
+        let toUser = ["username":chatPartner.username,
+                      "profileUrl":chatPartner.profileUrl,
+                      "uid":chatPartner.uid,
+                      "email":chatPartner.email]
+        
+        let data = ["fromUser": fromUser,
+                    "toUser":toUser]
+        
+        Firestore.firestore().collection("users").document(currentUser.uid)
+            .collection("chats").document().setData(data) { error in
+                if let error = error {
+                    print("Error : \(error.localizedDescription)")
+                }
+            }
+    }
+    
 }

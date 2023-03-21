@@ -102,6 +102,7 @@ private extension ProfileView {
     var chatButton: some View {
         Button(action: {
             // TODO: 해당 유저와 1:1 채팅 View로 이동
+            viewModel.createChat()
         }, label: {
             VStack {
                 Image(systemName: "bubble.left")
