@@ -9,22 +9,22 @@ import SwiftUI
 import Kingfisher
 
 struct ChatListView: View {
-    @ObservedObject var viewModel = ChatVM()
+    @ObservedObject var viewModel = ChatListVM()
     
     var body: some View {
         VStack {
-            List(viewModel.toUsers) { user in
+            List(viewModel.chatRooms) { chatRoom in
                     HStack {
-                        KFImage(URL(string:user.toUser.profileUrl))
+                        KFImage(URL(string:chatRoom.toUser.profileUrl))
                             .resizable()
                             .clipShape(Circle())
                             .frame(maxWidth: 50, maxHeight: 50)
                         
                         VStack(alignment: .leading) {
-                            Text(user.toUser.username)
-                            Text(user.toUser.email)
+                            Text(chatRoom.toUser.username)
+
                         }
-                        NavigationLink(destination: ChatView(), label: {
+                        NavigationLink(destination: ChatView(chatRoom: chatRoom), label: {
                         })// Navigation
                         .opacity(0)
                     }

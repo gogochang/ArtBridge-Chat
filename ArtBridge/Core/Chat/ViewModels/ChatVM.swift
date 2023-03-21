@@ -9,20 +9,72 @@ import Foundation
 import Firebase
 
 class ChatVM: ObservableObject {
+    @Published var messages = [Message]()
     
-    @Published var toUsers = [ChatRoom]()
+    private let chatRoom: ChatRoom
     
-    //현재 유저의 채팅목록 가져오기
-    func fetchChats() {
-        print("ChatVM - fetchChats() called")
+    init(chatRoom: ChatRoom) {
+        self.chatRoom = chatRoom
+        fetchMessages()
+    }
+
+    //MARK: 메세지 가져오기
+    func fetchMessages() {
+        print("ChatVM - fetchMessages() called")
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        Firestore.firestore().collection("users").document(uid).collection("chats")
-            .getDocuments { snapshot, _ in
+        let query = Firestore.firestore().collection("users").document(uid).collection("chats").document(chatRoom.id!).collection("messages")
+        
+        query.addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+            }
+            
+            guard let changes = snapshot?.documentChanges.filter({ $0.type == .added }) else { return }
+            let addedMessages = changes.compactMap{ try? $0.document.data(as: Message.self) }
+            self.messages.append(contentsOf: addedMessages)
+        }
+        
+            query.getDocuments { snapshot, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    return
+                }
                 guard let documents = snapshot?.documents else { return }
                 
-                let chats = documents.compactMap({ try? $0.data(as: ChatRoom.self)})
-                self.toUsers = chats
-            
+                let messages = documents.compactMap({ try? $0.data(as: Message.self)})
+                self.messages = messages
             }
+    }
+    //MARK: 메세지 보내기
+    func sendMessage(messageText: String) {
+        print("ChatVM - sendMessage() called")
+//        guard let currentUser = Auth.auth().currentUser else { return }
+        let currentUser = chatRoom.fromUser
+        let chatPartner = chatRoom.toUser
+        print("chnag chatpartner -> \(chatPartner.uid)")
+        print("chnag chatpartner -> \(chatPartner.username)")
+        
+        let fromUser = ["username":currentUser.username,
+                        "profileUrl":currentUser.profileUrl,
+                          "uid":currentUser.uid,
+                          "email":currentUser.email]
+        
+        let toUser = ["username":chatPartner.username,
+                      "profileUrl":chatPartner.profileUrl,
+                      "uid":chatPartner.uid,
+                      "email":chatPartner.email]
+        
+        let data = ["text": messageText,
+                    "fromUser": fromUser,
+                    "toUser": toUser,
+                    "timestamp": Timestamp(date: Date())] as [String : Any]
+        
+        let currentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatRoom.id!).collection("messages").document()
+        let chatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid).collection("chats").document(chatRoom.id!).collection("messages")
+        
+        let messagesID = currentUserRef.documentID
+        
+        currentUserRef.setData(data)
+        chatPartnerRef.document(messagesID).setData(data)
     }
 }

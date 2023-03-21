@@ -42,15 +42,21 @@ class ProfileVM: ObservableObject {
                       "uid":chatPartner.uid,
                       "email":chatPartner.email]
         
-        let data = ["fromUser": fromUser,
+        let fromData = ["fromUser": fromUser,
                     "toUser":toUser]
         
-        Firestore.firestore().collection("users").document(currentUser.uid)
-            .collection("chats").document().setData(data) { error in
-                if let error = error {
-                    print("Error : \(error.localizedDescription)")
-                }
-            }
+        let toData = ["fromUser": toUser,
+                      "toUser":fromUser]
+        
+        let currentUserRef = Firestore.firestore().collection("users").document(currentUser.uid)
+            .collection("chats").document()
+        
+        let chatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid)
+            .collection("chats")
+        let messageID = currentUserRef.documentID
+        
+        currentUserRef.setData(fromData)
+        chatPartnerRef.document(messageID).setData(toData)
     }
     
 }
