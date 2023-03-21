@@ -13,6 +13,7 @@ struct BoardView: View {
     
     @EnvironmentObject var viewModel: PostVM
     @EnvironmentObject var profileVM: ProfileVM
+    @EnvironmentObject var userVM: UserVM
     @Environment(\.presentationMode) var presentationMode
     
     // 댓글 TextField
@@ -36,87 +37,29 @@ struct BoardView: View {
     @State var currentComment: Comment?
     
     var body: some View {
+        //MARK: Body
         NavigationView {
             VStack() {
                 ScrollView() {
                     VStack(alignment: .leading) {
-                        //MARK: - 게시글 제목
-                        Text(postData.title)
-                            .font(.title3)
-                            .bold()
-                            .padding([.bottom], 5)
+                        postTitle // 게시글 제목
                         
-                        //MARK: - 글 작성자, 날짜
-                        HStack() {
-                            // 글 작성자 프로필 이미지
-                            KFImage(URL(string:postData.profileUrl))
-                                .resizable()
-                                .frame(maxWidth: 25, maxHeight: 25)
-                                .clipShape(Circle())
-                                .overlay { Circle().stroke(.white, lineWidth: 1) }
-                                .shadow(radius: 1)
-                            // 글 작성자 프로필 클릭 이벤트
-                                .onTapGesture {
-                                    profileVM.uid = postData.uid
-                                    // 프로필 뷰 이동
-                                    presentsProfileView = true
-                                }
-                            VStack(alignment: .leading) {
-                                // 글 작성자 이름
-                                Text(postData.author).bold()
-                                // 글 작성 시간
-                                HStack() {
-                                    Text(postData.timestamp.dateValue().toString().components(separatedBy: " ")[0])
-                                }.opacity(0.7)
-                            }
-                            Spacer()
-                        }// HStack
-                        .font(.system(size:13))
-                        .padding([.bottom], 5)
+                        postUserInfo // 게시글 작성자 정보
                         
                         Divider()
                         
-                        //MARK: - 게시글 내용
-                        Text(postData.content).padding(.vertical,20)
+                        postContent // 게시글 내용
                         
-                        //MARK: - 게시글 이미지
-                        if "" != postData.imageUrl {
-                            KFImage(URL(string:postData.imageUrl))
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(12)
-                                .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
-                        }
                         //MARK: - 댓글 Group
                         Group {
-                            commentList
+                            commentList // 댓글 리스트
                         }
                     }//VStack
                     .padding()
                     Spacer()
-                }// ScrollView
-                // 댓글 입력창 TextField 설정
-                ZStack(alignment: .trailing) {
-                    TextField("댓글을 입력하세요", text: $commentText)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, 16)
-                        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
-                        .cornerRadius(16)
-                    
-                    // Button에 이미지 추가
-                    Button(action: {
-                        print("SendButton is Clicked")
-                        guard let user = Auth.auth().currentUser else { return }
-                        viewModel.addComment(post: postData, comment: commentText)
-                        self.commentText = ""
-                    }, label: {
-                        Image(systemName: "paperplane.fill")
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 16)
-                            .padding(.trailing, 16)
-                            .frame(width: 40, height: 40)
-                    })
-                }.padding(.horizontal,10)
+                } // ScrollView
+                
+                commentTextField // 댓글 TextField
             }
             //MARK: - 게시글 작성자 프로필 이미지 클릭 시 프로필 화면으로 이동
             .fullScreenCover(isPresented: $presentsProfileView) {
@@ -141,7 +84,7 @@ struct BoardView: View {
             // 더보기 상단 버튼
             trailing: Button(action: {
             print("Success Button is Clicked")
-                if postData.uid == Auth.auth().currentUser?.uid {
+                if postData.user.uid == userVM.currentUser?.uid {
                     presentsAlert = true
                 } else {
                     warningAlert = true
@@ -176,8 +119,89 @@ struct BoardView: View {
     }
     
 }
+private extension BoardView {
+    //MARK: 게시글 View
+    
+    // 게시글 제목
+    var postTitle: some View {
+        Text(postData.title)
+            .font(.title3)
+            .bold()
+    }
+    
+    // 게시글 작성자, 날짜
+    var postUserInfo: some View {
+        HStack() {
+            // 글 작성자 프로필 이미지
+            KFImage(URL(string:postData.user.profileUrl))
+                .resizable()
+                .frame(maxWidth: 25, maxHeight: 25)
+                .clipShape(Circle())
+                .overlay { Circle().stroke(.white, lineWidth: 1) }
+                .shadow(radius: 1)
+            // 글 작성자 프로필 클릭 이벤트
+                .onTapGesture {
+                    profileVM.uid = postData.user.uid
+                    // 프로필 뷰 이동
+                    presentsProfileView = true
+                }
+            VStack(alignment: .leading) {
+                // 글 작성자 이름
+                Text(postData.user.username).bold()
+                // 글 작성 시간
+                HStack() {
+                    Text(postData.timestamp.dateValue().toString().components(separatedBy: " ")[0])
+                }.opacity(0.7)
+            }
+            Spacer()
+        }// HStack
+        .font(.system(size:13))
+    }
+    
+    // 게시글 내용
+    var postContent: some View {
+        VStack(alignment: .leading) {
+            // 내용
+            Text(postData.content).padding(.vertical, 20)
+            
+            // 내용 이미지
+            if "" != postData.imageUrl {
+                KFImage(URL(string:postData.imageUrl))
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(12)
+                    .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
+            }
+        }
+    }
+    
+    var commentTextField: some View {
+        // 댓글 입력창 TextField 설정
+        ZStack(alignment: .trailing) {
+            TextField("댓글을 입력하세요", text: $commentText)
+                .padding(.vertical, 12)
+                .padding(.horizontal, 16)
+                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                .cornerRadius(16)
+            
+            // Button에 이미지 추가
+            Button(action: {
+                print("SendButton is Clicked")
+                guard let user = userVM.currentUser else { return }
+                viewModel.addComment(post: postData, comment: commentText)
+                self.commentText = ""
+            }, label: {
+                Image(systemName: "paperplane.fill")
+                    .foregroundColor(.black)
+                    .padding(.horizontal, 16)
+                    .padding(.trailing, 16)
+                    .frame(width: 40, height: 40)
+            })
+        }.padding(.horizontal,10)
+    }
+}
 
-extension BoardView {
+private extension BoardView {
     //MARK: - 댓글 View
     var commentList: some View {
         VStack(alignment: .leading) {
@@ -190,7 +214,7 @@ extension BoardView {
                     VStack() {
                         HStack(alignment: .top) {
                             // 댓글 작성자 프로필 이미지
-                            if let url = comment.profileUrl {
+                            if let url = comment.user.profileUrl {
                                 KFImage(URL(string:url))
                                     .resizable()
                                     .frame(width: 25, height: 25)
@@ -198,14 +222,14 @@ extension BoardView {
                                     .overlay { Circle().stroke(.white, lineWidth: 1) }
                                     .shadow(radius: 1)
                                     .onTapGesture {
-                                        profileVM.uid = comment.uid
+                                        profileVM.uid = comment.user.uid
                                         // 프로필 뷰 이동
                                         presentsProfileView = true
                                     }
                             }
                             // 댓글 작성자 및 내용
                             VStack(alignment: .leading) {
-                                Text(comment.author).bold().bold().font(.system(size:15))
+                                Text(comment.user.username).bold().bold().font(.system(size:15))
                                 Text(comment.timestamp.dateValue().toString().components(separatedBy: " ")[0]).opacity(0.5).font(.system(size:12))
                                 Text(comment.comment)
                             }
@@ -215,7 +239,7 @@ extension BoardView {
                             //댓글 추가메뉴 버튼
                             Button(action: {
                                 print("Comment button is clicked")
-                                if comment.uid == Auth.auth().currentUser?.uid {
+                                if comment.user.uid == userVM.currentUser?.uid {
                                     presentsCommentAlert = true
                                     currentComment = comment
                                 } else {

@@ -16,15 +16,18 @@ struct PostService {
         print("PostService - uploadPost() called")
         guard let user = Auth.auth().currentUser else { return }
 
+        let userData = ["username": user.displayName,
+                    "profileUrl":user.photoURL?.absoluteString,
+                    "uid":user.uid,
+                    "email":user.email]
+        
         ImageService.uploadImage(image: image) { imageUrl in
-            let data = ["uid": user.uid,
-                        "postType": postType,
+            let data = ["postType": postType,
                         "title": title,
                         "content": content,
                         "likes": 0,
-                        "author": user.displayName ?? "anonymous",
-                        "profileUrl" : user.photoURL?.absoluteString ?? "",
                         "imageUrl": imageUrl,
+                        "user":userData,
                         "timestamp": Timestamp(date: Date())] as [String: Any]
 
             Firestore.firestore().collection("posts").document().setData(data) { error in
@@ -90,11 +93,16 @@ struct PostService {
     func addComment(_ post: Post, comment: String, completion: @escaping (Bool) -> Void) {
         print("PostService - addComment() called")
         guard let user = Auth.auth().currentUser else { return }
-        let data = ["uid": user.uid,
-                    "comment": comment,
+
+        let userData = ["username": user.displayName,
+                    "profileUrl":user.photoURL?.absoluteString,
+                    "uid":user.uid,
+                    "email":user.email]
+        
+        
+        let data = ["comment": comment,
                     "likes": 0,
-                    "author": user.displayName ?? "nil",
-                    "profileUrl": user.photoURL?.absoluteString ?? "nil",
+                    "user": userData,
                     "timestamp": Timestamp(date: Date())] as [String: Any]
 
         Firestore.firestore().collection("posts").document(post.id!).collection("comment").document()

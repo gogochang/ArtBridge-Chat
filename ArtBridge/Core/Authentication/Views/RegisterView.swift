@@ -26,52 +26,6 @@ struct RegisterView: View {
         VStack(alignment: .leading) {
 
             Spacer()
-            
-//            profileImage
-//                .resizable()
-//                .frame(width: 150, height: 150)
-//                .clipShape(Circle())
-//                .overlay {
-//                    Circle().stroke(.white, lineWidth: 4)
-//                }
-//                .shadow(radius:7)
-//                .padding()
-//                .onTapGesture {
-//                    presentsImagePicker = true
-//                }
-//            // 카메라 선택
-//                .sheet(isPresented: $onCamera) {
-//                    ImagePicker(sourceType: .camera) { (pickedImage) in
-//                        profileImage = Image(uiImage: pickedImage)
-//                        profilUiImage = pickedImage
-//                    }
-//                }
-//            // 사진 앨범 선택
-//                .sheet(isPresented: $onPhotoLibrary) {
-//                    ImagePicker(sourceType: .photoLibrary) { (pickedImage) in
-//                        profileImage = Image(uiImage: pickedImage)
-//                        profilUiImage = pickedImage
-//                    }
-//                }
-//                .actionSheet(isPresented: $presentsImagePicker) {
-//                    ActionSheet(
-//                        title: Text("이미지 선택하기"),
-//                        message: nil,
-//                        buttons: [
-//                            .default(
-//                                Text("카메라"),
-//                                action: { onCamera = true }
-//                            ),
-//                            .default(
-//                                Text("사진 앨범"),
-//                                action: { onPhotoLibrary = true }
-//                            ),
-//                            .cancel(
-//                                Text("돌아가기")
-//                            )
-//                        ]
-//                    )
-//                }
 
             //Name TextField
             Section(
@@ -134,11 +88,6 @@ struct RegisterView: View {
         
         .padding()
     }
-//
-//    func registerUser() {
-//        print("RegisterView - signUp() called")
-//        registerVM.registerUser()
-//    }
 }
 
 //struct RegisterView_Previews: PreviewProvider {

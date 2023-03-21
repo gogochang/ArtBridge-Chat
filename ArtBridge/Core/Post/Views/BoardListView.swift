@@ -107,7 +107,7 @@ struct BoardListView: View {
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                                         
                                         HStack() {
-                                            Text(post.author)
+                                            Text(post.user.username)
                                             Text(post.timestamp.dateValue().toString().components(separatedBy: " ")[0])
                                             Text("댓글 0")
                                             Spacer()
