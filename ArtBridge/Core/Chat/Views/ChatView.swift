@@ -24,12 +24,12 @@ struct ChatView: View {
 
         VStack {
             List(viewModel.messages) { message in
-                if (message.fromUser.uid == Auth.auth().currentUser?.uid) {
+                if (message.user.uid == Auth.auth().currentUser?.uid) {
                     HStack {
                         
                         Spacer()
                         Text(message.text)
-                        KFImage(URL(string: message.fromUser.profileUrl))
+                        KFImage(URL(string: message.user.profileUrl))
                             .resizable()
                             .clipShape(Circle())
                             .frame(maxWidth: 25, maxHeight: 25)
@@ -37,7 +37,7 @@ struct ChatView: View {
                     }
                 } else {
                     HStack {
-                        KFImage(URL(string: message.toUser.profileUrl))
+                        KFImage(URL(string: message.user.profileUrl))
                             .resizable()
                             .clipShape(Circle())
                             .frame(maxWidth: 25, maxHeight: 25)

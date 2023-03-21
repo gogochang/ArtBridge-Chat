@@ -48,11 +48,8 @@ class ChatVM: ObservableObject {
     //MARK: 메세지 보내기
     func sendMessage(messageText: String) {
         print("ChatVM - sendMessage() called")
-//        guard let currentUser = Auth.auth().currentUser else { return }
         let currentUser = chatRoom.fromUser
         let chatPartner = chatRoom.toUser
-        print("chnag chatpartner -> \(chatPartner.uid)")
-        print("chnag chatpartner -> \(chatPartner.username)")
         
         let fromUser = ["username":currentUser.username,
                         "profileUrl":currentUser.profileUrl,
@@ -65,8 +62,7 @@ class ChatVM: ObservableObject {
                       "email":chatPartner.email]
         
         let data = ["text": messageText,
-                    "fromUser": fromUser,
-                    "toUser": toUser,
+                    "user": fromUser,
                     "timestamp": Timestamp(date: Date())] as [String : Any]
         
         let currentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatRoom.id!).collection("messages").document()

@@ -127,16 +127,7 @@ struct LoginView: View {
                     Spacer()
                 }.foregroundColor(Color.gray)
                 Spacer()
-//                Group {
-//                    // 카카오 로그인 버튼
-//                    KakaoLoginView()
-//                    NaverLoginView()
-//                    FaceBookLoginView()
-//                    AppleLoginView()
-//                }//Group
                 Button(action: {
-                    print("chang current user -> \(userVM.currentUser)")
-                    print("chang current user -> \(Auth.auth().currentUser)")
                 }, label: {
                     Text("지금 유저 ?")
                 })

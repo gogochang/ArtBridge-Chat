@@ -10,7 +10,6 @@ import Firebase
 struct Message: Identifiable, Decodable {
     @DocumentID var id: String?
     var text: String
-    let fromUser: User
-    let toUser: User
+    let user: User
     let timestamp: Timestamp
 }
