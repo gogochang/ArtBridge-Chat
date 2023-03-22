@@ -36,6 +36,9 @@ struct BoardView: View {
     @State var comments = [Comment]()
     @State var currentComment: Comment?
     
+    // 탭 메뉴
+    @Binding var selection: Int
+    
     var body: some View {
         //MARK: Body
         NavigationView {
@@ -64,7 +67,7 @@ struct BoardView: View {
             //MARK: - 게시글 작성자 프로필 이미지 클릭 시 프로필 화면으로 이동
             .fullScreenCover(isPresented: $presentsProfileView) {
                 NavigationView {
-                    ProfileView()
+                    ProfileView(selection: $selection)
                 }
             }
         }

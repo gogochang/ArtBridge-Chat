@@ -35,7 +35,7 @@ struct ChatListView: View {
                         Text(chatRoom.toUser.username)
                             .font(.system(size: 20, weight: .semibold))
                             .padding(.bottom, 2)
-                        Text(chatRoom.recentMessage?.text ?? "")
+                        Text(chatRoom.recentMessage?.text ?? " ")
                             .foregroundColor(Color(.systemGray))
                             .font(.system(size: 14))
                     }

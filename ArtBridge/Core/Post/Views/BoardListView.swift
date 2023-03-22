@@ -23,6 +23,9 @@ struct BoardListView: View {
     //게시판 ViewModel
     @ObservedObject var viewModel = PostVM()
     
+    //탭 메뉴
+    @Binding var selection: Int
+    
     var body: some View {
         NavigationView {
             VStack() {
@@ -124,7 +127,7 @@ struct BoardListView: View {
                                     }
                                 }//HStack
                                 // List 우측 화살표 없애기
-                                NavigationLink(destination: BoardView(postData: post), label: {
+                                NavigationLink(destination: BoardView(postData: post, selection: $selection), label: {
                                 })// Navigation
                                 .opacity(0)
                             }

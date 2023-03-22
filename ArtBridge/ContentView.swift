@@ -13,30 +13,23 @@ struct ContentView: View {
         NavigationView {
             VStack() {
                 TabView(selection: $selection) {
-                    BoardListView()
+                    BoardListView(selection: $selection)
                         .tabItem {
                             Image(systemName: "list.bullet")
                             Text("게시판")
                         }.tag(0)
                     
-//                    PeopleView(selection: $selection)
-//                    Text("UserListView")
-//                        .tabItem {
-//                            Image(systemName: "person.2")
-//                            Text("사람")
-//                        }.tag(2)
-                    
                     ChatListView()
                         .tabItem {
                             Image(systemName: "message")
                             Text("채팅")
-                        }.tag(3)
+                        }.tag(1)
                     
                     MyPageView()
                         .tabItem {
                             Image(systemName: "person.crop.circle")
                             Text("마이페이지")
-                        }.tag(4)
+                        }.tag(2)
                 }//TabView
             }//VStack
         }//NavigationView

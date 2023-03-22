@@ -12,7 +12,7 @@ import Kingfisher
 struct ChatView: View {
     private let chatRoom: ChatRoom
     @ObservedObject var viewModel: ChatVM
-    
+    @Environment(\.presentationMode) var presentationMode
     @State var text: String = ""
     
     //스크롤뷰 이동
@@ -113,6 +113,16 @@ struct ChatView: View {
             }.padding(.horizontal,10)
         }
         .navigationTitle(chatRoom.toUser.username)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            // 뒤로가기 커스텀 상단 버튼
+            leading: Button(action: {
+            print("Back Button is Clicked")
+            presentationMode.wrappedValue.dismiss()
+        }, label: {
+            Image(systemName: "chevron.backward")
+                .foregroundColor(Color.black)
+        }))
     }
 }
 

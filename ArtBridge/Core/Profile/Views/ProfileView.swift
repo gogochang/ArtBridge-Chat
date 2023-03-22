@@ -15,6 +15,9 @@ struct ProfileView: View {
     @EnvironmentObject var viewModel: ProfileVM
     @EnvironmentObject var userVM: UserVM
     
+    // 탭 메뉴
+    @Binding var selection: Int
+    
     //MARK: body
     var body: some View {
         VStack(spacing:20) {
@@ -103,6 +106,8 @@ private extension ProfileView {
         Button(action: {
             // TODO: 해당 유저와 1:1 채팅 View로 이동
             viewModel.createChat()
+            presentationMode.wrappedValue.dismiss()
+            selection = 1
         }, label: {
             VStack {
                 Image(systemName: "bubble.left")
