@@ -22,7 +22,12 @@ class ChatVM: ObservableObject {
     func fetchMessages() {
         print("ChatVM - fetchMessages() called")
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let query = Firestore.firestore().collection("users").document(uid).collection("chats").document(chatRoom.id!).collection("messages")
+        let query = Firestore.firestore().collection("users")
+            .document(uid)
+            .collection("chats")
+            .document(chatRoom.id!)
+            .collection("messages")
+            .order(by: "timestamp", descending: false)
         
         query.addSnapshotListener { snapshot, error in
             if let error = error {
