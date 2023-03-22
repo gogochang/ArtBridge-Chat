@@ -25,7 +25,7 @@ class ChatVM: ObservableObject {
         let query = Firestore.firestore().collection("users")
             .document(uid)
             .collection("chats")
-            .document(chatRoom.id!)
+            .document(chatRoom.toUser.uid)
             .collection("messages")
             .order(by: "timestamp", descending: false)
         
@@ -65,14 +65,14 @@ class ChatVM: ObservableObject {
                     "timestamp": Timestamp(date: Date())] as [String : Any]
         
         //메세지 저장
-        let currentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatRoom.id!).collection("messages").document()
-        let chatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid).collection("chats").document(chatRoom.id!).collection("messages")
+        let currentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatPartner.uid).collection("messages").document()
+        let chatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid).collection("chats").document(currentUser.uid).collection("messages")
         
         let messagesID = currentUserRef.documentID
         
         //최신 메세지 저장
-        let recentCurrentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatRoom.id!)
-        let recentChatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid).collection("chats").document(chatRoom.id!)
+        let recentCurrentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatPartner.uid)
+        let recentChatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid).collection("chats").document(currentUser.uid)
         
         
         currentUserRef.setData(data)

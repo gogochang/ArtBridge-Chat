@@ -49,14 +49,13 @@ class ProfileVM: ObservableObject {
                       "toUser":fromUser]
         
         let currentUserRef = Firestore.firestore().collection("users").document(currentUser.uid)
-            .collection("chats").document()
+            .collection("chats").document(chatPartner.uid)
         
         let chatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid)
-            .collection("chats")
-        let messageID = currentUserRef.documentID
+            .collection("chats").document(currentUser.uid)
         
-        currentUserRef.setData(fromData)
-        chatPartnerRef.document(messageID).setData(toData)
+        currentUserRef.setData(fromData, merge: true)
+        chatPartnerRef.setData(toData, merge: true)
     }
     
 }

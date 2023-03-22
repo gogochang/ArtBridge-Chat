@@ -78,6 +78,7 @@ struct ChatView: View {
                                                 .font(.system(size: 14))
                                         }
                                     } //Vstack
+                                    Spacer()
                                 } // if - else
                             } //HStack
                         } //ForEach
