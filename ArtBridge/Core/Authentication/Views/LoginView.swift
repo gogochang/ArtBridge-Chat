@@ -14,8 +14,6 @@ struct LoginView: View {
     
     @EnvironmentObject var userVM : UserVM
     
-//    @ObservedObject var userVM = UserVM()
-    
     @Environment(\.presentationMode) var presentationMode
     
     var subscription = Set<AnyCancellable>()
@@ -43,68 +41,61 @@ struct LoginView: View {
                     .shadow(radius: 3)
                 
                 Spacer()
-                Group {
-                    // 아이디 입력 Text Field
-                    HStack{
-                        Text("이메일")
-                            .bold()
-                        Spacer()
-                    }
+                VStack(alignment: .leading, spacing: 20){
+                    //MARK: 이메일 입력 Text Field
+                    Text("이메일")
+                        .font(.system(size:20, weight: .semibold))
+                              
                     TextField("이메일을 입력하세요.", text: $userVM.emailInput)
-                        .frame(width:300, height: 10)
+                        .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color(.systemGray6))
-                        .cornerRadius(5)
-                        .padding(.bottom, 20)
-                        .shadow(radius: 3)
+                        .cornerRadius(16)
+                        .shadow(radius: 3,x: 1, y: 1)
                     
-                    HStack{
-                        Text("비밀번호")
-                            .bold()
-                        Spacer()
-                    }
-                    // 비밀번호 입력 Text Field
+                    //MARK: 비밀번호 입력 Text Field
+                    Text("비밀번호")
+                            .font(.system(size:20, weight: .semibold))
                     SecureField("비밀번호를 입력하세요.", text: $userVM.passwordInput)
-                        .frame(width: 300, height: 10)
+                        .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color(.systemGray6))
-                        .cornerRadius(5)
-                        .padding(.bottom, 20)
-                        .shadow(radius: 3)
-                }//Group
-                
-                Button(action: {
-                    print("Login Button is Clicked")
-                    userVM.logIn()
-                }, label: {
-                    if (self.email != "") && (self.password != "") {
-                        HStack() {
-                            Spacer()
-                            Text("로그인")
-                            Spacer()
+                        .cornerRadius(16)
+                        .shadow(radius: 3,x: 1, y: 1)
+                    
+                    //MARK: 로그인 버튼
+                    Button(action: {
+                        print("Login Button is Clicked")
+                        userVM.logIn()
+                    }, label: {
+                        Text("로그인")
+                            .font(.system(size:20, weight: .semibold))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background( (userVM.emailInput == "" || userVM.passwordInput == "") ?  Color(.systemGray5) : Color(.systemOrange))
+                            
+                    })
+                    .cornerRadius(16)
+                    .shadow(radius: 3, x:1, y:1)
+                    .disabled( userVM.emailInput == "" || userVM.passwordInput == "" )
+                    
+                    HStack() {
+                        Spacer()
+                        Button(action:{}) {
+                            Text("비밀번호 찾기")
                         }
-                        .frame(height: 10)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color(.systemOrange))
-                        .cornerRadius(10)
-                    } else {
-                        HStack() {
-                            Spacer()
-                            Text("로그인")
-                            Spacer()
+                        Text("|")
+                        Button(action:{
+                            self.tag = 1
+                        }) {
+                            Text("회원가입")
                         }
-                        .frame(height: 10)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color(.systemGray5))
-                        .cornerRadius(10)
-                    }
-                })//로그인 Button
-                .shadow(radius: 3)
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                        Spacer()
+                    }.foregroundColor(Color.gray)
+                    
+                }
+                .padding(.horizontal,40)
                 .onReceive(userVM.$didLoginUser) { success in
                     if success {
                         print("LoginView - didLoginUser Success")
@@ -113,32 +104,13 @@ struct LoginView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
-                HStack() {
-                    Spacer()
-                    Button(action:{}) {
-                        Text("비밀번호 찾기")
-                    }
-                    Text("|")
-                    Button(action:{
-                        self.tag = 1
-                    }) {
-                        Text("회원가입")
-                    }
-                    Spacer()
-                }.foregroundColor(Color.gray)
-                Spacer()
-                Button(action: {
-                }, label: {
-                    Text("지금 유저 ?")
-                })
                 Spacer()
             }//VStack
         }//NavigationView
     }
-    
-    //
     func logIn() {
         print("LoginView - logIn() called")
+        
         userVM.logIn()
     }
 }
