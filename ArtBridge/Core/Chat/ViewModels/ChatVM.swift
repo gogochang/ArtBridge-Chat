@@ -39,16 +39,16 @@ class ChatVM: ObservableObject {
             self.messages.append(contentsOf: addedMessages)
         }
         
-            query.getDocuments { snapshot, error in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                    return
-                }
-                guard let documents = snapshot?.documents else { return }
-                
-                let messages = documents.compactMap({ try? $0.data(as: Message.self)})
-                self.messages = messages
+        query.getDocuments { snapshot, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
             }
+            guard let documents = snapshot?.documents else { return }
+            
+            let messages = documents.compactMap({ try? $0.data(as: Message.self)})
+            self.messages = messages
+        }
     }
     //MARK: 메세지 보내기
     func sendMessage(messageText: String) {
@@ -60,22 +60,25 @@ class ChatVM: ObservableObject {
                         "profileUrl":currentUser.profileUrl,
                           "uid":currentUser.uid,
                           "email":currentUser.email]
-        
-        let toUser = ["username":chatPartner.username,
-                      "profileUrl":chatPartner.profileUrl,
-                      "uid":chatPartner.uid,
-                      "email":chatPartner.email]
-        
         let data = ["text": messageText,
                     "user": fromUser,
                     "timestamp": Timestamp(date: Date())] as [String : Any]
         
+        //메세지 저장
         let currentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatRoom.id!).collection("messages").document()
         let chatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid).collection("chats").document(chatRoom.id!).collection("messages")
         
         let messagesID = currentUserRef.documentID
         
+        //최신 메세지 저장
+        let recentCurrentUserRef = Firestore.firestore().collection("users").document(currentUser.uid).collection("chats").document(chatRoom.id!)
+        let recentChatPartnerRef = Firestore.firestore().collection("users").document(chatPartner.uid).collection("chats").document(chatRoom.id!)
+        
+        
         currentUserRef.setData(data)
         chatPartnerRef.document(messagesID).setData(data)
+        
+        recentCurrentUserRef.updateData(["recentMessage": data])
+        recentChatPartnerRef.updateData(["recentMessage": data])
     }
 }

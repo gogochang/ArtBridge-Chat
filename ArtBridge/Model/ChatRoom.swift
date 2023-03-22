@@ -10,7 +10,7 @@ import Firebase
 
 struct ChatRoom: Identifiable, Decodable {
     @DocumentID var id: String?
-//    var text: String
     let fromUser: User
     let toUser: User
+    var recentMessage: Message?
 }

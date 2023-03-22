@@ -20,11 +20,11 @@ struct ContentView: View {
                         }.tag(0)
                     
 //                    PeopleView(selection: $selection)
-                    Text("UserListView")
-                        .tabItem {
-                            Image(systemName: "person.2")
-                            Text("사람")
-                        }.tag(2)
+//                    Text("UserListView")
+//                        .tabItem {
+//                            Image(systemName: "person.2")
+//                            Text("사람")
+//                        }.tag(2)
                     
                     ChatListView()
                         .tabItem {
