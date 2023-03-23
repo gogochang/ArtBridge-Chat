@@ -17,6 +17,12 @@ struct ProfileView: View {
     
     // 탭 메뉴
     @Binding var selection: Int
+    // 유저이름 변경
+    @State var tempUsername: String = ""
+    // 유저이름 변경 Alert 호출
+    @State var isEditAlert: Bool = false
+    // 프로필 세팅 모드
+    @State var isSetupMode: Bool = false
     
     //MARK: body
     var body: some View {
@@ -36,7 +42,7 @@ struct ProfileView: View {
         .edgesIgnoringSafeArea(.top)
         // 네비게이션 커스텀 상단 버튼
         .navigationBarItems(
-            // 뒤로가기 버튼
+            // 상단 뒤로가기 버튼
             leading: Button(action: {
                 print("Back Button is Clicked")
                 presentationMode.wrappedValue.dismiss()
@@ -44,13 +50,23 @@ struct ProfileView: View {
                 Image(systemName: "xmark")
                     .foregroundColor(Color.black)
             }),
-            // 설정 버튼
+            // 상단 설정 버튼
             trailing: Button(action: {
-                // some action
-                print("profile setting button is clicked")
+                if isSetupMode {
+                    print("isSetupMode True")
+                    viewModel.updateUser()
+                } else {
+                    print("isSetupMode False")
+                }
+                isSetupMode.toggle()
             }, label: {
-                Image(systemName: "gearshape")
-                    .foregroundColor(Color.black)
+                if isSetupMode {
+                    Text("완료")
+                        .foregroundColor(Color.black)
+                } else {
+                    Image(systemName: "gearshape")
+                        .foregroundColor(Color.black)
+                }
             }).opacity(viewModel.userProfile?.uid == userVM.currentUser?.uid ? 1 : 0))
         
         .onAppear(perform: {
@@ -87,18 +103,51 @@ private extension ProfileView {
         KFImage(URL(string:viewModel.userProfile?.profileUrl ?? ""))
             .resizable()
             .frame(width: 150, height: 150)
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+            .clipShape(Circle())
             .overlay {
                 Circle().stroke(.white, lineWidth: 4)
             }
             .shadow(radius: 7)
-        
     }
     
     // 프로필 유저네임
     var UserName: some View {
-        Text(viewModel.userProfile?.username ?? "")
-            .font(.title)
+        ZStack {
+            Text(viewModel.userProfile?.username ?? "")
+                .font(.title)
+            Group {
+                Divider()
+                    .frame(minHeight: 2)
+                    .overlay(Color(.systemGray))
+                    .offset(y: 20)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        print("SendButton is Clicked")
+                        tempUsername = viewModel.userProfile?.username ?? ""
+                        isEditAlert = true
+                    }, label: {
+                        Image(systemName: "pencil.line")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(Color(.systemGray))
+                    })
+                }
+            }
+            .padding(.horizontal, 16)
+            .opacity(isSetupMode ? 1 : 0)
+        }
+        //  프로필 유저네임 편집 Alert 창
+        .alert("Edit UserName", isPresented: $isEditAlert) {
+            TextField("Username", text: $tempUsername)
+                .textInputAutocapitalization(.never)
+            Button("OK", action: {
+                viewModel.userProfile?.username = tempUsername
+            })
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Please enter your username and password.")
+        }
     }
     
     // 채팅 버튼

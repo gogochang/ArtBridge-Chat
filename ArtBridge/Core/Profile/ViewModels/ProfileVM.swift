@@ -58,4 +58,29 @@ class ProfileVM: ObservableObject {
         chatPartnerRef.setData(toData, merge: true)
     }
     
+    // 유저 정보 업데이트
+    func updateUser() {
+        print("ProfileVM -updateUser() called")
+        guard let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() else { return }
+        guard let userProfile = userProfile else { return }
+    
+        let data = ["username": userProfile.username,
+                    "profileUrl": userProfile.profileUrl]
+        
+        changeRequest.displayName = userProfile.username
+        changeRequest.photoURL = URL(string: userProfile.profileUrl)
+        
+        changeRequest.commitChanges { error in
+            if let error = error {
+                print("ProfileVM -updateUser() Error: \(error.localizedDescription)")
+                return
+            }
+        }
+        Firestore.firestore().collection("users").document(userProfile.uid).updateData(data) { error in
+            if let error = error {
+                print("ProfileVM -updateUser() Error: \(error.localizedDescription)")
+                return
+            }
+        }
+    }
 }

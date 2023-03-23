@@ -101,6 +101,8 @@ struct LoginView: View {
                         print("LoginView - didLoginUser Success")
                         userVM.didLoginUser = false
                         isLogged = true
+                        userVM.emailInput = ""
+                        userVM.passwordInput = ""
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
