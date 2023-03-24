@@ -23,7 +23,9 @@ struct ProfileView: View {
     @State var isEditAlert: Bool = false
     // 프로필 세팅 모드
     @State var isSetupMode: Bool = false
-    
+    // 프로필 이미지 Picker
+    @State private var onPhotoLibrary = false
+    @State private var presentsImagePicker = false
     //MARK: body
     var body: some View {
         VStack(spacing:20) {
@@ -73,6 +75,34 @@ struct ProfileView: View {
             // Profile View가 렌더링 되면 프로필에 표시할 유저를 가져오기
             viewModel.fetchUser()
         })
+        //MARK: Image Picker
+        .sheet(isPresented: $onPhotoLibrary) {
+            // 이미지 선택
+            ImagePicker(sourceType: .photoLibrary) { pickedImage in
+                LoadingIndicator.showLoading()
+                // 선택된 이미지 Storage에 업로드
+                ImageService.uploadImage(image: pickedImage) { url in
+                    //업로드된 이미지의 url을 유저정보에 새롭게 업데이트
+                    userVM.updateUser(displayName: nil, profileUrl: url)
+                    viewModel.fetchUser()
+                }
+            }
+        }
+        .actionSheet(isPresented: $presentsImagePicker) {
+            ActionSheet(
+                title: Text("이미지 선택하기"),
+                message: nil,
+                buttons: [
+                    .default(
+                        Text("사진 앨범"),
+                        action: { onPhotoLibrary = true }
+                    ),
+                    .cancel(
+                        Text("돌아가기")
+                    )
+                ]
+            )
+        }
     }
 }
 
@@ -108,6 +138,22 @@ private extension ProfileView {
                 Circle().stroke(.white, lineWidth: 4)
             }
             .shadow(radius: 7)
+            .overlay (
+                Button(action: {
+                    print("cancle Button is Clicked")
+                    presentsImagePicker = true
+                }, label: {
+                    Image(systemName: "camera.fill")
+                        .resizable()
+                        .frame(width: 25, height: 20)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .clipShape(Circle())
+                        .foregroundColor(Color.black)
+                })
+                .opacity(isSetupMode ? 1 : 0)
+                ,alignment: .bottomTrailing
+            )
     }
     
     // 프로필 유저네임
