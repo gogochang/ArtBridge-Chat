@@ -24,6 +24,11 @@ struct MyPageView: View {
     @State private var presentsImagePicker = false
     @EnvironmentObject var userVM : UserVM
     
+    // 프로필
+    @EnvironmentObject var profileVM: ProfileVM
+    @State private var presentsProfileView: Bool = false
+    
+    @State var selection: Int = 0
     var body: some View {
         ScrollView() {
             VStack() {
@@ -56,11 +61,12 @@ struct MyPageView: View {
                 Divider()
                 // [Temp] 프로필 사진 변경 Button
                 Button(action: {
-                    print("프로필 사진 변경 버튼 클릭되었습니다.")
-                    presentsImagePicker = true
+                    print("프로필 설정 버튼 클릭되었습니다.")
+                    profileVM.uid = userVM.currentUser?.uid
+                    presentsProfileView = true
                 }) {
                     HStack() {
-                        Text("프로필 사진 변경")
+                        Text("프로필 관리")
                         Spacer()
                     }
                 }
@@ -100,7 +106,7 @@ struct MyPageView: View {
                     print("계정설정 버튼 클릭되었습니다.")
                 }) {
                     HStack() {
-                        Text("계정설정")
+                        Text("계정 설정")
                         Spacer()
                     }
                 }
@@ -139,6 +145,11 @@ struct MyPageView: View {
             if success {
                 userVM.didUpdateUser = false
                 LoadingIndicator.hideLoading()
+            }
+        }
+        .fullScreenCover(isPresented: $presentsProfileView) {
+            NavigationView {
+                ProfileView(selection: $selection)
             }
         }
     }
