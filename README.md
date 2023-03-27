@@ -25,4 +25,4 @@
 * **Firestore**를 이용한 게시판, 채팅, 이미지 데이터 관리
 * 서버 통신을 **escaping Closer**를 활용한 함수로 사용
 * **Tabbar**와 **Navigation**을 이용한 화면 이동 구현
-* 회원가입의 TextField 유효성 검사 **Combine** 사용
+* **Combine**을 사용하여 회원가입 TextField 유효성 검사 
