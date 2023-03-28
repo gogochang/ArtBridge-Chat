@@ -14,7 +14,7 @@ struct ProfileView: View {
 
     @EnvironmentObject var viewModel: ProfileVM
     @EnvironmentObject var userVM: UserVM
-    
+    @Binding var profileUser: User
     // 탭 메뉴
     @Binding var selection: Int
     // 유저이름 변경
@@ -56,6 +56,8 @@ struct ProfileView: View {
             trailing: Button(action: {
                 if isSetupMode {
                     print("isSetupMode True")
+                    viewModel.userProfile?.username = tempUsername
+                    profileUser.username = tempUsername
                     viewModel.updateUser()
                     userVM.fetchUser()
                 } else {
@@ -85,6 +87,7 @@ struct ProfileView: View {
                 ImageService.uploadImage(image: pickedImage) { url in
                     //업로드된 이미지의 url을 유저정보에 새롭게 업데이트
                     userVM.updateUser(displayName: nil, profileUrl: url)
+                    profileUser.profileUrl = url
                     viewModel.fetchUser()
                 }
             }
@@ -160,7 +163,7 @@ private extension ProfileView {
     // 프로필 유저네임
     var UserName: some View {
         ZStack {
-            Text(viewModel.userProfile?.username ?? "")
+            Text(profileUser.username )
                 .font(.title)
             Group {
                 Divider()
@@ -171,7 +174,7 @@ private extension ProfileView {
                     Spacer()
                     Button(action: {
                         print("SendButton is Clicked")
-                        tempUsername = viewModel.userProfile?.username ?? ""
+                        tempUsername = profileUser.username
                         isEditAlert = true
                     }, label: {
                         Image(systemName: "pencil.line")
@@ -190,6 +193,7 @@ private extension ProfileView {
                 .textInputAutocapitalization(.never)
             Button("OK", action: {
                 viewModel.userProfile?.username = tempUsername
+                profileUser.username = tempUsername
             })
             Button("Cancel", role: .cancel) { }
         } message: {

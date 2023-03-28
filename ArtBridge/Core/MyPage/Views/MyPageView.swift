@@ -149,7 +149,7 @@ struct MyPageView: View {
         }
         .fullScreenCover(isPresented: $presentsProfileView) {
             NavigationView {
-                ProfileView(selection: $selection)
+//                ProfileView(profileUser: $currentUser, selection: $selection)
             }
         }
     }

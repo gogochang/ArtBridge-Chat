@@ -70,16 +70,28 @@ class ProfileVM: ObservableObject {
         changeRequest.displayName = userProfile.username
         changeRequest.photoURL = URL(string: userProfile.profileUrl)
         
+        //Auth 업데이트
         changeRequest.commitChanges { error in
             if let error = error {
                 print("ProfileVM -updateUser() Error: \(error.localizedDescription)")
                 return
             }
         }
+        //Firestore 계정 업데이트
         Firestore.firestore().collection("users").document(userProfile.uid).updateData(data) { error in
             if let error = error {
                 print("ProfileVM -updateUser() Error: \(error.localizedDescription)")
                 return
+            }
+        }
+        
+        //게시글의 유저정보 업데이트
+        if let posts = userProfile.posts {
+            for i in 0 ..< posts.count {
+                Firestore.firestore().collection("posts").document(posts[i]).updateData(["user":["username":userProfile.username,
+                                                                                              "profileUrl":userProfile.profileUrl,
+                                                                                              "email":userProfile.email,
+                                                                                              "uid":userProfile.uid]])
             }
         }
     }

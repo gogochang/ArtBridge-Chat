@@ -38,8 +38,6 @@
 		95C84D77298F858B0023C412 /* BoardCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C84D76298F858B0023C412 /* BoardCreateView.swift */; };
 		95D993C429BEF5FF009C4FB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */; };
 		95D993C629BEFC6A009C4FB4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D993C529BEFC6A009C4FB4 /* Comment.swift */; };
-		95E3A02029D2978900DFCA94 /* BoardPreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E3A01F29D2978800DFCA94 /* BoardPreView.swift */; };
-		95E3A02229D29AD400DFCA94 /* BoardPreVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E3A02129D29AD400DFCA94 /* BoardPreVM.swift */; };
 		95E72DAC29C1979D002FDFA1 /* CommentEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */; };
 		95E8717429850D4D00096049 /* ArtBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717329850D4D00096049 /* ArtBridgeApp.swift */; };
 		95E8717629850D4D00096049 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E8717529850D4D00096049 /* ContentView.swift */; };
@@ -109,8 +107,6 @@
 		95C84D76298F858B0023C412 /* BoardCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCreateView.swift; sourceTree = "<group>"; };
 		95D993C329BEF5FF009C4FB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95D993C529BEFC6A009C4FB4 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		95E3A01F29D2978800DFCA94 /* BoardPreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPreView.swift; sourceTree = "<group>"; };
-		95E3A02129D29AD400DFCA94 /* BoardPreVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPreVM.swift; sourceTree = "<group>"; };
 		95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentEditView.swift; sourceTree = "<group>"; };
 		95E8717029850D4D00096049 /* ArtBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E8717329850D4D00096049 /* ArtBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtBridgeApp.swift; sourceTree = "<group>"; };
@@ -325,7 +321,6 @@
 				95C84D76298F858B0023C412 /* BoardCreateView.swift */,
 				9579BE39299105B100785E2E /* BoardEditView.swift */,
 				95E72DAB29C1979D002FDFA1 /* CommentEditView.swift */,
-				95E3A01F29D2978800DFCA94 /* BoardPreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				95B39942298A5F0600E7BD3D /* PostVM.swift */,
-				95E3A02129D29AD400DFCA94 /* BoardPreVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -691,10 +685,8 @@
 				95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */,
 				9514931929C9E919003BB8FC /* ChatListView.swift in Sources */,
 				95AC51E029BB183400F7CBED /* Post.swift in Sources */,
-				95E3A02029D2978900DFCA94 /* BoardPreView.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,
 				957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */,
-				95E3A02229D29AD400DFCA94 /* BoardPreVM.swift in Sources */,
 				95A1ADF629C9F79A00BDA25C /* ChatVM.swift in Sources */,
 				95AC51DE29BB12A800F7CBED /* PostService.swift in Sources */,
 			);

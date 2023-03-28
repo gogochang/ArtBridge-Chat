@@ -11,9 +11,10 @@ import Firebase
 struct User: Identifiable, Decodable {
     @DocumentID var id: String?
     var username: String
-    let profileUrl: String
+    var profileUrl: String
     let uid: String
     let email: String
+    var posts: [String]?
     
     var isCurrentUser: Bool {
         return Auth.auth().currentUser?.uid == id

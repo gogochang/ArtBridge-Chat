@@ -21,6 +21,9 @@ struct PostService {
                     "uid":user.uid,
                     "email":user.email]
         
+        let postRef = Firestore.firestore().collection("posts").document()
+        let userRef = Firestore.firestore().collection("users").document(user.uid)
+        let documentID = postRef.documentID
         ImageService.uploadImage(image: image) { imageUrl in
             let data = ["postType": postType,
                         "title": title,
@@ -30,12 +33,13 @@ struct PostService {
                         "user":userData,
                         "timestamp": Timestamp(date: Date())] as [String: Any]
 
-            Firestore.firestore().collection("posts").document().setData(data) { error in
+            postRef.setData(data) { error in
                 if let error = error {
                     print("PostService - uploadPost() Error : \(error.localizedDescription)")
                     completion(false)
                     return
                 }
+                userRef.updateData(["posts": FieldValue.arrayUnion([documentID])])
                 print("PostService - uploadPost() upload success")
                 
                 completion(true)
@@ -66,14 +70,18 @@ struct PostService {
     //MARK: - 게시글 삭제하기
     func deletePost(_ post:Post, completion: @escaping(Bool) -> Void) {
         print("PostService - deletePost() call")
-        Firestore.firestore().collection("posts").document(post.id!)
-            .delete() { error in
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let postRef = Firestore.firestore().collection("posts").document(post.id!)
+        let userRef = Firestore.firestore().collection("users").document(uid)
+        postRef.delete() { error in
                 if let error = error {
                     print("PostService - deletePost() Error : \(error.localizedDescription)")
                     completion(false)
                 }
                 completion(true)
             }
+        userRef.updateData(["posts": FieldValue.arrayRemove([post.id!])])
     }
     
     //MARK: - 게시글 목록 가져오기
