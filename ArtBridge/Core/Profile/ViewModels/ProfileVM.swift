@@ -85,13 +85,40 @@ class ProfileVM: ObservableObject {
             }
         }
         
-        //게시글의 유저정보 업데이트
+        //게시글의 작성자 유저정보 업데이트
         if let posts = userProfile.posts {
             for i in 0 ..< posts.count {
                 Firestore.firestore().collection("posts").document(posts[i]).updateData(["user":["username":userProfile.username,
                                                                                               "profileUrl":userProfile.profileUrl,
                                                                                               "email":userProfile.email,
                                                                                               "uid":userProfile.uid]])
+            }
+        }
+        
+        // 게시글의 댓글 유저정보 업데이트
+        let postRef = Firestore.firestore().collection("posts")
+        postRef.getDocuments { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            for i in 0 ..< documents.count {
+                print("changgyu0 -> \(documents[i].documentID)")
+                
+                postRef.document(documents[i].documentID).collection("comment")
+                    .whereField("uid", isEqualTo: userProfile.uid)
+                    .getDocuments { snapshot, error in
+                        if let error = error {
+                            print("Error : \(error.localizedDescription)")
+                        }
+                        guard let commentDocs = snapshot?.documents else { return }
+                        for i in 0 ..< commentDocs.count {
+                            print("changgyu1 -> \(commentDocs[i])")
+                            postRef.document(documents[i].documentID).collection("comment").document(commentDocs[i].documentID)
+                                .setData(["user":["email":userProfile.email,
+                                                  "profileUrl":userProfile.profileUrl,
+                                                  "uid":userProfile.uid,
+                                                  "username":userProfile.username]],merge: true)
+                        }
+                        
+                    }
             }
         }
     }

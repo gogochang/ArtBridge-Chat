@@ -67,7 +67,7 @@ struct BoardView: View {
             //MARK: - 게시글 작성자 프로필 이미지 클릭 시 프로필 화면으로 이동
             .fullScreenCover(isPresented: $presentsProfileView) {
                 NavigationView {
-                    ProfileView(profileUser: $postData.user, selection: $selection)
+                    ProfileView(postData: $postData, selection: $selection)
                 }
             }
         }
