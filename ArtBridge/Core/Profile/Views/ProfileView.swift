@@ -57,6 +57,7 @@ struct ProfileView: View {
                 if isSetupMode {
                     print("isSetupMode True")
                     viewModel.updateUser()
+                    userVM.fetchUser()
                 } else {
                     print("isSetupMode False")
                 }
