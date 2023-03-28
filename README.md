@@ -1,4 +1,5 @@
 # ArtBridge
+![ArtBridgeScreenshot](https://user-images.githubusercontent.com/54075367/228310426-70b8cc46-6482-4cc7-8ebe-5169581b2f73.png)
 
 # 프로젝트 소개
 * 실제 서버연동을 이용한 커뮤니티 앱 프로젝트입니다.
