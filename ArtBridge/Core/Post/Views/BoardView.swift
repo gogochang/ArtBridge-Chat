@@ -15,7 +15,7 @@ struct BoardView: View {
     @EnvironmentObject var profileVM: ProfileVM
     @EnvironmentObject var userVM: UserVM
     @Environment(\.presentationMode) var presentationMode
-    
+    //git test
     // 댓글 TextField
     @State private var commentText: String = ""
     
