@@ -13,7 +13,7 @@ struct Comment: Identifiable, Decodable {
     var comment: String
     var likes: Int
     let timestamp: Timestamp
-    
+    let uid: String
     var user: User
     
 }

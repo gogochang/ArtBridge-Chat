@@ -94,5 +94,57 @@ class ProfileVM: ObservableObject {
                                                                                               "uid":userProfile.uid]])
             }
         }
+        
+        let commentRef = Firestore.firestore().collection("posts")
+        commentRef.getDocuments { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            
+            for i in 0 ..< documents.count {
+                print("changgyu0 -> \(documents[i].documentID)")
+                commentRef.document(documents[i].documentID).collection("comment")
+                    .whereField("uid", isEqualTo: userProfile.uid)
+                    .getDocuments { snapshot, error in
+                        guard let commentDocs = snapshot?.documents else { return }
+                        
+                        for j in 0 ..< commentDocs.count {
+                            print("changgyu1 -> \(commentDocs[j])")
+                            commentRef.document(documents[i].documentID).collection("comment").document(commentDocs[j].documentID)
+                                .setData(["user":["email":userProfile.email,
+                                                  "profileUrl":userProfile.profileUrl,
+                                                  "uid":userProfile.uid,
+                                                  "username":userProfile.username]],merge: true)
+
+
+                        }
+                                                
+                    }
+            }
+        }
+        // 게시글의 댓글 유저정보 업데이트
+//        let postRef = Firestore.firestore().collection("posts")
+//        postRef.getDocuments { snapshot, _ in
+//            guard let documents = snapshot?.documents else { return }
+//            for i in 0 ..< documents.count {
+//
+//
+//                postRef.document(documents[i].documentID).collection("comment")
+//                    .whereField("uid", isEqualTo: userProfile.uid)
+//                    .getDocuments { snapshot, error in
+//                        if let error = error {
+//                            print("Error : \(error.localizedDescription)")
+//                        }
+//                        guard let commentDocs = snapshot?.documents else { return }
+//                        for i in 0 ..< commentDocs.count {
+//
+//                            postRef.document(documents[i].documentID).collection("comment").document(commentDocs[i].documentID)
+//                                .setData(["user":["email":userProfile.email,
+//                                                  "profileUrl":userProfile.profileUrl,
+//                                                  "uid":userProfile.uid,
+//                                                  "username":userProfile.username]],merge: true)
+//                        }
+//
+//                    }
+//            }
+//        }
     }
 }

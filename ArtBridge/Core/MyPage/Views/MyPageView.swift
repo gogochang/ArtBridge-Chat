@@ -32,46 +32,44 @@ struct MyPageView: View {
     var body: some View {
         ScrollView() {
             VStack() {
-                Button(action: {
-                    self.showModal = true
-                }) {
-                    HStack() {
-                        // 프로필 이미지
-                        if let profileUrl = userVM.currentUser?.profileUrl {
-                            KFImage(URL(string:profileUrl))
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .clipShape(Circle())
-                                .overlay {
-                                    Circle().stroke(.white, lineWidth: 2)
-                                }.shadow(radius: 2)
-                        }
-                        VStack(alignment: .leading) {
-                            Text(userVM.currentUser?.username ?? "로그인이 필요합니다.").bold()
-                            Text(userVM.currentUser?.email ?? "")
-                        }
-                        Spacer()
-                    }.foregroundColor(Color.black)
-                }//Button
-                .disabled(isLogged)
+                HStack(alignment:.top) {
+                    Button(action: {
+                        self.showModal = true
+                    }) {
+                        HStack() {
+                            // 프로필 이미지
+                            if let profileUrl = userVM.currentUser?.profileUrl {
+                                KFImage(URL(string:profileUrl))
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+                                    .overlay {
+                                        Circle().stroke(.white, lineWidth: 2)
+                                    }.shadow(radius: 2)
+                            }
+                            VStack(alignment: .leading) {
+                                Text(userVM.currentUser?.username ?? "로그인이 필요합니다.").bold()
+                                Text(userVM.currentUser?.email ?? "")
+                            }
+                            Spacer()
+                        }.foregroundColor(Color.black)
+                    }//Button
+                    .disabled(isLogged)
+                    Spacer()
+                    Button(action: {
+                        print("프로필 설정 버튼 클릭되었습니다.")
+                        profileVM.uid = userVM.currentUser?.uid
+                        presentsProfileView = true
+                    }) {
+                        Image(systemName: "gearshape")
+                            .foregroundColor(Color.black)
+                    }
+                    .opacity(isLogged ? 1 : 0 )
+                } //HStack
+                .padding()
                 .sheet(isPresented: self.$showModal) {
                     LoginView(showModal: $showModal, isLogged: $isLogged)
-                }.padding()
-                
-                Divider()
-                // [Temp] 프로필 사진 변경 Button
-                Button(action: {
-                    print("프로필 설정 버튼 클릭되었습니다.")
-                    profileVM.uid = userVM.currentUser?.uid
-                    presentsProfileView = true
-                }) {
-                    HStack() {
-                        Text("프로필 관리")
-                        Spacer()
-                    }
                 }
-                .padding()
-                
                 .sheet(isPresented: $onPhotoLibrary) {
                     // 이미지 선택
                     ImagePicker(sourceType: .photoLibrary) { pickedImage in
@@ -98,7 +96,7 @@ struct MyPageView: View {
                         ]
                     )
                 }
-                .disabled(!isLogged)
+//                .disabled(!isLogged)
                 
                 Divider()
                 // 계정설정 Button
@@ -149,7 +147,7 @@ struct MyPageView: View {
         }
         .fullScreenCover(isPresented: $presentsProfileView) {
             NavigationView {
-//                ProfileView(profileUser: $currentUser, selection: $selection)
+                ProfileView(profileUser: userVM.currentUser ?? nil, selection: $selection, isSetting: true)
             }
         }
     }

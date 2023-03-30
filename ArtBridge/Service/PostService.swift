@@ -111,6 +111,7 @@ struct PostService {
         let data = ["comment": comment,
                     "likes": 0,
                     "user": userData,
+                    "uid":user.uid,
                     "timestamp": Timestamp(date: Date())] as [String: Any]
 
         Firestore.firestore().collection("posts").document(post.id!).collection("comment").document()
