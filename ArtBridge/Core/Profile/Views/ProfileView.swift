@@ -14,11 +14,7 @@ struct ProfileView: View {
 
     @EnvironmentObject var viewModel: ProfileVM
     @EnvironmentObject var userVM: UserVM
-    @EnvironmentObject var postVM: PostVM
-    
-    @Binding var postData: Post
-
-    
+    @Binding var profileUser: User
     // 탭 메뉴
     @Binding var selection: Int
     // 유저이름 변경
@@ -51,7 +47,6 @@ struct ProfileView: View {
             // 상단 뒤로가기 버튼
             leading: Button(action: {
                 print("Back Button is Clicked")
-                postVM.getComment(post: postData)
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(systemName: "xmark")
@@ -62,9 +57,8 @@ struct ProfileView: View {
                 if isSetupMode {
                     print("isSetupMode True")
                     viewModel.userProfile?.username = tempUsername
-                    postData.user.username = tempUsername
+                    profileUser.username = tempUsername
                     viewModel.updateUser()
-                    
                     userVM.fetchUser()
                 } else {
                     print("isSetupMode False")
@@ -93,7 +87,7 @@ struct ProfileView: View {
                 ImageService.uploadImage(image: pickedImage) { url in
                     //업로드된 이미지의 url을 유저정보에 새롭게 업데이트
                     userVM.updateUser(displayName: nil, profileUrl: url)
-                    postData.user.profileUrl = url
+                    profileUser.profileUrl = url
                     viewModel.fetchUser()
                 }
             }
@@ -169,7 +163,7 @@ private extension ProfileView {
     // 프로필 유저네임
     var UserName: some View {
         ZStack {
-            Text(postData.user.username )
+            Text(profileUser.username )
                 .font(.title)
             Group {
                 Divider()
@@ -180,7 +174,7 @@ private extension ProfileView {
                     Spacer()
                     Button(action: {
                         print("SendButton is Clicked")
-                        tempUsername = postData.user.username
+                        tempUsername = profileUser.username
                         isEditAlert = true
                     }, label: {
                         Image(systemName: "pencil.line")
@@ -199,7 +193,7 @@ private extension ProfileView {
                 .textInputAutocapitalization(.never)
             Button("OK", action: {
                 viewModel.userProfile?.username = tempUsername
-                postData.user.username = tempUsername
+                profileUser.username = tempUsername
             })
             Button("Cancel", role: .cancel) { }
         } message: {
