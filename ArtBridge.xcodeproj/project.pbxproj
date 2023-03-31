@@ -20,6 +20,7 @@
 		957E46782985E3F200B61B12 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46772985E3F200B61B12 /* LoginView.swift */; };
 		957E46882987A18900B61B12 /* PrevPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957E46872987A18900B61B12 /* PrevPostsView.swift */; };
 		9582210A29CAC74D009964FD /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582210929CAC74D009964FD /* DateManager.swift */; };
+		9587A09629D71004009EEEA1 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9587A09529D71004009EEEA1 /* PasswordResetView.swift */; };
 		959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A806E299E67AF00D0EDAF /* ChatData.swift */; };
 		959A8077299E7B4C00D0EDAF /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A8076299E7B4C00D0EDAF /* AuthVM.swift */; };
 		95A1ADF029C9EC7D00BDA25C /* ChatListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1ADEF29C9EC7D00BDA25C /* ChatListVM.swift */; };
@@ -89,6 +90,7 @@
 		957E46772985E3F200B61B12 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		957E46872987A18900B61B12 /* PrevPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevPostsView.swift; sourceTree = "<group>"; };
 		9582210929CAC74D009964FD /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		9587A09529D71004009EEEA1 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		959A806E299E67AF00D0EDAF /* ChatData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatData.swift; sourceTree = "<group>"; };
 		959A8076299E7B4C00D0EDAF /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
 		95A1ADEF29C9EC7D00BDA25C /* ChatListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListVM.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				957E46772985E3F200B61B12 /* LoginView.swift */,
 				9573B470299224D800732B70 /* RegisterView.swift */,
+				9587A09529D71004009EEEA1 /* PasswordResetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				95A1ADF429C9F49A00BDA25C /* ChatView.swift in Sources */,
 				951492FC29C763FF003BB8FC /* ProfileVM.swift in Sources */,
 				95AC51E429BB4C2600F7CBED /* ImageService.swift in Sources */,
+				9587A09629D71004009EEEA1 /* PasswordResetView.swift in Sources */,
 				9514931929C9E919003BB8FC /* ChatListView.swift in Sources */,
 				95AC51E029BB183400F7CBED /* Post.swift in Sources */,
 				959A806F299E67AF00D0EDAF /* ChatData.swift in Sources */,

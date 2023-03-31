@@ -29,7 +29,12 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
+                //회원가입뷰
                 NavigationLink(destination: RegisterView(), tag: 1, selection: self.$tag ) {
+                    EmptyView()
+                }
+                //비밀번호 재설정뷰
+                NavigationLink(destination: PasswordResetView(), tag: 2, selection: self.$tag ) {
                     EmptyView()
                 }
                 Spacer()
@@ -82,7 +87,9 @@ struct LoginView: View {
                     
                     HStack() {
                         Spacer()
-                        Button(action:{}) {
+                        Button(action:{
+                            self.tag = 2
+                        }) {
                             Text("비밀번호 찾기")
                         }
                         Text("|")

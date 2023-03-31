@@ -84,4 +84,19 @@ class UserVM: ObservableObject {
         }
         task.resume()
     }
+
+    // 비밀번호 재설정
+    @Published var email: String = ""
+    @Published var alertMessage: String = ""
+    @Published var showAlert: Bool = false
+    func resetPassword() {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                self.alertMessage = error.localizedDescription
+            } else {
+                self.alertMessage = "해당 이메일로 비밀번호 재설정메일을 보냈습니다."
+            }
+            self.showAlert = true
+        }
+    }
 }
