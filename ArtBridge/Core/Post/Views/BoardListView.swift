@@ -102,6 +102,10 @@ struct BoardListView: View {
                                 HStack() {
                                     VStack() {
                                         HStack {
+                                            Text(post.postType)
+                                                .font(.system(size: 12))
+                                                .padding(.vertical,5).padding(.horizontal,10)
+                                                .background(Capsule().fill(Color(.systemGray6)))
                                             Text(post.title)
                                                 .bold()
                                                 .font(.system(size:15))
@@ -112,7 +116,6 @@ struct BoardListView: View {
                                         HStack() {
                                             Text(post.user.username)
                                             Text(post.timestamp.dateValue().toString().components(separatedBy: " ")[0])
-                                            Text("댓글 0")
                                             Spacer()
                                         }
                                         .opacity(0.7)
