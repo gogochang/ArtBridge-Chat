@@ -12,6 +12,7 @@ import Kingfisher
 struct MyPageView: View {
     @State private var showModal = false
     @State private var showingAlert = false
+    @State private var showingRemoveAlert = false
     
     @State private var email: String?
     @State private var username: String?
@@ -101,12 +102,23 @@ struct MyPageView: View {
                 Divider()
                 // 계정설정 Button
                 Button(action: {
-                    print("계정설정 버튼 클릭되었습니다.")
+                    showingRemoveAlert = true
                 }) {
                     HStack() {
-                        Text("계정 설정")
+                        Text("계정 삭제")
                         Spacer()
                     }
+                }
+                .alert(isPresented: $showingRemoveAlert) {
+                    Alert(
+                        title: Text("계정삭제"),
+                        message: Text("계정삭제 하시겠습니까?"),
+                        primaryButton: .default(Text("No"), action: {}),
+                        secondaryButton: .destructive(Text("Yes"), action: {
+                            isLogged = false
+                            userVM.removeUser()
+                        })
+                    )
                 }
                 .disabled(!isLogged)
                 .padding()// 계정설정 Button
@@ -115,18 +127,20 @@ struct MyPageView: View {
                 //로그아웃 Button
                 Button(action: {
                     print("로그아웃 버튼 클릭되었습니다.")
+                    print(showingAlert)
                     showingAlert = true
                 }, label: {
                     Text("로그아웃")
                     Spacer()
                 })
                 .padding()
+                
                 .alert(isPresented: $showingAlert) {
                     Alert(
                         title: Text("로그아웃"),
                         message: Text("로그아웃을 하시겠습니까?"),
-                        primaryButton: .destructive(Text("No"), action: {}),
-                        secondaryButton: .default(Text("Yes"), action: {
+                        primaryButton: .default(Text("No"), action: {}),
+                        secondaryButton: .destructive(Text("Yes"), action: {
                             isLogged = false
                             userVM.logOut()
                         })

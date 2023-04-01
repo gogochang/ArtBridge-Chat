@@ -84,6 +84,26 @@ class UserVM: ObservableObject {
         }
         task.resume()
     }
+    
+    //현재 유저 계정 삭제
+    func removeUser() {
+        print("UserVM - removeUser()")
+        guard let user = Auth.auth().currentUser else { return }
+        user.delete { error in
+            if let error = error {
+                print("UserVM - removeUser() Error : \(error.localizedDescription)")
+            } else {
+                self.logOut()
+                Firestore.firestore().collection("users").document(user.uid).delete { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        print("removed user")
+                    }
+                }
+            }
+        }
+    }
 
     // 비밀번호 재설정
     @Published var email: String = ""
