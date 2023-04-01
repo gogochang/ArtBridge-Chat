@@ -15,7 +15,10 @@ class ChatListVM: ObservableObject {
     //MARK: - 현재 유저의 채팅목록 가져오기
     func fetchChats() {
         print("ChatVM - fetchChats() called")
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else {
+            chatRooms = [ChatRoom]()
+            return
+        }
         
         let query = Firestore.firestore().collection("users").document(uid).collection("chats")
         
