@@ -16,14 +16,18 @@ struct PasswordResetView: View {
     @State private var showAlert: Bool = false
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 20) {
             Text("비밀번호 재설정")
                 .font(.largeTitle)
                 .bold()
                 .padding()
             
             TextField("Email", text: $userVM.email)
+                .frame(maxWidth: .infinity)
                 .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(16)
+                .shadow(radius: 3,x: 1, y: 1)
             
             Button(action: userVM.resetPassword) {
                 Text("로그인")
@@ -38,6 +42,7 @@ struct PasswordResetView: View {
             .padding()
             .disabled( userVM.email == "" )
         }
+        .padding(.horizontal,40)
         .alert(isPresented: $userVM.showAlert) {
             Alert(title: Text("비밀번호 재설정"), message: Text(userVM.alertMessage), dismissButton: .default(Text("OK")))
         }
@@ -49,3 +54,4 @@ struct PasswordResetView_Previews: PreviewProvider {
         PasswordResetView()
     }
 }
+ 
