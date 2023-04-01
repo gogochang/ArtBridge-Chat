@@ -1,6 +1,8 @@
 # ArtBridge
 ![ArtBridgeScreenshot](https://user-images.githubusercontent.com/54075367/228310426-70b8cc46-6482-4cc7-8ebe-5169581b2f73.png)
 
+# 🔗 Link
+* 노션 : https://inexpensive-octagon-6dd.notion.site/Art-Bridge-0c5981f3e17643f6b9e11fc019118568
 # 📝 프로젝트 소개
 * 게시판 + 실시간 채팅 커뮤니티 앱입니다.
 * Firebase를 백엔드로 사용한 서버연동과 SwiftUI 실제 구현을 통한 학습 목적 프로젝트입니다.
