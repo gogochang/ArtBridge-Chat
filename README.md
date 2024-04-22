@@ -1,4 +1,4 @@
-# ArtBridge
+# ArtBridge-Chat
 ![ArtBridgeScreenshot](https://user-images.githubusercontent.com/54075367/228310426-70b8cc46-6482-4cc7-8ebe-5169581b2f73.png)
 
 # 🔗 Link
